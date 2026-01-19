@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Slider;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SliderSeeder extends Seeder
@@ -13,14 +12,40 @@ class SliderSeeder extends Seeder
      */
     public function run(): void
     {
-        Slider::updateOrCreate([
-            'id' =>1 
-        ],[
-            'title' => 'Slide 1',
-            'description' => '',
-            'botontext1' => '',
-            'link1' => '/',
-            'botontext2' => 'Comprar Ahora',
-        ]);
+        $slides = [
+            [
+                'order' => 1,
+                'title' => 'GLAMFIT',
+                'description' => 'Ropa y accesorios de gimnasio.',
+                'botontext1' => null,
+                'link1' => 'images/img/carrusel2_AB.PNG',
+                'botontext2' => 'Ver catalogo',
+                'link2' => '/catalogo',
+                'url_image' => 'images/img/',
+                'name_image' => 'carrusel2_AB.PNG',
+                'visible' => true,
+                'status' => true,
+            ],
+            [
+                'order' => 2,
+                'title' => 'Entrena con estilo',
+                'description' => 'Fajas, tomatodos y equipamiento.',
+                'botontext1' => null,
+                'link1' => 'images/img/carrusel3_AB.PNG',
+                'botontext2' => 'Comprar ahora',
+                'link2' => '/catalogo',
+                'url_image' => 'images/img/',
+                'name_image' => 'carrusel3_AB.PNG',
+                'visible' => true,
+                'status' => true,
+            ],
+        ];
+
+        foreach ($slides as $slide) {
+            Slider::updateOrCreate(
+                ['order' => $slide['order']],
+                $slide
+            );
+        }
     }
 }

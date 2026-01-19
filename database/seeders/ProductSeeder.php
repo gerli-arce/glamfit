@@ -3,95 +3,100 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Galerie;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Products;
-use App\Models\Specifications;
 use App\Models\SubCategory;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\Importable;
-use SoDe\Extend\File;
-use SoDe\Extend\Text;
+use App\Models\ClientLogos;
+use App\Models\Discount;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
-    use Importable;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Excel::import(new class implements ToModel
-        {
-            public function model(array $row)
-            {
-                if (!is_numeric($row[0])) return null;
+        $brand = ClientLogos::where('title', 'GLAMFIT')->first();
+        $discounts = Discount::whereIn('name', [
+            '2x1 en fajas',
+            '3x2 en accesorios',
+            '10% en tomatodos',
+            '20% en ropa deportiva',
+        ])->get()->keyBy('name');
 
-                $category = Category::updateOrCreate(['id' => $row[1]], [
-                    'id' => $row[1],
-                    'name' => $row[2],
-                    'slug' => str_replace(' ', '-', strtolower($row[2])),
-                    'url_image' => 'images/img/',
-                    'name_image' => 'noimagen.jpg'
-                ]);
+        $items = [
+            ['name' => 'Polo deportivo dry fit', 'category' => 'Ropa Deportiva', 'subcategory' => 'Polos', 'sku' => 'GLAM-POLO-001', 'price' => 79.90, 'discount' => 59.90, 'color' => 'Negro', 'size' => 'M', 'stock' => 20, 'featured' => true],
+            ['name' => 'Leggings compresion', 'category' => 'Ropa Deportiva', 'subcategory' => 'Leggings', 'sku' => 'GLAM-LEG-001', 'price' => 99.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'S', 'stock' => 15, 'featured' => true],
+            ['name' => 'Short training', 'category' => 'Ropa Deportiva', 'subcategory' => 'Shorts', 'sku' => 'GLAM-SHO-001', 'price' => 69.90, 'discount' => 0, 'color' => 'Gris', 'size' => 'M', 'stock' => 18, 'featured' => false],
+            ['name' => 'Conjunto deportivo', 'category' => 'Ropa Deportiva', 'subcategory' => 'Conjuntos', 'sku' => 'GLAM-CON-001', 'price' => 149.90, 'discount' => 129.90, 'color' => 'Azul', 'size' => 'M', 'stock' => 10, 'featured' => true],
+            ['name' => 'Faja reductora neopreno', 'category' => 'Fajas', 'subcategory' => 'Fajas reductoras', 'sku' => 'GLAM-FAJ-001', 'price' => 89.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 25, 'featured' => true],
+            ['name' => 'Faja deportiva lumbar', 'category' => 'Fajas', 'subcategory' => 'Fajas deportivas', 'sku' => 'GLAM-FAJ-002', 'price' => 79.90, 'discount' => 69.90, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 30, 'featured' => false],
+            ['name' => 'Guantes de gimnasio', 'category' => 'Accesorios', 'subcategory' => 'Guantes', 'sku' => 'GLAM-ACC-001', 'price' => 49.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'M', 'stock' => 40, 'featured' => false],
+            ['name' => 'Bandas elasticas set', 'category' => 'Accesorios', 'subcategory' => 'Bandas elasticas', 'sku' => 'GLAM-ACC-002', 'price' => 59.90, 'discount' => 0, 'color' => 'Multicolor', 'size' => 'Unico', 'stock' => 35, 'featured' => false],
+            ['name' => 'Munequeras deportivas', 'category' => 'Accesorios', 'subcategory' => 'Munequeras', 'sku' => 'GLAM-ACC-003', 'price' => 39.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 50, 'featured' => false],
+            ['name' => 'Tomatodo 750ml', 'category' => 'Tomatodos', 'subcategory' => 'Tomatodos deportivos', 'sku' => 'GLAM-TOM-001', 'price' => 35.90, 'discount' => 0, 'color' => 'Transparente', 'size' => 'Unico', 'stock' => 60, 'featured' => true],
+            ['name' => 'Tomatodo termico 1L', 'category' => 'Tomatodos', 'subcategory' => 'Tomatodos termicos', 'sku' => 'GLAM-TOM-002', 'price' => 69.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 25, 'featured' => false],
+            ['name' => 'Mancuernas 5kg par', 'category' => 'Equipamiento', 'subcategory' => 'Mancuernas', 'sku' => 'GLAM-EQP-001', 'price' => 129.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 12, 'featured' => true],
+            ['name' => 'Colchoneta yoga', 'category' => 'Equipamiento', 'subcategory' => 'Colchonetas', 'sku' => 'GLAM-EQP-002', 'price' => 79.90, 'discount' => 0, 'color' => 'Azul', 'size' => 'Unico', 'stock' => 22, 'featured' => false],
+            ['name' => 'Cuerda de salto', 'category' => 'Equipamiento', 'subcategory' => 'Cuerdas de salto', 'sku' => 'GLAM-EQP-003', 'price' => 29.90, 'discount' => 0, 'color' => 'Negro', 'size' => 'Unico', 'stock' => 70, 'featured' => false],
+        ];
 
-                // if ($row[3] == '') $subcategory = new SubCategory();
-                // else {
-                //     $subcategory = SubCategory::updateOrCreate(['id' => $row[3]], [
-                //         'category_id' => $category->id,
-                //         'name' => $row[4],
-                //         'slug' => str_replace(' ', '-', strtolower($row[4])),
-                //         'status' => true,
-                //         'visible' => true
-                //     ]);
-                // }
+        foreach ($items as $item) {
+            $category = Category::where('slug', Str::slug($item['category']))->first();
+            if (!$category) {
+                continue;
+            }
 
-                $price = str_replace(',', '.', Text::keep($row[11] ?? '', '0123456789,'));
-                $cost = str_replace(',', '.', Text::keep($row[12] ?? '', '0123456789,'));
-                $discount = str_replace(',', '.', Text::keep($row[9] ?? '', '0123456789,'));
+            $subcategory = SubCategory::where('slug', Str::slug($item['subcategory']))
+                ->where('category_id', $category->id)
+                ->first();
 
-                $product = Products::updateOrCreate(['sku' => $row[5]], [
-                    'categoria_id' => $category->id,
-                    //'subcategory_id' => $subcategory->id,
-                    'sku' => $row[5],
-                    'producto' => $row[6],
-                    'color' => $row[7],
-                    'description' => $row[8],
-                    'descuento' => $discount ? $discount : 0,
-                    'precio' => $price ? $price : 0,
-                    'costo_x_art' => $cost ? $cost : 0,
-                    'stock' => is_numeric($row[13]) ? $row[13] : 0,
+            $discountId = null;
+            if ($item['category'] === 'Fajas') {
+                $discountId = $discounts['2x1 en fajas']->id ?? null;
+            } elseif ($item['category'] === 'Accesorios') {
+                $discountId = $discounts['3x2 en accesorios']->id ?? null;
+            } elseif ($item['category'] === 'Tomatodos') {
+                $discountId = $discounts['10% en tomatodos']->id ?? null;
+            } elseif ($item['category'] === 'Ropa Deportiva') {
+                $discountId = $discounts['20% en ropa deportiva']->id ?? null;
+            }
+
+            $discount = $item['discount'];
+            $price = $item['price'];
+            $percent = 0;
+            if ($discount > 0 && $price > 0) {
+                $percent = (1 - ($discount / $price)) * 100;
+            }
+
+            Products::updateOrCreate(
+                ['sku' => $item['sku']],
+                [
+                    'producto' => $item['name'],
+                    'extract' => $item['name'],
+                    'description' => 'Producto GLAMFIT para entrenamiento.',
+                    'precio' => $price,
+                    'descuento' => $discount,
+                    'percent_discount' => $percent,
+                    'stock' => $item['stock'],
+                    'costo_x_art' => 0,
+                    'peso' => $item['size'],
                     'imagen' => 'images/img/noimagen.jpg',
                     'imagen_ambiente' => 'images/img/noimagen.jpg',
+                    'sku' => $item['sku'],
+                    'categoria_id' => $category->id,
+                    'subcategory_id' => $subcategory?->id,
+                    'marca_id' => $brand?->id,
+                    'discount_id' => $discountId,
+                    'color' => $item['color'],
+                    'destacar' => $item['featured'],
+                    'recomendar' => $item['featured'],
+                    'visible' => true,
                     'status' => true,
-                    'visible' => true
-                ]);
-
-                // $path2search = "public/storage/images/products/{$category->id}/";
-
-                // $images = [];
-                // try {
-                //     $images = File::scan($path2search, [
-                //         'type' => 'file',
-                //         'startsWith' => $product->sku,
-                //         'desc' => true
-                //     ]);
-                // } catch (\Throwable $th) {}
-
-                // foreach ($images as $key => $image_name) {
-                //     $image = "storage/images/products/{$category->id}/{$image_name}";
-                //     if ($key == 0) $product->imagen = $image;
-                //     if ($key == 1) $product->imagen_ambiente = $image;
-                //     else Galerie::create([
-                //         'product_id' => $product->id,
-                //         'imagen' => $image
-                //     ]);
-                // }
-                $product->save();
-            }
-        }, 'storage/app/utils/Products.xlsx');
+                ]
+            );
+        }
     }
 }
