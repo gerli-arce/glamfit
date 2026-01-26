@@ -195,8 +195,8 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         //Precios
         Route::resource('/prices', PriceController::class);
-        Route::get('/prices/create', [PriceController::class, 'save'])->name('prices.create');
-        Route::get('/prices/update/{priceId}', [PriceController::class, 'save'])->name('prices.update');
+        Route::get('/prices/create', [PriceController::class, 'save'])->name('prices.createCustom');
+        Route::get('/prices/update/{priceId}', [PriceController::class, 'save'])->name('prices.updateCustom');
         Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
         Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
         Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');

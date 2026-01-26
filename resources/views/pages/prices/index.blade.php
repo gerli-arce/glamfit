@@ -2,7 +2,7 @@
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
     <section class="py-4 border-b border-slate-100 dark:border-slate-700">
-      <a href="{{ route('prices.create') }}"
+      <a href="{{ route('prices.createCustom') }}"
         class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">Agregar Costo de
         Envio</a>
     </section>
@@ -70,11 +70,11 @@
                       @csrf
                       <input type="checkbox" id="hs-basic-usage"
                         class="check_v btn_swithc relative w-[3.25rem] h-7 p-px bg-gray-100 border-transparent text-transparent 
-                                            rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none 
-                                            checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-gray-800 dark:border-gray-700 
-                                            dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6
-                                            before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow 
-                                            before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
+                                                rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none 
+                                                checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-gray-800 dark:border-gray-700 
+                                                dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6
+                                                before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow 
+                                                before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
                         id='{{ 'v_' . $item->id }}' data-field='visble' data-idService='{{ $item->id }}'
                         data-titleService='{{ $item->name }}' {{ $item->visble == 1 ? 'checked' : '' }}>
                       <label for="{{ 'v_' . $item->id }}"></label>
@@ -82,10 +82,9 @@
                   </td>
                   <td class="flex flex-row justify-end items-center gap-5">
 
-                    <a href="{{ route('prices.update', $item->id) }}"
-                      class="bg-yellow-400 px-3 py-2 rounded text-white  "><i
-                        class="fa-regular fa-pen-to-square"></i></a>
-                    {{-- {{  route('servicios.destroy', $item->id) }} --}}
+                    <a href="{{ route('prices.updateCustom', $item->id) }}"
+                      class="bg-yellow-400 px-3 py-2 rounded text-white  "><i class="fa-regular fa-pen-to-square"></i></a>
+                    {{-- {{ route('servicios.destroy', $item->id) }} --}}
                     <form action=" " method="POST">
                       @csrf
                       <a data-idService='{{ $item->id }}'
@@ -109,13 +108,13 @@
   </div>
 
   <script>
-    $('document').ready(function() {
+    $('document').ready(function () {
 
       new DataTable('#tabladatos', {
         responsive: true
       });
 
-      $(document).on("click", ".btn_delete", function(e) {
+      $(document).on("click", ".btn_delete", function (e) {
 
         var id = $(this).attr('data-idService');
 
@@ -140,7 +139,7 @@
 
               }
 
-            }).done(function(res) {
+            }).done(function (res) {
 
               Swal.fire({
                 title: res.message,
@@ -158,43 +157,43 @@
       });
 
 
-      $( ".btn_swithc" ).on( "change", function() {
-                
-                var status = 0;
-                var id = $(this).attr('data-idService');
-                var titleService = $(this).attr('data-titleService');
-                var field = $(this).attr('data-field');
-               
-                if( $(this).is(':checked') ){
-                    status = 1;
-                }else{
-                    status = 0;
-                 }
+      $(".btn_swithc").on("change", function () {
+
+        var status = 0;
+        var id = $(this).attr('data-idService');
+        var titleService = $(this).attr('data-titleService');
+        var field = $(this).attr('data-field');
+
+        if ($(this).is(':checked')) {
+          status = 1;
+        } else {
+          status = 0;
+        }
 
 
 
-                $.ajax({
-                    url: "{{ route('prices.updateVisible') }}",
-                    method: 'POST',
-                    data:{
-                        _token: $('input[name="_token"]').val(),
-                        status: status,
-                        id: id,
-                        field: field,
-                    }
-                }).done(function(res){
-                   
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Costo de envío modificado",
-                        showConfirmButton: false,
-                        timer: 1500
+        $.ajax({
+          url: "{{ route('prices.updateVisible') }}",
+          method: 'POST',
+          data: {
+            _token: $('input[name="_token"]').val(),
+            status: status,
+            id: id,
+            field: field,
+          }
+        }).done(function (res) {
 
-                    }); 
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Costo de envío modificado",
+            showConfirmButton: false,
+            timer: 1500
 
-                })     
-            });
+          });
+
+        })
+      });
 
     })
   </script>
