@@ -92,7 +92,7 @@ class DashboardController extends Controller
 
         $countProducts = Products::where('status', true)->count();
         $countOrders = Sale::count();
-        $countCategories = Category::where('state', true)->count();
+        $countCategories = Category::where('status', true)->count();
         $countCombos = Combo::where('status', true)->count();
         $countBrands = ClientLogos::where('status', true)->count();
 
