@@ -188,10 +188,10 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::get('/categorias/contarCategorias', [CategoryController::class, 'contarCategoriasDestacadas'])->name('categorias.contarCategoriasDestacadas');
 
         Route::resource('/subcategories', SubCategoryController::class);
-        Route::delete('/subcategories', [SubCategoryController::class, 'delete'])->name('subcategories.delete');
-        Route::post('/subcategories', [SubCategoryController::class, 'save'])->name('subcategories.save');
-        Route::patch('/subcategories', [SubCategoryController::class, 'update'])->name('subcategories.update');
-        Route::get('/subcategories/count', [SubCategoryController::class, 'contarCategoriasDestacadas'])->name('subcategories.count');
+        Route::delete('/subcategories', [SubCategoryController::class, 'delete'])->name('subcategories.deleteSubcategory');
+        Route::post('/subcategories', [SubCategoryController::class, 'save'])->name('subcategories.saveSubcategory');
+        Route::patch('/subcategories', [SubCategoryController::class, 'update'])->name('subcategories.updateSubcategory');
+        Route::get('/subcategories/count', [SubCategoryController::class, 'contarCategoriasDestacadas'])->name('subcategories.countSubcategory');
 
         //Precios
         Route::resource('/prices', PriceController::class);

@@ -36,13 +36,15 @@
               @foreach ($subcategories as $item)
                 <tr>
                   <td class="px-3 py-2">{{ $item->order }}</td>
-                  <td class="px-3 py-2"><img class="w-20 object-contain" src="{{ asset($item->url_image . $item->name_image) }}" onerror="this.onerror=null; this.src='{{ asset('images/img/noimagen.jpg') }}';"  /></td>
+                  <td class="px-3 py-2"><img class="w-20 object-contain"
+                      src="{{ asset($item->url_image . $item->name_image) }}"
+                      onerror="this.onerror=null; this.src='{{ asset('images/img/noimagen.jpg') }}';" /></td>
                   <td class="px-3 py-2">{{ $item->name }}</td>
                   <td class="px-3 py-2">{{ $item->category()->name }}</td>
                   <td>
                     <label class="inline-flex items-center cursor-pointer">
-                      <input id="btn_switch" type="checkbox" data-id="{{ $item->id }}"
-                        data-name="{{ $item->name }}" data-field="destacar" class="sr-only peer" @if($item->destacar) checked @endif>
+                      <input id="btn_switch" type="checkbox" data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                        data-field="destacar" class="sr-only peer" @if($item->destacar) checked @endif>
                       <div
                         class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                       </div>
@@ -50,8 +52,8 @@
                   </td>
                   <td>
                     <label class="inline-flex items-center cursor-pointer">
-                      <input id="btn_switch" type="checkbox" data-id="{{ $item->id }}"
-                        data-name="{{ $item->name }}" data-field="visible" class="sr-only peer" @if($item->visible) checked @endif>
+                      <input id="btn_switch" type="checkbox" data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                        data-field="visible" class="sr-only peer" @if($item->visible) checked @endif>
                       <div
                         class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                       </div>
@@ -92,7 +94,7 @@
   </div>
 
   <script>
-    $('document').ready(function() {
+    $('document').ready(function () {
 
       new DataTable('#tabladatos', {
         ordering: false,
@@ -144,7 +146,7 @@
         ]
       });
 
-      $(document).on('click', '#btn_delete', function(e) {
+      $(document).on('click', '#btn_delete', function (e) {
 
         var id = $(this).attr('data-id');
 
@@ -162,14 +164,14 @@
 
             $.ajax({
 
-              url: '{{ route('subcategories.delete') }}',
+              url: '{{ route('subcategories.deleteSubcategory') }}',
               method: 'DELETE',
               data: {
                 _token: $('input[name="_token"]').val(),
                 id: id,
               }
 
-            }).done(function(res) {
+            }).done(function (res) {
 
               Swal.fire({
                 title: res.message,
@@ -186,7 +188,7 @@
 
       });
 
-      $(document).on('change', '#btn_switch', async function() {
+      $(document).on('change', '#btn_switch', async function () {
 
         const id = $(this).attr('data-id')
         const name = $(this).attr('data-name')
@@ -194,7 +196,7 @@
         const value = $(this).prop('checked')
 
         try {
-          const res = await fetch("{{ route('subcategories.update') }}", {
+          const res = await fetch("{{ route('subcategories.updateSubcategory') }}", {
             method: 'PATCH',
             headers: {
               'Accept': 'application/json',
@@ -218,9 +220,9 @@
           });
         } catch (error) {
           Swal.fire({
-              title: error.message,
-              icon: "error",
-            });
+            title: error.message,
+            icon: "error",
+          });
         }
       });
     })
