@@ -11,6 +11,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{env('APP_NAME')}}</title>
+  <link rel="icon" type="image/png" href="{{ asset('images/glamfit/icon.png') }}">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,7 @@
 
   <!-- funciones -->
 
-  {{-- colorpicker  --}}
+  {{-- colorpicker --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
   <!-- 'classic' theme -->
   <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
@@ -32,7 +33,8 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.tailwindcss.css">
   <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script src="https://cdn.datatables.net/2.0.3/js/dataTables.tailwindcss.js"></script>
-  {{-- <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script> --}}
+  {{--
+  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script> --}}
   <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
   <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -90,7 +92,9 @@
 </head>
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400"
-  :class="{ 'sidebar-expanded': sidebarExpanded }" x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }" x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
+  :class="{ 'sidebar-expanded': sidebarExpanded }"
+  x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }"
+  x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
 
   <script>
     if (localStorage.getItem('sidebar-expanded') == 'true') {

@@ -12,6 +12,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
+  <link rel="icon" type="image/png" href="{{ asset('images/glamfit/icon.png') }}">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +39,8 @@
   <script src="/lte/assets/libs/select2/js/select2.full.min.js"></script>
   <script src="/lte/assets/js/app.min.js"></script>
   @livewireScripts
-  {{-- <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script> --}}
+  {{--
+  <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script> --}}
 
 </body>
 

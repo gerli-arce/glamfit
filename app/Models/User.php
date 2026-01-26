@@ -73,7 +73,7 @@ class User extends Authenticatable
 
     public function isRoot()
     {
-        return $this->hasRole('root');
+        return $this->roles->pluck('name')->map(fn($name) => strtolower($name))->contains('root');
     }
 
 

@@ -270,9 +270,7 @@
 
       <div class="w-9/12 flex items-center justify-center">
         <a href="/">
-          <h1 class="text-3xl font-bold tracking-widest font-Urbanist_Bold"
-            style="background: linear-gradient(135deg, #E91E63, #9B51E0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            GLAMFIT</h1>
+          <img src="{{ asset('images/glamfit/logo.png') }}" alt="GLAMFIT" class="h-10 object-contain" />
         </a>
       </div>
 

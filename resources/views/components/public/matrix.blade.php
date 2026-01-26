@@ -9,30 +9,44 @@
     @viteReactRefresh
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{{ env('APP_NAME') }}</title>
-    <title>American Brands | Ofertas en americanbrands.pe</title>
-    <meta HTTP-EQUIV="bulletin-text"
-        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
-    <meta NAME="description"
-        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
-    <meta NAME="keywords"
-        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
+    <title>GLAMFIT | Ropa Deportiva y Fitness con Estilo</title>
+    <meta name="description"
+        content="Descubre GLAMFIT: Ropa deportiva con estilo y glamour para el gimnasio y más. Encuentra las mejores prendas para entrenar con actitud y comodidad.">
+    <meta name="keywords"
+        content="GLAMFIT, ropa deportiva, fitness, ropa de gimnasio, moda deportiva, leggings, tops deportivos, entrenamiento">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="GLAMFIT | Ropa Deportiva y Fitness con Estilo">
+    <meta property="og:description"
+        content="Entrena con actitud y comodidad. Descubre nuestra colección exclusiva de ropa deportiva GLAMFIT.">
+    <meta property="og:image" content="{{ asset('images/glamfit/logo.png') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="GLAMFIT | Ropa Deportiva y Fitness con Estilo">
+    <meta property="twitter:description"
+        content="Entrena con actitud y comodidad. Descubre nuestra colección exclusiva de ropa deportiva GLAMFIT.">
+    <meta property="twitter:image" content="{{ asset('images/glamfit/logo.png') }}">
+
     <meta NAME="classification" content="moda">
     <meta NAME="contactcity" content="Peru">
-    <meta NAME="contactname" content="American Brands">
+    <meta NAME="contactname" content="GLAMFIT">
     <meta NAME="contactstate" content="Peru">
-    <meta NAME="copyright" content="American Brands">
-    <meta NAME="createdate" content="2020">
+    <meta NAME="copyright" content="GLAMFIT">
+    <meta NAME="createdate" content="2024">
     <meta NAME="distribution" content="GLOBAL">
     <meta NAME="language" content="es-pe">
-    <meta NAME="Owner" content="American Brands">
+    <meta NAME="Owner" content="GLAMFIT">
     <meta NAME="rating" content="SAFE FOR KIDS">
     <meta NAME="revisit-after" content="2 Days">
     <meta name="robots" content="index,follow" />
     <meta name="robots" content="all" />
     <meta NAME="subjects" content="moda">
 
-    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/glamfit/icon.png') }}">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     @vite([...$sources, 'resources/css/app.css', 'resources/js/app.js'])

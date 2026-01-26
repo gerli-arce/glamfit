@@ -19,7 +19,7 @@ class IsRoot
             return redirect()->route('login');
         }
 
-        if (!auth()->user()->hasRole('root')) {
+        if (!auth()->user()->isRoot()) {
             return redirect()->route('dashboard')->with('error', 'No tienes permiso para acceder a esta sección.');
         }
 

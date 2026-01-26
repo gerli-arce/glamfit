@@ -13,16 +13,20 @@
   <meta name="description"
     content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito.">
   --}}
-  <title>{{env('APP_NAME')}}</title>
-  {{--
-  <meta name="keywords"
-    content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" />
-  --}}
+  <title>GLAMFIT | Entrena con Estilo</title>
+  <meta name="description" content="Descubre GLAMFIT: Ropa deportiva con estilo y glamour para el gimnasio y más.">
+  <meta name="keywords" content="GLAMFIT, ropa deportiva, fitness, gym, moda">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GLAMFIT | Entrena con Estilo">
+  <meta property="og:description" content="Ropa deportiva con estilo y glamour para el gimnasio y más.">
+  <meta property="og:image" content="{{ asset('images/glamfit/logo.png') }}">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @vite(['resources/js/' . $component, 'resources/css/app.css', 'resources/js/app.js'])
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
-  <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.ico') }}">
+  <link rel="icon" type="image/png" href="{{ asset('images/glamfit/icon.png') }}">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

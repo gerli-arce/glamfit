@@ -36,9 +36,9 @@
 
             {{-- Column 1: Brand Info --}}
             <div class="flex flex-col gap-5">
-                <h2 class="text-4xl font-Urbanist_Bold tracking-widest text-[#E91E63]">
-                    GLAMFIT
-                </h2>
+                <a href="/">
+                    <img src="{{ asset('images/glamfit/logo.png') }}" alt="GLAMFIT" class="h-12 object-contain" />
+                </a>
                 <p class="text-gray-400 font-Urbanist_Light text-sm leading-relaxed max-w-sm">
                     Ropa deportiva con estilo y glamour para el gimnasio y más. Encuentra las mejores prendas para
                     entrenar con actitud y comodidad.

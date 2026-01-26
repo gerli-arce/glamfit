@@ -21,7 +21,7 @@
       </button>
       <!-- Logo -->
       <a class="block" href="{{ route('dashboard') }}">
-        <img class="h-20 object-contain" src="{{asset('images/svg/logoab.svg')}}" />
+        <img class="h-20 object-contain" src="{{asset('images/glamfit/logo.png')}}" />
       </a>
     </div>
 
@@ -82,7 +82,7 @@
 
 
 
-        @if(auth()->user()->hasRole('root'))
+        @if(auth()->user()->isRoot())
           <x-menu.item id="slider" href="{{ route('slider.index') }}" icon="fas fa-sliders-h">Sliders</x-menu.item>
         @endif
         {{-- <x-menu.item id="banners" href="{{ route('banners.index') }}"

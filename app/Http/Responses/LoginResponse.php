@@ -12,8 +12,8 @@ class LoginResponse implements LoginResponseContract
     public function toResponse($request)
     {
         $role = Auth::user()->roles->pluck('name');
-        
-        
+
+
         if ($request->wantsJson()) {
             return response()->json(['two_factor' => false]);
         }
@@ -29,9 +29,11 @@ class LoginResponse implements LoginResponseContract
 
 
 
-        
+
 
         switch ($role[0]) {
+            case 'Root':
+            case 'root':
             case 'Admin':
                 return redirect()->intended(config('fortify.home'));
             case 'Customer':
