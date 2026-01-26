@@ -87,10 +87,10 @@
 
 
       <!-- Table (Top Channels) -->
-      <x-dashboard.top10 title="Top 10 productos mas vendidos" :data="$topProducts" />
+      {{-- <x-dashboard.top10 title="Top 10 productos mas vendidos" :data="$topProducts" /> --}}
 
       <!-- Doughnut chart (Top Countries) -->
-      <x-dashboard.topdistritos :data="$topDistricts" />
+      {{-- <x-dashboard.topdistritos :data="$topDistricts" /> --}}
 
       {{-- <!-- Line chart (Sales Over Time)  -->
       <x-dashboard.dashboard-card-08 />
