@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             OfferDetailSeeder::class,
             RoleSeeder::class,
             UsersSeeder::class,
+            RootUserSeeder::class,
             AdminUserSeeder::class,
                 //MessageSeeder::class,
             GeneralSeeder::class,
