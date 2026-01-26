@@ -22,8 +22,8 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::where("status", "=", true)
-        ->orderByDesc('created_at')
-        ->get();
+            ->orderByDesc('created_at')
+            ->get();
 
         return view('pages.categories.index', compact('category'));
     }
@@ -60,20 +60,21 @@ class CategoryController extends Controller
 
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
 
-            $img =  $manager->read($request->file('imagen'));
+            $img = $manager->read($request->file('imagen'));
 
             // Obtener las dimensiones de la imagen que se esta subiendo
             // $img->coverDown(640, 640, 'center');
 
-            $ruta = 'storage/images/categories/';
+            $basePath = 'images/categories/';
+            $path = storage_path('app/public/' . $basePath);
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
+            $img->save($path . $nombreImagen);
 
-            $body['url_image'] = $ruta;
+            $body['url_image'] = 'storage/' . $basePath;
             $body['name_image'] = $nombreImagen;
         }
 
@@ -83,21 +84,22 @@ class CategoryController extends Controller
 
             $nombreImagen = Str::random(10) . '_' . $request->file('img_talla')->getClientOriginalName();
 
-            $img =  $manager->read($request->file('img_talla'));
+            $img = $manager->read($request->file('img_talla'));
 
             // Obtener las dimensiones de la imagen que se esta subiendo
             // $img->coverDown(640, 640, 'center');
 
-            $ruta = 'storage/images/categories/';
+            $basePath = 'images/categories/';
+            $path = storage_path('app/public/' . $basePath);
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
+            $img->save($path . $nombreImagen);
 
-            $body['img_talla'] = $ruta . $nombreImagen;
-            
+            $body['img_talla'] = 'storage/' . $basePath . $nombreImagen;
+
         }
 
         $slug = strtolower(str_replace(' ', '-', $request->name));
@@ -138,28 +140,26 @@ class CategoryController extends Controller
             $manager = new ImageManager(new Driver());
 
 
-            $ruta = storage_path() . '/app/public/images/categories/' . $category->name_image;
+            $rutaEliminar = storage_path('app/public/images/categories/') . $category->name_image;
 
-            // dd($ruta);
-            if (File::exists($ruta)) {
-                File::delete($ruta);
+            if (File::exists($rutaEliminar)) {
+                File::delete($rutaEliminar);
             }
 
-            $rutanueva = 'storage/images/categories/';
+            $basePath = 'images/categories/';
+            $path = storage_path('app/public/' . $basePath);
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
 
-            $img =  $manager->read($request->file('imagen'));
+            $img = $manager->read($request->file('imagen'));
 
-            // $img->coverDown(640, 640, 'center');
-
-            if (!file_exists($rutanueva)) {
-                mkdir($rutanueva, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($rutanueva . $nombreImagen);
+            $img->save($path . $nombreImagen);
 
 
-            $category->url_image = $rutanueva;
+            $category->url_image = 'storage/' . $basePath;
             $category->name_image = $nombreImagen;
         }
 
@@ -231,7 +231,7 @@ class CategoryController extends Controller
         $cantidad = $this->contarCategoriasDestacadas();
 
 
-        return response()->json(['message' => 'Categoría modificada',  'cantidad' => $cantidad]);
+        return response()->json(['message' => 'Categoría modificada', 'cantidad' => $cantidad]);
     }
 
 
@@ -240,6 +240,6 @@ class CategoryController extends Controller
 
         $cantidad = Category::where('destacar', '=', 1)->count();
 
-        return  $cantidad;
+        return $cantidad;
     }
 }

@@ -58,15 +58,16 @@ class SliderController extends Controller
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
             // $img->coverDown(968, 351, 'center');
-            $ruta = 'storage/images/slider/';
+            $basePath = 'images/slider/';
+            $path = storage_path('app/public/' . $basePath);
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
+            $img->save($path . $nombreImagen);
 
-            $slider->url_image = $ruta;
+            $slider->url_image = 'storage/' . $basePath;
             $slider->name_image = $nombreImagen;
         }
 
@@ -76,14 +77,16 @@ class SliderController extends Controller
 
             $nombreImagen = Str::random(10) . '_' . $request->file('link1')->getClientOriginalName();
             $img = $manager->read($request->file('link1'));
-            $ruta = 'storage/images/slider/';
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true);
+            $basePath = 'images/slider/';
+            $path = storage_path('app/public/' . $basePath);
+
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
-            $slider->link1 = $ruta . $nombreImagen;
+            $img->save($path . $nombreImagen);
+            $slider->link1 = 'storage/' . $basePath . $nombreImagen;
 
         }
 
@@ -138,22 +141,23 @@ class SliderController extends Controller
         if ($request->hasFile("imagen")) {
 
             $manager = new ImageManager(new Driver());
-            $ruta = storage_path() . '/app/public/images/slider/' . $slider->name_image;
+            $rutaEliminar = storage_path('app/public/images/slider/') . $slider->name_image;
 
-            if (File::exists($ruta)) {
-                File::delete($ruta);
+            if (File::exists($rutaEliminar)) {
+                File::delete($rutaEliminar);
             }
 
-            $rutanueva = 'storage/images/slider/';
+            $basePath = 'images/slider/';
+            $path = storage_path('app/public/' . $basePath);
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
 
-            if (!file_exists($rutanueva)) {
-                mkdir($rutanueva, 0777, true);
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($rutanueva . $nombreImagen);
-            $slider->url_image = $rutanueva;
+            $img->save($path . $nombreImagen);
+            $slider->url_image = 'storage/' . $basePath;
             $slider->name_image = $nombreImagen;
         }
 
@@ -161,23 +165,27 @@ class SliderController extends Controller
         if ($request->hasFile("imagemobile")) {
 
             $manager = new ImageManager(new Driver());
-            $ruta = $slider->link1;
 
-            if (File::exists($ruta)) {
-                File::delete($ruta);
+            if ($slider->link1) {
+                $rutaEliminar = public_path($slider->link1);
+                if (File::exists($rutaEliminar)) {
+                    File::delete($rutaEliminar);
+                }
             }
 
             $nombreImagen = Str::random(10) . '_' . $request->file('imagemobile')->getClientOriginalName();
             $img = $manager->read($request->file('imagemobile'));
-            $ruta = 'storage/images/slider/';
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true);
+            $basePath = 'images/slider/';
+            $path = storage_path('app/public/' . $basePath);
+
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
+            $img->save($path . $nombreImagen);
 
-            $slider->link1 = $ruta . $nombreImagen;
+            $slider->link1 = 'storage/' . $basePath . $nombreImagen;
 
         }
 

@@ -26,6 +26,7 @@ use SoDe\Extend\JSON;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Type\Integer;
 use SoDe\Extend\Response;
+use Illuminate\Support\Facades\File;
 
 use function PHPUnit\Framework\isNull;
 
@@ -344,21 +345,19 @@ class ProductsController extends Controller
       }
       if ($request->hasFile($field)) {
         $file = $request->file($field);
-        $route = "storage/images/productos/{$request->categoria_id}/";
-        // $route = "storage/images/productos/$request->categoria_id/";
+        $basePath = "images/productos/{$request->categoria_id}/";
+        $path = storage_path('app/public/' . $basePath);
+
         $nombreImagen = Str::random(10) . '_' . $field . '.' . $file->getClientOriginalExtension();
-        // $nombreImagen = $request->sku.'.png';
         $manager = new ImageManager(new Driver());
         $img = $manager->read($file);
-        // $img->coverDown(340, 340, 'center');
 
-        if (!file_exists($route)) {
-          mkdir($route, 0777, true);
+        if (!File::isDirectory($path)) {
+          File::makeDirectory($path, 0777, true, true);
         }
 
-        // $img->save($route . $nombreImagen);
-        $img->save($route . $nombreImagen);
-        return $route . $nombreImagen;
+        $img->save($path . $nombreImagen);
+        return 'storage/' . $basePath . $nombreImagen;
       }
       return null;
     } catch (\Throwable $th) {

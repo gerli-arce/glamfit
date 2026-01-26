@@ -33,7 +33,7 @@ class BlogController extends Controller
   public function create()
   {
     $categories = Category::where('status', '=', true)->where('visible', '=', true)->get();
-    
+
     return view('pages.blog.create', compact('categories'));
   }
 
@@ -42,13 +42,16 @@ class BlogController extends Controller
    */
   public function saveImg($file, $route, $nombreImagen)
   {
-      $manager = new ImageManager(new Driver());
-      $img = $manager->read($file);
-      // $img->coverDown(672, 700, 'center');
-      if (!file_exists($route)) {
-          mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
-      }
-      $img->save($route . $nombreImagen);
+    $manager = new ImageManager(new Driver());
+    $img = $manager->read($file);
+
+    // Convert mapping for absolute path
+    $absPath = storage_path('app/public/' . str_replace('storage/', '', $route));
+
+    if (!File::isDirectory($absPath)) {
+      File::makeDirectory($absPath, 0777, true, true);
+    }
+    $img->save($absPath . $nombreImagen);
   }
 
 
@@ -57,29 +60,29 @@ class BlogController extends Controller
 
     $appUrl = env('APP_URL');
     $newsletter = new NewsletterSubscriberController();
-    
+
     $request->validate([
       'title' => 'required',
     ]);
 
     $post = new Blog();
 
-        if ($request->hasFile('imagen')) {
-            $file = $request->file('imagen');
-            $routeImg = 'storage/images/post/';
-            $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+    if ($request->hasFile('imagen')) {
+      $file = $request->file('imagen');
+      $routeImg = 'storage/images/post/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
 
-            $this->saveImg($file, $routeImg, $nombreImagen);
+      $this->saveImg($file, $routeImg, $nombreImagen);
 
-            $post->url_image = $routeImg;
-            $post->name_image = $nombreImagen;
-        } else {
-            $routeImg = 'images/img/';
-            $nombreImagen = 'noimagenslider.jpg';
+      $post->url_image = $routeImg;
+      $post->name_image = $nombreImagen;
+    } else {
+      $routeImg = 'images/img/';
+      $nombreImagen = 'noimagenslider.jpg';
 
-            $post->url_image = $routeImg;
-            $post->name_image = $nombreImagen;
-        }
+      $post->url_image = $routeImg;
+      $post->name_image = $nombreImagen;
+    }
     $url = $request->video;
     $post->url_video = $this->getYTVideoId($url);
     $post->category_id = $request->category_id;
@@ -92,7 +95,7 @@ class BlogController extends Controller
     $post->status = 1;
     $post->visible = 1;
     $post->save();
-    
+
     $plantilla = '<html lang="es">
         <head>
           <meta charset="UTF-8" />
@@ -191,7 +194,7 @@ class BlogController extends Controller
                      Acaba de ser publicado 
                       <span ></span>
                     </p>
-                    <img src="'. $appUrl .'/'. $post->url_image . $post->name_image.'" alt="GLAMFIT"  style="
+                    <img src="' . $appUrl . '/' . $post->url_image . $post->name_image . '" alt="GLAMFIT"  style="
                     margin: auto; width: 500px; height: 300px; object-fit: cover; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;
                   "/>
                   </td>
@@ -210,7 +213,7 @@ class BlogController extends Controller
                         line-height: 30px;
                       "
                     >
-                      '.mb_substr($post->extract, 0, 200).' ...
+                      ' . mb_substr($post->extract, 0, 200) . ' ...
                     </p>
                   </td>
                 </tr>
@@ -221,7 +224,7 @@ class BlogController extends Controller
                   "
                   >
                     <a
-                      href="' . $appUrl .'post/'.$post->id. '"
+                      href="' . $appUrl . 'post/' . $post->id . '"
                       style="
                         text-decoration: none;
                         background-color: #006bf6;
@@ -249,7 +252,7 @@ class BlogController extends Controller
       ';
 
 
-   
+
     //envioMasivo($plantilla, $blog)
 
     $newsletter->envioMasivo($plantilla);
@@ -260,18 +263,18 @@ class BlogController extends Controller
 
   private function getYTVideoId($url)
   {
-      $patterns = [
-        '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', // URL estándar
-        '/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/', // URL corta
-        '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)/', // URL embebida
-        '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&.*)?/', // URL estándar con parámetros adicionales
-      ];
-      foreach ($patterns as $pattern) {
-        if (preg_match($pattern, $url, $matches)) {
-          return $matches[1];
-        }
+    $patterns = [
+      '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', // URL estándar
+      '/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/', // URL corta
+      '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)/', // URL embebida
+      '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&.*)?/', // URL estándar con parámetros adicionales
+    ];
+    foreach ($patterns as $pattern) {
+      if (preg_match($pattern, $url, $matches)) {
+        return $matches[1];
       }
-      return null;
+    }
+    return null;
   }
   /**
    * Display the specified resource.
@@ -288,7 +291,7 @@ class BlogController extends Controller
 
   public function edit(Blog $blog)
   {
-    
+
     $categories = Category::where('status', '=', true)->where('visible', '=', true)->get();
     return view('pages.blog.edit', compact('blog', 'categories'));
   }
@@ -308,24 +311,24 @@ class BlogController extends Controller
       $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
 
       if ($post->url_image !== 'images/img/') {
-          File::delete($post->url_image . $post->name_image);
+        File::delete($post->url_image . $post->name_image);
       }
 
       $this->saveImg($file, $routeImg, $nombreImagen);
 
       $post->url_image = $routeImg;
       $post->name_image = $nombreImagen;
-  }
+    }
 
     $url = $request->video;
-    
+
     if ($post->url_video == $url) {
       $post->url_video == $url;
-    }else{
+    } else {
       $post->url_video = $this->getYTVideoId($url);
     }
-    
-   
+
+
     $post->category_id = $request->category_id;
     $post->title = $request->title;
     $post->description = $request->description;

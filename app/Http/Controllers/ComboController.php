@@ -51,14 +51,16 @@ class ComboController extends Controller
             $manager = new ImageManager(Driver::class);
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
-            $ruta = 'storage/images/combos/';
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true);
+            $basePath = 'images/combos/';
+            $path = storage_path('app/public/' . $basePath);
+
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
-            $body['imagen'] = $ruta . $nombreImagen;
+            $img->save($path . $nombreImagen);
+            $body['imagen'] = 'storage/' . $basePath . $nombreImagen;
         }
 
         $body['status'] = true;
@@ -96,21 +98,24 @@ class ComboController extends Controller
         if ($request->hasFile("imagen")) {
             $manager = new ImageManager(new Driver());
 
-            // Delete old image
-            if (File::exists($combo->imagen)) {
-                File::delete($combo->imagen);
+            if ($combo->imagen) {
+                $rutaEliminar = public_path($combo->imagen);
+                if (File::exists($rutaEliminar)) {
+                    File::delete($rutaEliminar);
+                }
             }
 
-            $ruta = 'storage/images/combos/';
+            $basePath = 'images/combos/';
+            $path = storage_path('app/public/' . $basePath);
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
 
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true);
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($ruta . $nombreImagen);
-            $body['imagen'] = $ruta . $nombreImagen;
+            $img->save($path . $nombreImagen);
+            $body['imagen'] = 'storage/' . $basePath . $nombreImagen;
         }
 
         $combo->update($body);

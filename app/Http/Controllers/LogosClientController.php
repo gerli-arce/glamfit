@@ -20,8 +20,8 @@ class LogosClientController extends Controller
     public function index()
     {
         $logos = ClientLogos::where("status", "=", true)
-        ->orderBy('order', 'asc')
-        ->get();
+            ->orderBy('order', 'asc')
+            ->get();
         return view('pages.logos.index', compact('logos'));
     }
 
@@ -30,22 +30,25 @@ class LogosClientController extends Controller
      */
     public function create()
     {
-        
-       
+
+
         return view('pages.logos.create');
     }
 
 
-    public function saveImg($file, $route, $nombreImagen){
-		$manager = new ImageManager(new Driver());
-		$img =  $manager->read($file);
+    public function saveImg($file, $route, $nombreImagen)
+    {
+        $manager = new ImageManager(new Driver());
+        $img = $manager->read($file);
 
-		if (!file_exists($route)) {
-			mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
-	}
+        $absPath = storage_path('app/public/' . str_replace('storage/', '', $route));
 
-		$img->save($route . $nombreImagen);
-	}
+        if (!File::isDirectory($absPath)) {
+            File::makeDirectory($absPath, 0777, true, true);
+        }
+
+        $img->save($absPath . $nombreImagen);
+    }
 
 
     /**
@@ -54,28 +57,28 @@ class LogosClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'title' => 'required',
         ]);
 
         $logo = new ClientLogos();
 
-        if($request->hasFile("imagen")){
+        if ($request->hasFile("imagen")) {
 
-            $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName(); 
-            $file =  $request->file('imagen');
+            $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
+            $file = $request->file('imagen');
             $route = 'storage/images/logos/';
             $this->saveImg($file, $route, $nombreImagen);
-            $logo->url_image =  $route.$nombreImagen; 
+            $logo->url_image = $route . $nombreImagen;
         }
 
 
-        if($request->hasFile("imagen2")){
-           
-            $nombreImagen = Str::random(10) . '_' . $request->file('imagen2')->getClientOriginalName();   
-            $file =  $request->file('imagen2');
+        if ($request->hasFile("imagen2")) {
+
+            $nombreImagen = Str::random(10) . '_' . $request->file('imagen2')->getClientOriginalName();
+            $file = $request->file('imagen2');
             $route = 'storage/images/logos/';
             $this->saveImg($file, $route, $nombreImagen);
-            $logo->url_image2 =  $route.$nombreImagen; 
+            $logo->url_image2 = $route . $nombreImagen;
         }
 
         $logo->title = $request->title;
@@ -109,46 +112,46 @@ class LogosClientController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title'=>'required',
+            'title' => 'required',
         ]);
 
         $logo = ClientLogos::find($id);
-        
-        try {
-			if($request->hasFile("imagen")){
 
-                $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName(); 
-                $file =  $request->file('imagen');
+        try {
+            if ($request->hasFile("imagen")) {
+
+                $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
+                $file = $request->file('imagen');
                 $route = 'storage/images/logos/';
-               
+
                 $this->saveImg($file, $route, $nombreImagen);
-    
-                $logo->url_image =  $route.$nombreImagen; 
+
+                $logo->url_image = $route . $nombreImagen;
             }
-    
-    
-            if($request->hasFile("imagen2")){
-               
-                $nombreImagen = Str::random(10) . '_' . $request->file('imagen2')->getClientOriginalName();   
-                $file =  $request->file('imagen2');
+
+
+            if ($request->hasFile("imagen2")) {
+
+                $nombreImagen = Str::random(10) . '_' . $request->file('imagen2')->getClientOriginalName();
+                $file = $request->file('imagen2');
                 $route = 'storage/images/logos/';
-                
+
                 $this->saveImg($file, $route, $nombreImagen);
-               
-                $logo->url_image2 =  $route.$nombreImagen; 
+
+                $logo->url_image2 = $route . $nombreImagen;
             }
-	
-			$logo->title = $request->title;
+
+            $logo->title = $request->title;
             $logo->order = $request->order;
             $logo->description = $request->description;
-			$logo->save();
+            $logo->save();
 
-			return redirect()->route('logos.index')->with('success', 'Publicación creado exitosamente.');
+            return redirect()->route('logos.index')->with('success', 'Publicación creado exitosamente.');
 
 
-		} catch (\Throwable $th) {
-			return response()->json(['messge' => 'Verifique sus datos '], 400); 
-		}
+        } catch (\Throwable $th) {
+            return response()->json(['messge' => 'Verifique sus datos '], 400);
+        }
 
     }
 
@@ -157,25 +160,29 @@ class LogosClientController extends Controller
      */
     public function destroy(string $id)
     {
-       
 
-        
+
+
     }
 
-    function deleteLogo(Request $request) {
+    function deleteLogo(Request $request)
+    {
 
-        $logo = ClientLogos::findOrfail($request->id); 
-        
-        
-    
+        $logo = ClientLogos::findOrfail($request->id);
+
+
+
         // Eliminar la imagen si existe
-        if ($logo->url_image && file_exists($logo->url_image)) {
-            unlink($logo->url_image);
+        if ($logo->url_image) {
+            $rutaEliminar = public_path($logo->url_image);
+            if (File::exists($rutaEliminar)) {
+                File::delete($rutaEliminar);
+            }
         }
 
         // Eliminar el logo de la base de datos
         $logo->delete();
-        return response()->json(['message'=>'Logo eliminado']);
+        return response()->json(['message' => 'Logo eliminado']);
     }
 
 
@@ -206,7 +213,7 @@ class LogosClientController extends Controller
         $cantidad = $this->contarCategoriasDestacadas();
 
 
-        return response()->json(['message' => 'Marca modificada',  'cantidad' => $cantidad]);
+        return response()->json(['message' => 'Marca modificada', 'cantidad' => $cantidad]);
     }
 
 
@@ -215,6 +222,6 @@ class LogosClientController extends Controller
 
         $cantidad = ClientLogos::where('destacar', '=', 1)->count();
 
-        return  $cantidad;
+        return $cantidad;
     }
 }
