@@ -7,20 +7,23 @@
     <div class="grid grid-cols-12 gap-6">
 
       <!-- Line chart (Acme Plus) -->
-      <x-dashboard.simplecard title="Reporte de ventas" sub-title="{{ $salesLastMonth->month }}"
+      {{-- <x-dashboard.simplecard title="Reporte de ventas" sub-title="{{ $salesLastMonth->month }}"
         amount="S/. {{ number_format($salesLastMonth ? $salesLastMonth->total : 0, 2, '.', ',') }}"
         badge="{{ $salesLastMonth ? $salesLastMonth->quantity : 0 }} ventas" />
       <x-dashboard.simplecard title="Reporte de ventas" sub-title="{{ $salesThisMonth->month }}"
-        amount="S/. {{ number_format($salesThisMonth->total, 2, '.', ',')  }}" badge="{{ $salesThisMonth->quantity }} ventas" />
-      <x-dashboard.simplecard title="Pedidos por atender" amount="{{$pendingSales}}" >
+        amount="S/. {{ number_format($salesThisMonth->total, 2, '.', ',')  }}"
+        badge="{{ $salesThisMonth->quantity }} ventas" /> --}}
+
+      <x-dashboard.simplecard title="Total Productos" amount="{{$countProducts}}">
         <x-slot name="subTitle">
-          <a href="{{route('pedidos.index')}}" class="hover:underline">
-            Ver pedidos
+          <a href="{{route('products.index')}}" class="hover:underline">
+            Ver productos
             <i class="fa fa-arrow-right"></i>
           </a>
         </x-slot>
       </x-dashboard.simplecard>
-      <x-dashboard.simplecard title="Pedidos atendidos" sub-title="" amount="{{$servedSales}}" >
+
+      <x-dashboard.simplecard title="Total Pedidos" amount="{{$countOrders}}">
         <x-slot name="subTitle">
           <a href="{{route('pedidos.index')}}" class="hover:underline">
             Ver pedidos
@@ -29,21 +32,65 @@
         </x-slot>
       </x-dashboard.simplecard>
 
-      <x-dashboard.perday :data="$salesPerDay"/>
-      
+      <x-dashboard.simplecard title="Total Categorías" amount="{{$countCategories}}">
+        <x-slot name="subTitle">
+          <a href="{{route('categorias.index')}}" class="hover:underline">
+            Ver categorías
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </x-slot>
+      </x-dashboard.simplecard>
+
+      <x-dashboard.simplecard title="Total Combos" amount="{{$countCombos}}">
+        <x-slot name="subTitle">
+          <a href="{{route('combos.index')}}" class="hover:underline">
+            Ver combos
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </x-slot>
+      </x-dashboard.simplecard>
+
+      <x-dashboard.simplecard title="Total Marcas" amount="{{$countBrands}}">
+        <x-slot name="subTitle">
+          <a href="{{route('logos.index')}}" class="hover:underline">
+            Ver marcas
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </x-slot>
+      </x-dashboard.simplecard>
+
+      {{-- <x-dashboard.simplecard title="Pedidos por atender" amount="{{$pendingSales}}">
+        <x-slot name="subTitle">
+          <a href="{{route('pedidos.index')}}" class="hover:underline">
+            Ver pedidos
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </x-slot>
+      </x-dashboard.simplecard>
+      <x-dashboard.simplecard title="Pedidos atendidos" sub-title="" amount="{{$servedSales}}">
+        <x-slot name="subTitle">
+          <a href="{{route('pedidos.index')}}" class="hover:underline">
+            Ver pedidos
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </x-slot>
+      </x-dashboard.simplecard> --}}
+
+      {{-- <x-dashboard.perday :data="$salesPerDay" /> --}}
+
       {{-- <!-- Bar chart (Direct vs Indirect) -->
       <x-dashboard.dashboard-card-04 />
 
       <!-- Line chart (Real Time Value) -->
       <x-dashboard.dashboard-card-05 /> --}}
 
-      
+
 
       <!-- Table (Top Channels) -->
       <x-dashboard.top10 title="Top 10 productos mas vendidos" :data="$topProducts" />
 
       <!-- Doughnut chart (Top Countries) -->
-      <x-dashboard.topdistritos :data="$topDistricts"/>
+      <x-dashboard.topdistritos :data="$topDistricts" />
 
       {{-- <!-- Line chart (Sales Over Time)  -->
       <x-dashboard.dashboard-card-08 />
@@ -61,7 +108,7 @@
       <x-dashboard.dashboard-card-12 />
 
       <!-- Card (Income/Expenses) -->
-      <x-dashboard.dashboard-card-13 />  --}}
+      <x-dashboard.dashboard-card-13 /> --}}
 
     </div>
 

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\SaleDetail;
+use App\Models\Category;
+use App\Models\Combo;
+use App\Models\Products;
+use App\Models\ClientLogos;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -86,6 +90,12 @@ class DashboardController extends Controller
             ->orderBy('quantity', 'DESC')
             ->get();
 
+        $countProducts = Products::where('status', true)->count();
+        $countOrders = Sale::count();
+        $countCategories = Category::where('state', true)->count();
+        $countCombos = Combo::where('status', true)->count();
+        $countBrands = ClientLogos::where('status', true)->count();
+
         return view('pages/dashboard/dashboard')
             ->with('salesThisMonth', $salesThisMonth)
             ->with('salesLastMonth', $salesLastMonth)
@@ -93,7 +103,12 @@ class DashboardController extends Controller
             ->with('pendingSales', $pendingSales)
             ->with('servedSales', $servedSales)
             ->with('topProducts', $topProducts)
-            ->with('topDistricts', $topDistricts);
+            ->with('topDistricts', $topDistricts)
+            ->with('countProducts', $countProducts)
+            ->with('countOrders', $countOrders)
+            ->with('countCategories', $countCategories)
+            ->with('countCombos', $countCombos)
+            ->with('countBrands', $countBrands);
     }
 
     public function topProducts(Request $request, $orderBy = 'total_price')
