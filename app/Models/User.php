@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->hasRole('admin');
     }
 
+    public function isRoot()
+    {
+        return $this->hasRole('root');
+    }
+
 
     public function direccion()
     {

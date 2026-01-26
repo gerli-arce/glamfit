@@ -21,6 +21,7 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
+use App\Models\Combo;
 use App\Models\ClientLogos;
 use App\Models\Department;
 use App\Models\Galerie;
@@ -76,7 +77,7 @@ class IndexController extends Controller
   {
     // $productos = Products::all();
     $url_env = env('APP_URL');
-    $productos =  Products::with('tags')->get();
+    $productos = Products::with('tags')->get();
     $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(4)->get();
     $productosPupulares = Products::select('products.*')
       ->join('categories', 'products.categoria_id', '=', 'categories.id')
@@ -88,7 +89,7 @@ class IndexController extends Controller
       ->take(8)
       ->get();
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
-    $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
+    $banners = Banners::where('status', 1)->where('visible', 1)->get()->toArray();
 
     $categorias = Category::where('destacar', '=', 1)->where('visible', '=', 1)->get();
     $subcategorias = SubCategory::where('destacar', '=', 1)->where('visible', '=', 1)->orderBy('order', 'asc')->get();
@@ -107,12 +108,14 @@ class IndexController extends Controller
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->orderBy('order', 'asc')->get();
     $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
+
     $logosdestacados = ClientLogos::where('status', '=', 1)->where('destacar', '=', 1)->orderBy('order', 'asc')->get();
     $logos = ClientLogos::where('status', '=', 1)->where('destacar', '=', 0)->orderBy('order', 'asc')->get();
+    $combos = Combo::with('products')->where('status', '=', 1)->where('destacar', '=', 1)->get();
     $categoriasindex = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
     $media = $this->instagramService->getUserMedia();
 
-    return view('public.index', compact('media', 'subcategorias', 'url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'categoriasindex', 'logos', 'logosdestacados'));
+    return view('public.index', compact('media', 'subcategorias', 'url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'categoriasindex', 'logos', 'logosdestacados', 'combos'));
   }
 
   public function catalogo(Request $request, string $id_cat = null)
@@ -126,13 +129,15 @@ class IndexController extends Controller
     $id_cat = $id_cat ?? $catId;
 
     // $categories = Category::with('subcategories')->where('visible', true)->get();
-    $categories = Category::with(['subcategories' => function ($query) {
-      $query->whereHas('products');
-    }])->where('visible', true)->where('status', true)->get();
+    $categories = Category::with([
+      'subcategories' => function ($query) {
+        $query->whereHas('products');
+      }
+    ])->where('visible', true)->where('status', true)->get();
 
     $tags = Tag::where('visible', true)->where('status', true)->get();
 
-    $marcas = ClientLogos::where('status', true)->where('visible', true)->get();
+    $marcas = ClientLogos::where('status', true)->where('destacar', true)->get();
 
     $colores = Products::select('color')->distinct()->pluck('color');
 
@@ -145,7 +150,8 @@ class IndexController extends Controller
       ->where('descuento', '>', 0)
       ->min('descuento');
 
-    if ($minPrice) Products::where('visible', true)->min('precio');
+    if ($minPrice)
+      Products::where('visible', true)->min('precio');
     $maxPrice = Products::max('precio');
 
     $attribute_values = AttributesValues::select('attributes_values.*')
@@ -181,9 +187,11 @@ class IndexController extends Controller
 
     // $categories = Category::where('visible', true)->get();
 
-    $categories = Category::with(['subcategories' => function ($query) {
-      $query->whereHas('products');
-    }])->where('visible', true)->get();
+    $categories = Category::with([
+      'subcategories' => function ($query) {
+        $query->whereHas('products');
+      }
+    ])->where('visible', true)->get();
 
     $tags = Tag::where('visible', true)->get();
 
@@ -191,7 +199,8 @@ class IndexController extends Controller
       ->where('visible', true)
       ->where('descuento', '>', 0)
       ->min('descuento');
-    if ($minPrice) Products::where('visible', true)->min('precio');
+    if ($minPrice)
+      Products::where('visible', true)->min('precio');
     $maxPrice = Products::max('precio');
 
     $attribute_values = AttributesValues::select('attributes_values.*')
@@ -355,14 +364,16 @@ class IndexController extends Controller
       ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
     $categorias = Category::all();
     $url_env = env('APP_URL');
-    return view('public.checkout_carrito', compact('user', 'historicoCupones', 'url_env', 'categorias', 'destacados', 'districts', 'provinces', 'departments', 'addresses', 'hasDefaultAddress'));
+    $datosgenerales = General::all();
+    return view('public.checkout_carrito', compact('user', 'historicoCupones', 'url_env', 'categorias', 'destacados', 'districts', 'provinces', 'departments', 'addresses', 'hasDefaultAddress', 'datosgenerales'));
   }
 
   public function pago(Request $request, string $code)
   {
 
     $sale = Sale::where('code', $code)->first();
-    if (!$sale) return \redirect()->route('index');
+    if (!$sale)
+      return \redirect()->route('index');
 
     $detalleUsuario = [];
     $user = auth()->user();
@@ -513,7 +524,7 @@ class IndexController extends Controller
         $codigoAleatorio = $this->codigoVentaAleatorio();
         $this->guardarOrden();
         $this->envioCorreoCompra($datos);
-        return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio],);
+        return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio], );
       } else {
         $existeUsuario = User::where('email', $email)->get()->toArray();
 
@@ -543,7 +554,7 @@ class IndexController extends Controller
             $codigoAleatorio = $this->codigoVentaAleatorio();
             $this->guardarOrden();
             $this->envioCorreoCompra($datos);
-            return response()->json(['message' => 'Todos los datos estan correctos', 'codigoCompra' => $codigoAleatorio],);
+            return response()->json(['message' => 'Todos los datos estan correctos', 'codigoCompra' => $codigoAleatorio], );
           }
         } else {
           return response()->json(['errors' => 'Por favor registrese e inicie session '], 422);
@@ -590,7 +601,8 @@ class IndexController extends Controller
 
     $saleJpa = Sale::where('code', $answer['orderDetails']['orderId'])->first();
 
-    if (!$saleJpa) return \redirect()->route('index');
+    if (!$saleJpa)
+      return \redirect()->route('index');
 
     if ($answer['orderStatus'] != 'PAID') {
       $saleJpa->status_id = 2;
@@ -598,9 +610,9 @@ class IndexController extends Controller
       $saleJpa->save();
       return \redirect()->route('index');
     }
-    
-    if ($usuario && $saleJpa->idcupon  ) {
-        DB::table('historico_cupones')
+
+    if ($usuario && $saleJpa->idcupon) {
+      DB::table('historico_cupones')
         ->where('cupones_id', $saleJpa->idcupon)
         ->where('user_id', $usuario)
         ->update(['usado' => true]);
@@ -667,7 +679,7 @@ class IndexController extends Controller
     }
 
 
-    if ($user->name == $name &&  $user->lastname == $lastname && $user->phone == $phone && $user->email == $email) {
+    if ($user->name == $name && $user->lastname == $lastname && $user->phone == $phone && $user->email == $email) {
       $imprimir = "Sin datos que actualizar";
       $alert = "question";
     } else {
@@ -686,6 +698,12 @@ class IndexController extends Controller
   public function micuenta()
   {
     $user = Auth::user();
+
+    // Redirect admin and root users to dashboard
+    if ($user->hasRole('admin') || $user->hasRole('root')) {
+      return redirect()->route('dashboard');
+    }
+
     $categorias = Category::all();
     $cuponesUsados = HistoricoCupon::where('user_id', $user->id)->where('usado', 1)->pluck('cupones_id');
     return view('public.dashboard', compact('cuponesUsados', 'user', 'categorias'));
@@ -697,7 +715,7 @@ class IndexController extends Controller
     $user = Auth::user();
     $categorias = Category::all();
     $statuses = [];
-    return view('public.dashboard_order',  compact('user', 'categorias', 'statuses'));
+    return view('public.dashboard_order', compact('user', 'categorias', 'statuses'));
   }
 
   public function listadeseos()
@@ -803,25 +821,27 @@ class IndexController extends Controller
       $is_reseller = $user->hasRole('Reseller');
     }
 
-    // $productos = Products::where('id', '=', $id)->first();
-    // $especificaciones = Specifications::where('product_id', '=', $id)->get();
+    $product = Products::where('slug', $slug)->first();
+    if (!$product) {
+      return redirect()->route('index');
+    }
 
-    $product = Products::with(['discount'])->where('slug', $slug)->firstOrFail();
-    $id = $product->id;
+    $combos = $product->combos()->with('products')->where('status', 1)->get();
 
-    // $product = Products::with(['discount'])->findOrFail($id);
-    $especificaciones = Specifications::where('product_id', '=', $id)
+    $especificaciones = Specifications::where('product_id', $product->id)
       ->where(function ($query) {
         $query->whereNotNull('tittle')
           ->orWhereNotNull('specifications');
       })
       ->get();
 
+    $id = $product->id;
+
     $productosConGalerias = DB::select("
             SELECT products.*, galeries.*
             FROM products
             INNER JOIN galeries ON products.id = galeries.product_id
-            WHERE products.id = :productId limit 5 
+            WHERE products.id = :productId limit 5
         ", ['productId' => $id]);
 
 
@@ -898,9 +918,10 @@ class IndexController extends Controller
       ->where('offer_details.product_id', $id)
       ->first();
 
-    if (!$combo) $combo = new Offer();
+    if (!$combo)
+      $combo = new Offer();
 
-    return view('public.product', compact('tallasdeProductos', 'is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo', 'valoresdeatributo'));
+    return view('public.product', compact('tallasdeProductos', 'is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo', 'valoresdeatributo', 'combos'));
   }
 
   public function wishListAdd(Request $request)
@@ -1010,7 +1031,7 @@ class IndexController extends Controller
   public function saveImg($file, $route, $nombreImagen)
   {
     $manager = new ImageManager(new Driver());
-    $img =  $manager->read($file);
+    $img = $manager->read($file);
 
     if (!file_exists($route)) {
       mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
@@ -1362,8 +1383,8 @@ class IndexController extends Controller
         </body>
       </html>
       ';
-      $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente',);
-      $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial',);
+      $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
+      $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial', );
       $mail->isHTML(true);
       $mail->send();
     } catch (\Throwable $th) {
@@ -1430,7 +1451,7 @@ class IndexController extends Controller
   {
     $post = Blog::where('status', '=', 1)->where('visible', '=', 1)->where('id', '=', $id)->first();
     $meta_title = $post->meta_title ?? $post->title;
-    $meta_description = $post->meta_description  ?? Str::limit($post->extract, 160);
+    $meta_description = $post->meta_description ?? Str::limit($post->extract, 160);
     $meta_keywords = $post->meta_keywords ?? '';
 
     return view('public.post', compact('meta_title', 'meta_description', 'meta_keywords', 'post'));

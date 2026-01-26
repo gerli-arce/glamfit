@@ -36,7 +36,7 @@ class ProductsController extends Controller
    */
   public function index()
   {
-    $products =  Products::where("status", "=", true)->get();
+    $products = Products::where("status", "=", true)->get();
 
     return view('pages.products.index', compact('products'));
   }
@@ -60,7 +60,7 @@ class ProductsController extends Controller
     $admin = $request->is_admin ? true : false;
     $outlet = $request->hasTag51;
 
-    $response =  new dxResponse();
+    $response = new dxResponse();
     try {
       $instance = Products::select([
         DB::raw('DISTINCT products.*')
@@ -143,9 +143,9 @@ class ProductsController extends Controller
         $jpas = $request->isLoadingAll
           ? $instance->get()
           : $instance
-          ->skip($request->skip ?? 0)
-          ->take($request->take ?? 10)
-          ->get();
+            ->skip($request->skip ?? 0)
+            ->take($request->take ?? 10)
+            ->get();
       }
 
       // $results = [];
@@ -175,11 +175,37 @@ class ProductsController extends Controller
   public function stock(Request $request)
   {
     $response = Response::simpleTryCatch(function () use ($request) {
-      $body = $request->all();
-      return Products::select(['id', 'stock'])->whereIn('id', $body)->get()->map(function ($item) {
-        $item->stock = \intval($item->stock);
-        return $item;
-      });
+      $items = $request->all(); // Expecting [{id, isCombo}, ...]
+      $productIds = [];
+      $comboIds = [];
+
+      foreach ($items as $item) {
+        if (isset($item['isCombo']) && $item['isCombo']) {
+          $comboIds[] = $item['id'];
+        } else {
+          $productIds[] = $item['id'];
+        }
+      }
+
+      $products = [];
+      if (!empty($productIds)) {
+        $products = Products::select(['id', 'stock'])->whereIn('id', $productIds)->get()->map(function ($item) {
+          $item->stock = \intval($item->stock);
+          $item->isCombo = false;
+          return $item;
+        })->toArray();
+      }
+
+      $combos = [];
+      if (!empty($comboIds)) {
+        $combos = \App\Models\Combo::select(['id', 'stock'])->whereIn('id', $comboIds)->get()->map(function ($item) {
+          $item->stock = \intval($item->stock);
+          $item->isCombo = true;
+          return $item;
+        })->toArray();
+      }
+
+      return array_merge($products, $combos);
     });
 
     return response($response->toArray(), $response->status);
@@ -187,7 +213,7 @@ class ProductsController extends Controller
 
   public function paginateOffers(Request $request)
   {
-    $response =  new dxResponse();
+    $response = new dxResponse();
     try {
       $instance = Products::select([
         DB::raw('DISTINCT products.*')
@@ -236,9 +262,9 @@ class ProductsController extends Controller
         $jpas = $request->isLoadingAll
           ? $instance->get()
           : $instance
-          ->skip($request->skip ?? 0)
-          ->take($request->take ?? 10)
-          ->get();
+            ->skip($request->skip ?? 0)
+            ->take($request->take ?? 10)
+            ->get();
       }
 
       // $results = [];
@@ -284,11 +310,12 @@ class ProductsController extends Controller
   public function edit(string $id)
   {
 
-    $product =  Products::with('tags')->find($id);
+    $product = Products::with('tags')->find($id);
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $especificacion = Specifications::where("product_id", "=", $id)->get();
-    if ($especificacion->count() == 0) $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
+    if ($especificacion->count() == 0)
+      $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
     $tags = Tag::where('status', 1)->get();
     $marcas = ClientLogos::where("status", "=", true)->get();
     $categoria = Category::where("status", "=", true)->get();
@@ -322,7 +349,7 @@ class ProductsController extends Controller
         $nombreImagen = Str::random(10) . '_' . $field . '.' . $file->getClientOriginalExtension();
         // $nombreImagen = $request->sku.'.png';
         $manager = new ImageManager(new Driver());
-        $img =  $manager->read($file);
+        $img = $manager->read($file);
         // $img->coverDown(340, 340, 'center');
 
         if (!file_exists($route)) {
@@ -396,10 +423,12 @@ class ProductsController extends Controller
       }
 
       if (array_key_exists('destacar', $data)) {
-        if (strtolower($data['destacar']) == 'on') $data['destacar'] = 1;
+        if (strtolower($data['destacar']) == 'on')
+          $data['destacar'] = 1;
       }
       if (array_key_exists('recomendar', $data)) {
-        if (strtolower($data['recomendar']) == 'on') $data['recomendar'] = 1;
+        if (strtolower($data['recomendar']) == 'on')
+          $data['recomendar'] = 1;
       }
 
       $cleanedData = Arr::where($data, function ($value, $key) {
@@ -496,7 +525,8 @@ class ProductsController extends Controller
   {
     Specifications::where('product_id', $id)->delete();
     foreach ($especificaciones as $value) {
-      if (!$value['tittle'] || !$value['specifications']) continue;
+      if (!$value['tittle'] || !$value['specifications'])
+        continue;
       $value['product_id'] = $id;
       Specifications::create($value);
     }

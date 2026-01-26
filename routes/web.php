@@ -16,6 +16,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\ComboController;
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GeneralController;
@@ -218,6 +219,11 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/logos/updateVisible', [LogosClientController::class, 'updateVisible'])->name('logos.updateVisible');
         Route::get('/logos/contarCategorias', [LogosClientController::class, 'contarCategoriasDestacadas'])->name('logos.contarCategoriasDestacadas');
 
+        //Combos
+        Route::resource('/combos', ComboController::class);
+        Route::post('/combos/delete', [ComboController::class, 'deleteCombo'])->name('combos.delete');
+        Route::post('/combos/visible', [ComboController::class, 'updateVisible'])->name('combos.visible');
+
         //Crud cupones
         Route::resource('/cupones', CuponController::class);
         Route::post('/cupones/updateVisible', [CuponController::class, 'updateVisible'])->name('cupones.updateVisible');
@@ -295,7 +301,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    
+
     Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('micuenta');
     Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'])->name('pedidos');
     Route::get('/micuenta/direccion', [IndexController::class, 'direccion'])->name('direccion');

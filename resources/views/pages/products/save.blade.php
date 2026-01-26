@@ -87,12 +87,11 @@
                   <hr class="col-span-5">
 
                   <div class="col-span-5 md:col-span-5 mb-2">
-                    <label for=""
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Previsualizacion del
+                    <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Previsualizacion
+                      del
                       producto</label>
                     <div class="flex flex-wrap items-end gap-4">
-                      <div for="imagen_ambiente" x-data="{ showAmbiente: false }" 
-                        {{-- @mouseenter="showAmbiente = true"
+                      <div for="imagen_ambiente" x-data="{ showAmbiente: false }" {{-- @mouseenter="showAmbiente = true"
                         @mouseleave="showAmbiente = false" --}}
                         class="relative flex justify-center items-center h-[256px] w-[192px] border rounded-lg">
                         @if ($product->imagen)
@@ -113,37 +112,35 @@
                             class="bg-[#f2f2f2] w-full h-full object-contain absolute inset-0 rounded-lg" />
                         @endif
                         {{-- @if ($product->imagen_ambiente)
-                          <img id="imagen_ambiente_previewer" x-show="showAmbiente"
-                            x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-300 transform"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                            src="{{ asset($product->imagen_ambiente) }}" alt="{{ $product->name }}"
-                            class="w-full h-full object-cover absolute inset-0 rounded-lg" />
+                        <img id="imagen_ambiente_previewer" x-show="showAmbiente"
+                          x-transition:enter="transition ease-out duration-300 transform"
+                          x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                          x-transition:leave="transition ease-in duration-300 transform"
+                          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                          src="{{ asset($product->imagen_ambiente) }}" alt="{{ $product->name }}"
+                          class="w-full h-full object-cover absolute inset-0 rounded-lg" />
                         @else
-                          <img id="imagen_ambiente_previewer" x-show="showAmbiente"
-                            x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95"
-                            x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-300 transform"
-                            x-transition:leave-start="opacity-100 scale-100"
-                            x-transition:leave-end="opacity-0 scale-95" src="{{ asset('images/img/noimagen.jpg') }}"
-                            alt="imagen_alternativa" class="w-full h-full object-cover absolute inset-0 rounded-lg" />
+                        <img id="imagen_ambiente_previewer" x-show="showAmbiente"
+                          x-transition:enter="transition ease-out duration-300 transform"
+                          x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                          x-transition:leave="transition ease-in duration-300 transform"
+                          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                          src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                          class="w-full h-full object-cover absolute inset-0 rounded-lg" />
                         @endif --}}
                       </div>
                       <div>
                         {{-- <div class="mb-4">
                           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="image_texture">Imagen de textura <span
-                              class="text-red-500 font-bold">*</span></label>
+                            for="image_texture">Imagen de textura <span class="text-red-500 font-bold">*</span></label>
                           <label class="block w-max" for="image_texture" title="Cambiar imagen de textura" tippy>
                             <img id="image_texture_previewer"
                               class="w-40 h-10 border rounded-md object-cover object-center cursor-pointer"
                               src="{{ $product->image_texture ? asset($product->image_texture) : asset('images/img/noimagen.jpg') }}"
                               alt="">
                           </label>
-                          <input data-id="input_img" class="hidden" id="image_texture" name="image_texture"
-                            type="file" accept="image/*">
+                          <input data-id="input_img" class="hidden" id="image_texture" name="image_texture" type="file"
+                            accept="image/*">
                         </div> --}}
 
                         <div class="mb-4">
@@ -151,8 +148,8 @@
                             for="imagen">Imagen del producto</label>
                           <input data-id="input_img"
                             class="py-1 px-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            id="imagen" name="imagen" type="file" accept="image/*"
-                            title="Cargar imagen de producto" tippy>
+                            id="imagen" name="imagen" type="file" accept="image/*" title="Cargar imagen de producto"
+                            tippy>
                         </div>
                         {{-- <div>
                           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -168,31 +165,32 @@
 
                   <hr class="col-span-5">
 
+                  {{-- HIDDEN: Otras imagenes del producto section
                   <div class="col-span-5">
                     <label for="imagenes mb-2">Otras imagenes del producto</label>
                     <div id="imagenes" class="w-full flex flex-wrap gap-1">
 
                       <div id="imagenes_sortable" class="flex flex-wrap gap-1 max-w-full">
                         @foreach ($galery as $key => $image)
-                          @php
-                            $uuid = Crypto::randomUUID();
-                          @endphp
-                          <div id="galery_container_{{ $uuid }}"
-                            class="relative group block w-[120px] h-[160px] rounded-md border" draggable="true">
-                            <div
-                              class="absolute top-0 left-0 bottom-0 right-0 rounded-md hover:bg-[#00000075] transition-all flex flex-col items-center justify-center gap-1">
-                              <label for="galery_{{ $uuid }}" title="Cambiar Imagen" tippy
-                                class="text-xl text-white hidden group-hover:block cursor-pointer fa-solid fa-camera-rotate z-10"></label>
-                              <i id="btn_delete_galery" data-id="{{ $uuid }}" title="Eliminar Imagen" tippy
-                                class="text-xl text-white hidden group-hover:block cursor-pointer fa-regular fa-trash-can z-10"></i>
-                            </div>
-
-                            <input class="hidden" name="galery[]"
-                              value="{{ $image->id }}|{{ $image->imagen }}|{{ $key }}">
-                            <input class="hidden" type="file" id="galery_{{ $uuid }}" accept="image/*">
-                            <img class="w-full h-full rounded-md object-cover"
-                              src="{{ $image->imagen ? asset($image->imagen) : asset('images/img/noimagen.jpg') }}">
+                        @php
+                        $uuid = Crypto::randomUUID();
+                        @endphp
+                        <div id="galery_container_{{ $uuid }}"
+                          class="relative group block w-[120px] h-[160px] rounded-md border" draggable="true">
+                          <div
+                            class="absolute top-0 left-0 bottom-0 right-0 rounded-md hover:bg-[#00000075] transition-all flex flex-col items-center justify-center gap-1">
+                            <label for="galery_{{ $uuid }}" title="Cambiar Imagen" tippy
+                              class="text-xl text-white hidden group-hover:block cursor-pointer fa-solid fa-camera-rotate z-10"></label>
+                            <i id="btn_delete_galery" data-id="{{ $uuid }}" title="Eliminar Imagen" tippy
+                              class="text-xl text-white hidden group-hover:block cursor-pointer fa-regular fa-trash-can z-10"></i>
                           </div>
+
+                          <input class="hidden" name="galery[]"
+                            value="{{ $image->id }}|{{ $image->imagen }}|{{ $key }}">
+                          <input class="hidden" type="file" id="galery_{{ $uuid }}" accept="image/*">
+                          <img class="w-full h-full rounded-md object-cover"
+                            src="{{ $image->imagen ? asset($image->imagen) : asset('images/img/noimagen.jpg') }}">
+                        </div>
                         @endforeach
                       </div>
                       <label for="galery"
@@ -204,8 +202,9 @@
                       </label>
                     </div>
                   </div>
+                  --}}
 
-                  
+
                 </div>
               </div>
             </div>
@@ -214,16 +213,16 @@
                 class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 border mb-2">
                 <div class="md:col-span-5 flex flex-wrap flex-4 justify-between">
                   <label class="inline-flex items-center cursor-pointer mb-2">
-                    <input id="destacar" name="destacar" type="checkbox" class="sr-only peer"
-                      {{ $product->destacar ? 'checked' : '' }}>
+                    <input id="destacar" name="destacar" type="checkbox" class="sr-only peer" {{ $product->destacar ?
+  'checked' : '' }}>
                     <div
                       class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                     </div>
                     <span class="block ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Destacar</span>
                   </label>
                   <label class="inline-flex items-center cursor-pointer mb-2">
-                    <input id="recomendar" name="recomendar" type="checkbox" class="sr-only peer"
-                      {{ $product->recomendar ? 'checked' : '' }}>
+                    <input id="recomendar" name="recomendar" type="checkbox" class="sr-only peer" {{
+  $product->recomendar ? 'checked' : '' }}>
                     <div
                       class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                     </div>
@@ -237,8 +236,7 @@
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
                       </div>
-                      <input type="number" id="precio" name="precio" value="{{ $product->precio }}"
-                        step="0.1"
+                      <input type="number" id="precio" name="precio" value="{{ $product->precio }}" step="0.1"
                         class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="precio" required>
                     </div>
@@ -250,8 +248,7 @@
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
                       </div>
-                      <input type="number" id="descuento" name="descuento" value="{{ $product->descuento }}"
-                        step="0.1"
+                      <input type="number" id="descuento" name="descuento" value="{{ $product->descuento }}" step="0.1"
                         class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="descuento">
                     </div>
@@ -306,12 +303,13 @@
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-folder"></i>
                     </div>
-                    <select id="discount_id" name="discount_id" 
+                    <select id="discount_id" name="discount_id"
                       class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       <option value="">Seleccionar regla</option>
                       @foreach ($descuentos as $item)
                         <option value="{{ $item->id }}" @if ($item->id == $product->discount_id) selected @endif>
-                          {{ $item->name }}</option>
+                          {{ $item->name }}
+                        </option>
                       @endforeach
                     </select>
                   </div>
@@ -328,7 +326,8 @@
                       <option value="">Seleccionar Marca </option>
                       @foreach ($marcas as $item)
                         <option value="{{ $item->id }}" @if ($item->id == $product->marca_id) selected @endif>
-                          {{ $item->title }}</option>
+                          {{ $item->title }}
+                        </option>
                       @endforeach
                     </select>
                   </div>
@@ -346,7 +345,8 @@
                       <option value="">Seleccionar Categoria </option>
                       @foreach ($categoria as $item)
                         <option value="{{ $item->id }}" @if ($item->id == $product->categoria_id) selected @endif>
-                          {{ $item->name }}</option>
+                          {{ $item->name }}
+                        </option>
                       @endforeach
                     </select>
                   </div>
@@ -364,7 +364,8 @@
                       @foreach ($subcategories as $item)
                         <option value="{{ $item->id }}" @if ($item->id == $product->subcategory_id) selected @endif
                           data-category="{{ $item->category_id }}" @if ($item->id != $product->categoria_id) hidden @endif>
-                          {{ $item->name }}</option>
+                          {{ $item->name }}
+                        </option>
                       @endforeach
                     </select>
                   </div>
@@ -377,25 +378,22 @@
                     aria-describedby="user_avatar_help" id="user_avatar" type="file"> --}}
                   <label class="block mb-1" for="imagen_ambiente">Imagen de tallas</label>
                   @if($product->imagen_ambiente)
-                    <span><a class="font-bold"
-                            href="{{ asset($product->imagen_ambiente) }}"
-                            target="_blank">Eliminar imagen actual</a>
-                        <i onclick="borrarFicha({{ $product->id }})"
-                            class="ml-1 cursor-pointer absolute">
-                            <svg class="w-full" xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
-                                height="20" x="0" y="0" viewBox="0 0 512 512"
-                                style="enable-background:new 0 0 512 512" xml:space="preserve">
-                                <g>
-                                    <g fill="#EF5350">
-                                        <path
-                                            d="M412.6 141.4v.1c0 .6-.2.9-.4 1.1s-.6.5-1.2.5h-11.4c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H115.1c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H101c-1 0-1.7-.8-1.7-1.7v-32.1c0-1 .8-1.7 1.7-1.7h310c1 0 1.7.8 1.7 1.7zM393.4 152.7V442c0 13.3-10.8 24.1-24.1 24.1H142.8c-13.3 0-24.1-10.8-24.1-24.1V152.7zM332 396.2V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9 2.8 0 4.9-2.1 4.9-4.8zM261 409V209.9c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v199c0 2.7 2.2 4.9 4.9 4.9s4.9-2.1 4.9-4.8zm-71.1-12.8V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9s4.8-2.1 4.9-4.8zM321.5 57.3v40.5h-9.7V57.3c0-.9-.7-1.7-1.7-1.7H201.8c-.9 0-1.7.7-1.7 1.7v40.5h-9.8V57.3c0-6.3 5.1-11.4 11.4-11.4H310c6.4 0 11.5 5.1 11.5 11.4z"
-                                            fill="#EF5350" opacity="1" data-original="#ef5350">
-                                        </path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
+                    <span><a class="font-bold" href="{{ asset($product->imagen_ambiente) }}" target="_blank">Eliminar
+                        imagen actual</a>
+                      <i onclick="borrarFicha({{ $product->id }})" class="ml-1 cursor-pointer absolute">
+                        <svg class="w-full" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0"
+                          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                          <g>
+                            <g fill="#EF5350">
+                              <path
+                                d="M412.6 141.4v.1c0 .6-.2.9-.4 1.1s-.6.5-1.2.5h-11.4c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H115.1c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H101c-1 0-1.7-.8-1.7-1.7v-32.1c0-1 .8-1.7 1.7-1.7h310c1 0 1.7.8 1.7 1.7zM393.4 152.7V442c0 13.3-10.8 24.1-24.1 24.1H142.8c-13.3 0-24.1-10.8-24.1-24.1V152.7zM332 396.2V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9 2.8 0 4.9-2.1 4.9-4.8zM261 409V209.9c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v199c0 2.7 2.2 4.9 4.9 4.9s4.9-2.1 4.9-4.8zm-71.1-12.8V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9s4.8-2.1 4.9-4.8zM321.5 57.3v40.5h-9.7V57.3c0-.9-.7-1.7-1.7-1.7H201.8c-.9 0-1.7.7-1.7 1.7v40.5h-9.8V57.3c0-6.3 5.1-11.4 11.4-11.4H310c6.4 0 11.5 5.1 11.5 11.4z"
+                                fill="#EF5350" opacity="1" data-original="#ef5350">
+                              </path>
+                            </g>
+                          </g>
+                        </svg>
+                      </i>
                     </span>
                   @endif
                   <input id="imagen_ambiente" name="imagen_ambiente"
@@ -412,75 +410,74 @@
                     </button>
                   </div>
                   @foreach ($especificacion as $key => $item)
-                    @php
-                      $counter = count($especificacion) - $key;
-                    @endphp
-                    <div class="flex gap-2">
-                      <div class="relative mb-2  mt-2">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
-                        </div>
-                        <input type="text" id="specifications" name="tittle-{{ $counter }}"
-                          value="{{ $item->tittle }}"
-                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Titulo">
+                  @php
+                  $counter = count($especificacion) - $key;
+                  @endphp
+                  <div class="flex gap-2">
+                    <div class="relative mb-2  mt-2">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
                       </div>
-                      <div class="relative mb-2  mt-2">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
-                        </div>
-                        <input type="text" id="specifications" name="specifications-{{ $counter }}"
-                          value="{{ $item->specifications }}"
-                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Especificacion">
-                      </div>
+                      <input type="text" id="specifications" name="tittle-{{ $counter }}" value="{{ $item->tittle }}"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Titulo">
                     </div>
+                    <div class="relative mb-2  mt-2">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                      </div>
+                      <input type="text" id="specifications" name="specifications-{{ $counter }}"
+                        value="{{ $item->specifications }}"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Especificacion">
+                    </div>
+                  </div>
                   @endforeach
                 </div> --}}
 
 
                 {{-- <div class="md:col-span-5">
                   <label for="producto">Atributos</label>
-                 
-                 
+
+
                   <div class="flex flex-wrap gap-2 mt-2 relative mb-2 ">
                     @foreach ($atributos as $item)
-                      <div href="#"
-                        class="w-[300px] !important block px-3 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          {{ $item->titulo }}
-                          
-                        </h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">
-                          {{ $item->descripcion }}</p>
-                        <div class="flex flex-wrap gap-2">
-                          @foreach ($valorAtributo as $value)
-                            @if ($value->attribute_id == $item->id)
-                              <div class="flex items-center">
-                                <input 
-                                  @isset($valoresdeatributo)
-                                      @foreach($valoresdeatributo as $valorat)
-                                        @if($valorat->attribute_value_id == $value->id)
-                                          checked
-                                        @endif
-                                      @endforeach
-                                  @endisset
-                                  type="{{ $item->is_multiple ? 'checkbox' : 'radio' }}"
-                                  id="attribute-{{ $item->id }}-{{ $value->id }}"
-                                  name="attributes[{{ $item->id }}]{{ $item->is_multiple ? '[]' : '' }}"
-                                  value="{{ $value->id }}"
-                                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 {{ $item->is_multiple ? 'rounded-sm' : 'rounded-full' }} focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="attribute-{{ $item->id }}-{{ $value->id }}"
-                                  class="ml-2">{{ $value->valor }}</label>
-                              </div>
-                            @endif
-                          @endforeach
-                        </div>
-                        @if ($item->imagen)
-                          <img src="{{ asset($item->imagen) }}" class="rounded-lg mb-2 w-1/2" alt="Imagen actual">
-                        @endif
+                    <div href="#"
+                      class="w-[300px] !important block px-3 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                      <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {{ $item->titulo }}
 
+                      </h5>
+                      <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">
+                        {{ $item->descripcion }}</p>
+                      <div class="flex flex-wrap gap-2">
+                        @foreach ($valorAtributo as $value)
+                        @if ($value->attribute_id == $item->id)
+                        <div class="flex items-center">
+                          <input @isset($valoresdeatributo) @foreach($valoresdeatributo as $valorat)
+                            @if($valorat->attribute_value_id == $value->id)
+                          checked
+                          @endif
+                          @endforeach
+                          @endisset
+                          type="{{ $item->is_multiple ? 'checkbox' : 'radio' }}"
+                          id="attribute-{{ $item->id }}-{{ $value->id }}"
+                          name="attributes[{{ $item->id }}]{{ $item->is_multiple ? '[]' : '' }}"
+                          value="{{ $value->id }}"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 {{ $item->is_multiple ? 'rounded-sm'
+                          : 'rounded-full' }} focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                          focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                          <label for="attribute-{{ $item->id }}-{{ $value->id }}" class="ml-2">{{ $value->valor
+                            }}</label>
+                        </div>
+                        @endif
+                        @endforeach
                       </div>
+                      @if ($item->imagen)
+                      <img src="{{ asset($item->imagen) }}" class="rounded-lg mb-2 w-1/2" alt="Imagen actual">
+                      @endif
+
+                    </div>
                     @endforeach
                   </div>
                 </div> --}}
@@ -517,8 +514,7 @@
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
                       </div>
-                      <input type="string" id="peso" name="peso" value="{{ $product->peso }}"
-                        step="0.1"
+                      <input type="string" id="peso" name="peso" value="{{ $product->peso }}" step="0.1"
                         class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Peso">
 
@@ -530,39 +526,35 @@
                 </div>
               </div>
 
+              {{-- HIDDEN: Tags section
               <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 border">
                 <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight">
                   Tags</h4>
                 <div class="md:col-span-5 flex justify-between gap-4">
                   <ul class="flex flex-wrap w-full gap-2">
                     @foreach ($tags as $tag)
-                      <li>
-                        <input type="checkbox" id="tag-{{ $tag->id }}" name="tags_id[]"
-                          value="{{ $tag->id }}" class="hidden peer"
-                          @if (in_array($tag->id, $product->tags->pluck('id')->toArray())) checked @endif>
-                        <label for="tag-{{ $tag->id }}"
-                          class="inline-flex items-center justify-between w-full px-2 py-1 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-white hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                          <div class="block">
-                            {{ $tag->name }}
-                          </div>
-                        </label>
-                      </li>
+                    <li>
+                      <input type="checkbox" id="tag-{{ $tag->id }}" name="tags_id[]" value="{{ $tag->id }}"
+                        class="hidden peer" @if (in_array($tag->id, $product->tags->pluck('id')->toArray())) checked
+                      @endif>
+                      <label for="tag-{{ $tag->id }}"
+                        class="inline-flex items-center justify-between w-full px-2 py-1 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-white hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <div class="block">
+                          {{ $tag->name }}
+                        </div>
+                      </label>
+                    </li>
                     @endforeach
 
                   </ul>
-                  {{-- <div>
-                    <div class="relative mb-2  mt-2">
-                      <select id="tags_id" name="tags_id[]" multiple class="mt-1 w-full">
-                        <option value="">Seleccionar Tag </option>
-                        @foreach ($tags as $tag)
-                          <option value="{{ $tag->id }}" @if (in_array($tag->id, $product->tags->pluck('id')->toArray())) selected @endif>
-                            {{ $tag->name }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div> --}}
+                  
+                  
+                  {{-- Inner commented section removed --}}
+
+                  
                 </div>
               </div>
+              
 
             </div>
 
@@ -590,7 +582,8 @@
 
 
   </div>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable/build/umd/index.min.js"></script>
+  {{--
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable/build/umd/index.min.js"></script>
   <script>
     const sortable = new Draggable.Sortable(document.getElementById('imagenes_sortable'), {
       draggable: '[id^="galery_container"]',
@@ -602,31 +595,31 @@
     function borrarFicha(id) {
 
       $.ajax({
-            url: "{{ route('activity.borrarficha') }}",
-            method: 'POST',
-            data: {
-                _token: $('input[name="_token"]').val(),
-                status: status,
-                id: id,
-            },
-            success: function(success) {
-                Swal.fire({
+        url: "{{ route('activity.borrarficha') }}",
+        method: 'POST',
+        data: {
+          _token: $('input[name="_token"]').val(),
+          status: status,
+          id: id,
+        },
+        success: function (success) {
+          Swal.fire({
 
-                    icon: "success",
-                    title: 'Imagen eliminada exitosamente',
-                    showConfirmButton: false,
-                    timer: 1500
+            icon: "success",
+            title: 'Imagen eliminada exitosamente',
+            showConfirmButton: false,
+            timer: 1500
 
-                }).then(() => {
-                    location.reload();
-                });
-            },
-            error: function(error) {
-                console.log(error)
-            }
-        })
+          }).then(() => {
+            location.reload();
+          });
+        },
+        error: function (error) {
+          console.log(error)
+        }
+      })
     }
-        
+
     $('#tags_id').select2({
       placeholder: 'Seleccionar Tag...',
     });
@@ -639,7 +632,7 @@
     const attributesContent = document.getElementById('Attributes');
 
     // Agregar event listeners para los enlaces de pestaña
-    generalTab.addEventListener('click', function(event) {
+    generalTab.addEventListener('click', function (event) {
       generalTab.classList.add('active', 'dark:bg-slate-900')
       attributesTab.classList.remove('active', 'dark:bg-slate-900')
       // Ocultar el contenido de Attributes
@@ -648,7 +641,7 @@
       generalContent.classList.remove('hidden');
     });
 
-    attributesTab.addEventListener('click', function(event) {
+    attributesTab.addEventListener('click', function (event) {
       generalTab.classList.remove('active', 'dark:bg-slate-900')
       attributesTab.classList.add('active', 'dark:bg-slate-900')
       // Ocultar el contenido de General
@@ -668,7 +661,7 @@
     function agregarElementos(elemento, valorInput, name) {
       elemento.setAttribute("type", "text");
       elemento.setAttribute("name", `${name}-${valorInput}`);
-      elemento.setAttribute("placeholder", `${name == 'tittle'? 'Titulo': 'Especificacion'}`);
+      elemento.setAttribute("placeholder", `${name == 'tittle' ? 'Titulo' : 'Especificacion'}`);
       elemento.setAttribute("id", `specifications`);
 
       elemento.classList.add("mt-1", "bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm",
@@ -681,7 +674,7 @@
 
       return elemento
     }
-    $('document').ready(function() {
+    $('document').ready(function () {
       let valorInput = $('[id="specifications"]').length / 2
 
       // tinymce.init({
@@ -699,7 +692,7 @@
       //   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}'
       // });
 
-      $("#AddEspecifiacion").on('click', function(e) {
+      $("#AddEspecifiacion").on('click', function (e) {
         e.preventDefault()
         valorInput++
 
@@ -808,25 +801,25 @@
       params.append('_token', $('[name="_token"]').val())
 
       const data = await fetch('/admin/galery', {
-          method: 'POST',
-          headers: {
-            'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
-          },
-          body: params
-        })
+        method: 'POST',
+        headers: {
+          'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+        },
+        body: params
+      })
         .then(res => res.json())
 
       return data
     }
 
-    $('[data-id="input_img"]').on('change', function() {
+    $('[data-id="input_img"]').on('change', function () {
       const file = this.files[0]
       const url = URL.createObjectURL(file)
 
       $(`#${this.id}_previewer`).attr('src', url)
     })
 
-    $(document).on('change', '[id^="galery_"]', function() {
+    $(document).on('change', '[id^="galery_"]', function () {
       const input = $(this)
       const label = input.parent()
       const input2send = label.find('[name="galery[]"]')
@@ -882,11 +875,11 @@
       arrow: true
     })
 
-    $(document).on('click', '#btn_delete_galery', function() {
+    $(document).on('click', '#btn_delete_galery', function () {
       $(this).parents('[id^="galery_container_"]').remove()
     })
 
-    $('#categoria_id').on('change', function() {
+    $('#categoria_id').on('change', function () {
       console.log(this.value)
       const value = this.value
       $('#subcategory_id option[data-category]').prop('hidden', true)

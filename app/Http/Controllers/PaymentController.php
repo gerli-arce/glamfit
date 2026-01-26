@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Combo;
 use App\Models\Offer;
 use App\Models\Price;
 use App\Models\Products;
@@ -27,8 +28,9 @@ class PaymentController extends Controller
     $sale = new Sale();
     try {
 
-      $products = array_filter($body['cart'], fn($x) => !(isset($x['isCombo']) && $x['isCombo'] == true));
+      $products = array_filter($body['cart'], fn($x) => !(isset($x['isCombo']) && $x['isCombo'] == true) && !(isset($x['is_combo']) && $x['is_combo'] == true));
       $offers = array_filter($body['cart'], fn($x) => isset($x['isCombo']) && $x['isCombo'] == true);
+      $combos = array_filter($body['cart'], fn($x) => isset($x['is_combo']) && $x['is_combo'] == true);
 
       $productsJpa = [];
 
@@ -51,11 +53,18 @@ class PaymentController extends Controller
           ->get();
       }
 
+      $combosJpa = [];
+      if (count($combos) > 0) {
+        $ids = array_map(fn($x) => str_replace('combo_', '', $x['id']), $combos);
+        $combosJpa = Combo::with('products')->whereIn('id', $ids)->get();
+      }
+
 
       $totalCost = 0;
       foreach ($productsJpa as $productJpa) {
         $key = array_search($productJpa->id, array_column($body['cart'], 'id'));
-        if ($body['cart'][$key]['quantity'] == 0) continue;
+        if ($body['cart'][$key]['quantity'] == 0)
+          continue;
         if ($productJpa->descuento > 0) {
           $totalCost += $productJpa->descuento * $body['cart'][$key]['quantity'];
         } else {
@@ -65,12 +74,22 @@ class PaymentController extends Controller
 
       foreach ($offersJpa as $offerJpa) {
         $key = array_search($offerJpa->id, array_column($body['cart'], 'id'));
-        if ($body['cart'][$key]['quantity'] == 0) continue;
+        if ($body['cart'][$key]['quantity'] == 0)
+          continue;
         if ($offerJpa->descuento > 0) {
           $totalCost += $offerJpa->descuento * $body['cart'][$key]['quantity'];
         } else {
           $totalCost += $offerJpa->precio * $body['cart'][$key]['quantity'];
         }
+      }
+
+      foreach ($combosJpa as $comboJpa) {
+        $key = array_search('combo_' . $comboJpa->id, array_column($body['cart'], 'id'));
+        if ($body['cart'][$key]['quantity'] == 0)
+          continue;
+
+        $price = $comboJpa->precio; // Combos always have a fixed price
+        $totalCost += $price * $body['cart'][$key]['quantity'];
       }
 
       $sale->name = $body['contact']['name'];
@@ -107,9 +126,9 @@ class PaymentController extends Controller
           try {
             if ($request->saveAddress) {
               Address::create([
-                'email' =>  Auth::check() ? Auth::user()->email : $body['contact']['email'],
+                'email' => Auth::check() ? Auth::user()->email : $body['contact']['email'],
                 'price_id' => $price->id,
-                'street' =>  $body['address']['street'],
+                'street' => $body['address']['street'],
                 'number' => $body['address']['number'],
                 'description' => $body['address']['description'],
               ]);
@@ -128,7 +147,8 @@ class PaymentController extends Controller
       foreach ($productsJpa as $productJpa) {
         $key = array_search($productJpa->id, array_column($body['cart'], 'id'));
         $quantity = $body['cart'][$key]['quantity'];
-        if ($quantity == 0) continue;
+        if ($quantity == 0)
+          continue;
         $price = $productJpa->descuento > 0 ? $productJpa->descuento : $productJpa->precio;
 
         SaleDetail::create([
@@ -144,7 +164,8 @@ class PaymentController extends Controller
       foreach ($offersJpa as $offerJpa) {
         $key = array_search($offerJpa->id, array_column($body['cart'], 'id'));
         $quantity = $body['cart'][$key]['quantity'];
-        if ($quantity == 0) continue;
+        if ($quantity == 0)
+          continue;
         $price = $offerJpa->descuento > 0 ? $offerJpa->descuento : $offerJpa->precio;
 
         $name = '<b>' . $offerJpa->producto . '</b><ul class="mb-1">';
@@ -160,6 +181,31 @@ class PaymentController extends Controller
           'product_image' => $offerJpa->imagen,
           'product_name' => $name,
           'product_color' => $offerJpa->color,
+          'quantity' => $quantity,
+          'price' => $price
+        ]);
+      }
+
+      foreach ($combosJpa as $comboJpa) {
+        $key = array_search('combo_' . $comboJpa->id, array_column($body['cart'], 'id'));
+        $quantity = $body['cart'][$key]['quantity'];
+        if ($quantity == 0) continue;
+        
+        $price = $comboJpa->precio;
+
+        $name = '<b>' . $comboJpa->titulo . '</b><ul class="mb-1">';
+
+        foreach ($comboJpa->products as $productJpa) {
+          $name .= '<li class="text-xs text-nowrap overflow-hidden text-ellipsis w-[270px]">' . $productJpa->producto . '</li>';
+        }
+
+        $name .= '</ul>';
+
+        SaleDetail::create([
+          'sale_id' => $sale->id,
+          'product_image' => $comboJpa->imagen,
+          'product_name' => $name,
+          'product_color' => null, 
           'quantity' => $quantity,
           'price' => $price
         ]);

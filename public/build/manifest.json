@@ -49,7 +49,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-WiPTN8Db.css",
+    "file": "assets/app-Rfa8kzKy.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -111,7 +111,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/ConfirmEmail.jsx": {
-    "file": "assets/ConfirmEmail-KhZp3FF-.js",
+    "file": "assets/ConfirmEmail-B8Ytpr8c.js",
     "imports": [
       "resources/js/Utils/ReactAppend.jsx",
       "resources/js/components/Filter/FilterContainer.jsx",
@@ -127,7 +127,7 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-uFbVgXCR.js",
+    "file": "assets/Login-gF1fivPX.js",
     "imports": [
       "resources/js/Utils/ReactAppend.jsx",
       "resources/js/components/Filter/FilterContainer.jsx",
@@ -163,7 +163,7 @@
     "src": "resources/js/Ofertas.jsx"
   },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-aMhS1Mw7.js",
+    "file": "assets/Register-6xRL6Kuu.js",
     "imports": [
       "resources/js/Utils/ReactAppend.jsx",
       "resources/js/components/Filter/FilterContainer.jsx",

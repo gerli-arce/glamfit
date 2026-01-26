@@ -34,7 +34,7 @@ class Products extends Model
     'image_texture',
     'slug',
     'sku',
-    'max_stock', 
+    'max_stock',
     'precio_reseller',
     'marca_id',
     'fit_id',
@@ -70,11 +70,11 @@ class Products extends Model
 
   public function colors()
   {
-      return $this->hasMany(Products::class, 'producto', 'producto')
-          ->whereNotNull('color') // Asegura que el color no sea nulo
-          ->where('visible', 1) // Solo colores visibles
-          ->select('color', 'producto', 'imagen') // Selección de columnas específicas
-          ->distinct('color'); // Evitar duplicados en base al color
+    return $this->hasMany(Products::class, 'producto', 'producto')
+      ->whereNotNull('color') // Asegura que el color no sea nulo
+      ->where('visible', 1) // Solo colores visibles
+      ->select('color', 'producto', 'imagen') // Selección de columnas específicas
+      ->distinct('color'); // Evitar duplicados en base al color
   }
 
 
@@ -115,6 +115,11 @@ class Products extends Model
 
   public function discount()
   {
-        return $this->belongsTo(Discount::class, 'discount_id');
+    return $this->belongsTo(Discount::class, 'discount_id');
+  }
+
+  public function combos()
+  {
+    return $this->belongsToMany(Combo::class, 'combo_products', 'product_id', 'combo_id');
   }
 }

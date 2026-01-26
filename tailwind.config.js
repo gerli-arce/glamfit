@@ -23,10 +23,21 @@ export default {
                 'custom-gray': '#F8F8F8',
                 'custom-white': '#FFFFFF',
                 'custom-border': 'rgba(21, 41, 76, 0.4)', // Defin
+                'glamfit': {
+                    'magenta': '#E91E63',
+                    'magenta-light': '#FF6B9D',
+                    'magenta-dark': '#D946A6',
+                    'purple': '#9B51E0',
+                    'purple-dark': '#7856C8',
+                    'navy': '#1E3A8A',
+                    'navy-dark': '#0F172A',
+                },
             },
             // Añadir el gradiente personalizado
             backgroundImage: {
                 'custom-gradient': 'linear-gradient(to bottom, #F8F8F8 100%, #FFFFFF 100%)',
+                'glamfit-gradient': 'linear-gradient(135deg, #E91E63, #9B51E0)',
+                'glamfit-gradient-vertical': 'linear-gradient(180deg, #E91E63, #9B51E0)',
             },
 
             fontFamily: {

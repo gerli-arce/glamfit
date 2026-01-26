@@ -9,11 +9,15 @@
   <meta charset="UTF-8">
   <meta name="language" content="es">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{--  <meta name="description"
-    content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito."> --}}
+  {{--
+  <meta name="description"
+    content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito.">
+  --}}
   <title>{{env('APP_NAME')}}</title>
-  {{--   <meta name="keywords"
-    content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" /> --}}
+  {{--
+  <meta name="keywords"
+    content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" />
+  --}}
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @vite(['resources/js/' . $component, 'resources/css/app.css', 'resources/js/app.js'])
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
@@ -87,10 +91,10 @@
 
     .select2-container--default .select2-selection--single:focus,
     .select2-container--default .select2-selection--multiple:focus {
-      border-color: #3B82F6;
-      /* focus:border-blue-500 */
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-      /* focus:ring-blue-500 */
+      border-color: #9B51E0;
+      /* focus:border-glamfit-purple */
+      box-shadow: 0 0 0 3px rgba(155, 81, 224, 0.5);
+      /* focus:ring-glamfit-purple */
     }
 
     .dark .select2-container .select2-selection--single,
@@ -111,10 +115,10 @@
 
     .dark .select2-container--default .select2-selection--single:focus,
     .dark .select2-container--default .select2-selection--multiple:focus {
-      border-color: #3B82F6;
-      /* dark:focus:border-blue-500 */
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-      /* dark:focus:ring-blue-500 */
+      border-color: #9B51E0;
+      /* dark:focus:border-glamfit-purple */
+      box-shadow: 0 0 0 3px rgba(155, 81, 224, 0.5);
+      /* dark:focus:ring-glamfit-purple */
     }
 
     /* Adjust the width to match Tailwind CSS block w-full */
@@ -125,10 +129,10 @@
 
     /* Additional styles for multiple select */
     .select2-container .select2-selection--multiple .select2-selection__choice {
-      background-color: #3B82F6;
-      /* bg-blue-500 */
-      border: 1px solid #2563EB;
-      /* border-blue-600 */
+      background-color: #9B51E0;
+      /* bg-glamfit-purple */
+      border: 1px solid #7856C8;
+      /* border-glamfit-purple-dark */
       color: #FFFFFF;
       /* text-white */
       border-radius: 0.25rem;
@@ -141,10 +145,10 @@
     }
 
     .dark .select2-container .select2-selection--multiple .select2-selection__choice {
-      background-color: #1E40AF;
-      /* dark:bg-blue-900 */
-      border: 1px solid #1D4ED8;
-      /* dark:border-blue-700 */
+      background-color: #7856C8;
+      /* dark:bg-glamfit-purple-dark */
+      border: 1px solid #7856C8;
+      /* dark:border-glamfit-purple-dark */
       color: #F9FAFB;
       /* dark:text-white */
     }

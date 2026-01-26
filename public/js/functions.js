@@ -604,45 +604,59 @@ function PintarCarrito() {
 
   carritoParaPintar.forEach(item => {
     total += item.totalPrice
-    let plantilla = `<tr class="font-Urbanist_Regular border-b">
-          <td class="p-2 w-24">
-            <img src="${appUrl}/${item.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 w-24 object-contain" alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+    let plantilla = `<tr class="font-Urbanist_Regular border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
+          <td class="py-4 pr-3 align-top w-28">
+            <div class="rounded-lg border border-gray-100 overflow-hidden shadow-sm relative">
+               <img src="${typeof appUrl !== 'undefined' ? appUrl : '/'}${item.imagen}" class="w-full h-24 object-contain bg-white" alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+            </div>
           </td>
 
-          <td class="p-2">
-            <div class="flex flex-col mb-1">
-              <p class="limited-text font-semibold text-[14px] text-[#151515] line-clamp-1">
+          <td class="py-4 align-top">
+            <div class="flex flex-col gap-1 mb-2">
+              <p class="font-Urbanist_Bold text-[15px] text-[#151515] line-clamp-2 leading-tight">
                 ${item.producto}
               </p>
-              <span class="font-light text-[12px] text-[#151515]">${item.color} - ${item.peso}</span>
+              <div class="flex flex-wrap gap-2 text-xs text-gray-500 font-medium">
+                 ${item.isCombo ? '<span class="bg-gray-100 px-2 py-0.5 rounded text-gray-600">Combo</span>' : ''}
+                 ${item.color ? `<span class="bg-gray-100 px-2 py-0.5 rounded text-gray-600">${item.color}</span>` : ''}
+                 ${item.peso ? `<span class="bg-gray-100 px-2 py-0.5 rounded text-gray-600">${item.peso}</span>` : ''}
+              </div>
             </div>
-            <div class="flex gap-2 items-center">
-              <div class="flex w-15 justify-center text-[#151515] border-[1px] border-[#6C7275] rounded-md">
-                <button type="button" onClick="(deleteOnCarBtn(${item.id}, ${item.isCombo}))" class="w-5 h-5 text-[14px]  py-0 flex justify-center items-center ">
-                <div><i class="fa-solid fa-minus text-xs"></i></div>
-                </button>
-                <div class="w-5 h-5 text-[14px] flex justify-center items-center">
-                  <span  class="font-semibold text-sm">${item.cantidad}</span>
+            
+            <div class="flex justify-between items-end mt-3">
+                <div class="flex items-center border border-gray-300 rounded-full h-8 w-fit bg-white overflow-hidden shadow-sm">
+                    <button type="button" onClick="(deleteOnCarBtn(${item.id}, ${item.isCombo}))" 
+                        class="w-8 h-full flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-[#E91E63] transition-colors focus:outline-none">
+                        <i class="fa-solid fa-minus text-xs"></i>
+                    </button>
+                    <div class="w-8 h-full flex items-center justify-center border-x border-gray-100">
+                        <span class="font-Urbanist_Bold text-sm text-[#151515]">${item.cantidad}</span>
+                    </div>
+                    <button type="button" onClick="(addOnCarBtn(${item.id}, ${item.isCombo}))" 
+                        class="w-8 h-full flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-[#E91E63] transition-colors focus:outline-none">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
                 </div>
-                <button type="button" onClick="(addOnCarBtn(${item.id}, ${item.isCombo}))" class="w-5 h-5 text-[14px] py-0  flex justify-center items-center ">
-                  <div><i class="fa-solid fa-plus text-xs"></i></div>
-                </button>
-              </div>
-              <div class="text-[12px] text-[#151515] font-bold">
-              <span class="block">S/.${Number2Currency(item.precio)} c/u</span>
-              </div>
-              
-              </div>
-              ${item.discount ? `<span class="block text-[#c1272d] text-[12px] mt-1 truncate text-ellipsis">${item.discount.name}</span>` : ''}
+                
+                <div class="flex flex-col items-end">
+                     ${item.precio > item.finalPrice ? `<p class="text-[11px] text-gray-400 line-through mb-0.5">S/ ${Number2Currency(item.precio)}</p>` : ''}
+                     <p class="font-Urbanist_Bold text-base text-[#151515]">
+                      S/ ${Number2Currency(item.finalPrice)}
+                    </p>
+                </div>
+            </div>
+            
+             ${item.discount ? 
+                `<div class="mt-2 flex items-center gap-1 text-[#E91E63] text-[11px] font-bold bg-[#E91E63]/10 px-2 py-1 rounded w-fit">
+                    <i class="fa-solid fa-tag text-[10px]"></i>
+                    <span class="truncate max-w-[150px]">${item.discount.name}</span>
+                 </div>` : ''}
           </td>
 
-          <td class="p-2 text-end">
-            ${item.precio > item.finalPrice ? `<p class="text-[12px] text-[#acacac] line-through text-nowrap">S/ ${Number2Currency(item.precio * item.cantidad)}</p>` : ''}
-            <p class="font-semibold text-[14px] text-[#151515] text-nowrap">
-              S/ ${Number2Currency(item.totalPrice)}
-            </p>
-            <button type="button" onClick="(deleteItem(${item.id} , ${item.isCombo}))" class="h-6 text-xl text-[#272727]">
-              <i class="fa fa-trash-alt"></i>
+          <td class="py-4 pl-2 align-top text-right w-10">
+            <button type="button" onClick="(deleteItem(${item.id} , ${item.isCombo}))" 
+                class="group flex items-center justify-center w-8 h-8 rounded-full hover:bg-red-50 transition-colors focus:outline-none" title="Eliminar">
+              <i class="fa-regular fa-trash-can text-gray-400 group-hover:text-[#E91E63] transition-colors text-base"></i>
             </button>
           </td>
 

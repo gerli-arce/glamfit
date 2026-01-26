@@ -11,7 +11,7 @@
         </header>
         @if (session('success'))
           <script>
-            window.onload = function() {
+            window.onload = function () {
               mostrarAlerta();
             }
           </script>
@@ -51,7 +51,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-2">
+                          <div class="md:col-span-2" style="display:none;">
                             <label for="inside">Interior</label>
                             <div class="relative mb-2">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -69,7 +69,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-2">
+                          <div class="md:col-span-2" style="display:none;">
                             <label for="district">Distrito</label>
                             <div class="relative mb-2">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -87,7 +87,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-1">
+                          <div class="md:col-span-1" style="display:none;">
                             <label for="country">País</label>
                             <div class="relative mb-2">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -141,7 +141,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-1">
+                          <div class="md:col-span-1" style="display:none;">
                             <label for="office_phone">Número de Teléfono</label>
                             <div class="relative mb-2">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -177,7 +177,7 @@
                                 placeholder="+51 1234567">
                             </div>
                           </div>
-                          <div class="md:col-span-5">
+                          <div class="md:col-span-5" style="display:none;">
                             <label for="mensaje_whatsapp">Mensaje predeterminado para
                               Whastapp</label>
                             <div class="relative mb-2">
@@ -198,7 +198,7 @@
                           </div>
 
 
-                          <div class="md:col-span-5">
+                          <div class="md:col-span-5" style="display:none;">
                             <label for="schedule">Horario de Oficina</label>
                             <div class="relative mb-2">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -234,8 +234,7 @@
                                       </path>
                                     </svg>
                                   </div>
-                                  <input type="text" id="rs_facebook" name="facebook"
-                                    value="{{ $general->facebook }}"
+                                  <input type="text" id="rs_facebook" name="facebook" value="{{ $general->facebook }}"
                                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Facebook">
                                 </div>
@@ -261,7 +260,7 @@
                                 </div>
                               </div>
 
-                              <div>
+                              <div style="display:none;">
                                 <label for="youtube">Youtube</label>
 
                                 <div class="relative ">
@@ -274,8 +273,7 @@
                                       </path>
                                     </svg>
                                   </div>
-                                  <input type="text" id="rs_youtube" name="youtube"
-                                    value="{{ $general->youtube }}"
+                                  <input type="text" id="rs_youtube" name="youtube" value="{{ $general->youtube }}"
                                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Youtube">
                                 </div>
@@ -294,13 +292,12 @@
                                       </path>
                                     </svg>
                                   </div>
-                                  <input type="text" id="rs_twitter" name="twitter"
-                                    value="{{ $general->twitter }}"
+                                  <input type="text" id="rs_twitter" name="twitter" value="{{ $general->twitter }}"
                                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Twitter">
                                 </div>
                               </div>
-                              <div>
+                              <div style="display:none;">
                                 <label for="linkedin">Linkedin</label>
 
                                 <div class="relative">
@@ -313,8 +310,7 @@
                                       </path>
                                     </svg>
                                   </div>
-                                  <input type="text" id="linkedin" name="linkedin"
-                                    value="{{ $general->linkedin }}"
+                                  <input type="text" id="linkedin" name="linkedin" value="{{ $general->linkedin }}"
                                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Linkedin">
                                 </div>
@@ -332,8 +328,7 @@
                                       </path>
                                     </svg>
                                   </div>
-                                  <input type="text" id="rs_tiktok" name="tiktok"
-                                    value="{{ $general->tiktok }}"
+                                  <input type="text" id="rs_tiktok" name="tiktok" value="{{ $general->tiktok }}"
                                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Tiktok">
                                 </div>
@@ -341,12 +336,12 @@
                             </div>
                           </div>
 
-                         
+
 
                           <h2 class="md:col-span-5 text-lg font-semibold text-slate-800 mt-2 dark:text-white">
                             Descripción de la empresa</h2>
 
-                          <div class="md:col-span-5">
+                          <div class="md:col-span-5" style="display:none;">
                             <label for="aboutus">Acerca de nosotros</label>
                             <div class="relative mb-2">
                               <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
@@ -364,7 +359,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-5">
+                          <div class="md:col-span-5" style="display:none;">
                             <label for="htop">Descripción de encabezado</label>
                             <div class="relative mb-2">
                               <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
@@ -383,7 +378,7 @@
                           </div>
 
 
-                          <div class="md:col-span-5">
+                          <div class="md:col-span-5" style="display:none;">
                             <label for="ig_token">Token Instagram </label>
                             <div class="relative mb-2 ">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -401,7 +396,7 @@
                             </div>
                           </div>
 
-                          
+
                           <!-- <div class="md:col-span-2">
                                             <label for="city">City</label>
                                             <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
@@ -476,7 +471,7 @@
   </div>
 
   <script>
-    $('document').ready(function() {
+    $('document').ready(function () {
 
       // Función para mostrar la alerta de confirmación antes de enviar el formulario
       function confirmarActualizacion() {

@@ -53,7 +53,7 @@ class ShortcodeController extends Controller
         }
 
         return view('pages.shortcode.edit', compact('shortcode'));
-        
+
     }
 
     /**
@@ -61,20 +61,19 @@ class ShortcodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
         $validatedData = $request->validate([
-            'head' => 'required',  // Ejemplo de campo requerido
-             // Ejemplo de campo opcional
-            // Agrega las reglas de validación para tus campos aquí
+            'head' => 'nullable',
+            'body' => 'nullable',
         ]);
 
-        $shortcode = Shortcode::findOrfail($id); 
+        $shortcode = Shortcode::findOrfail($id);
 
         // Actualizar los campos del registro con los datos del formulario
-         $shortcode->update($request->all());
+        $shortcode->update($request->all());
 
         // Guardar 
-        $shortcode->save();  
+        $shortcode->save();
 
         return back()->with('success', 'Registro actualizado correctamente');
     }

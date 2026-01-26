@@ -92,7 +92,7 @@
           class="text-[#272727] font-medium font-Urbanist_Semibold text-base py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $isIndex ? 'text-black' : '' }}">
           <span>
             <svg
-              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-[#E91E63] dark:group-hover:text-blue-500"
               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path
                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
@@ -107,7 +107,7 @@
           class="text-black flex justify-between items-center font-medium font-Urbanist_Semibold text-base py-2 px-3">
           <span>
             <svg
-              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-[#E91E63] dark:group-hover:text-blue-500"
               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
               <path
                 d="M15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783ZM6 2h6a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2Zm7 5H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Z" />
@@ -138,12 +138,10 @@
                     @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
                     <span>{{ $item->name }}</span>
                     {{-- <svg class="w-5 h-5 transform transition-transform"
-                                            :class="{ 'rotate-180': openCategories[{{ $item->id }}] }"
-                                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7"></path>
-                                        </svg> --}}
+                      :class="{ 'rotate-180': openCategories[{{ $item->id }}] }" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg> --}}
                     <span :class="{ 'rotate-180': openCategories[{{ $item->id }}] }"
                       class="ms-1 inline-block transform transition-transform duration-300 cursor-pointer">↓</span>
                   </div>
@@ -175,7 +173,7 @@
           class="text-black flex justify-between items-center font-medium font-Urbanist_Semibold text-base py-2 px-3 ">
           <span>
             <svg
-              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-[#E91E63] dark:group-hover:text-blue-500"
               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path
                 d="M19 4h-1a1 1 0 1 0 0 2v11a1 1 0 0 1-2 0V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1ZM3 4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4Zm9 13H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Z" />
@@ -207,7 +205,7 @@
           <li>
             <span class="py-2 px-3">
               <svg
-                class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-[#E91E63] dark:group-hover:text-blue-500"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   d="M19 4h-1a1 1 0 1 0 0 2v11a1 1 0 0 1-2 0V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1ZM3 4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4Zm9 13H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Z" />
@@ -233,7 +231,7 @@
 
 <header>
   @foreach ($datosgenerales as $item)
-    <div class="bg-[#4598d3] h-[30px] flex justify-center w-full px-[5%] xl:px-[8%] py-3 tracking-wider items-center ">
+    <div class="bg-[#E91E63] h-[30px] flex justify-center w-full px-[5%] xl:px-[8%] py-3 tracking-wider items-center ">
       <h3 class="text-white font-Urbanist_Semibold text-sm sm:text-base tracking-wider text-center flex ">
         <marquee class="w-[400px] sm:w-[800px]">{{ $item->htop ?? 'Ingrese un texto' }}</marquee>
       </h3>
@@ -241,7 +239,8 @@
   @endforeach
 
   <div>
-    <div id="header-menu" class="flex w-full px-[5%] py-2 flex-row text-[17px] relative bg-black h-[60px]">
+    <div id="header-menu" class="flex w-full px-[5%] py-2 flex-row text-[17px] relative h-[60px]"
+      style="background: #1a1a1a;">
 
       {{-- Menu hamburguesa --}}
       <div id="menu-burguer" class="flex w-3/12 lg:hidden z-10 justify-start items-center">
@@ -253,14 +252,14 @@
       <div class="relative hidden lg:flex w-3/12 lg:py-0  items-center justify-center">
         <div class="w-full">
           <input id="buscarproducto" type="text" placeholder="Buscar productos"
-            class="font-Urbanist_Light w-full text-sm pl-8 bg-black pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-white focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
+            class="font-Urbanist_Light w-full text-sm pl-8 bg-transparent pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-[#E91E63] focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
 
           <span class="absolute inset-y-0 left-0 flex items-start lg:items-center px-2 pb-2 pt-[9px] lg:p-2">
             <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
               class="rotate-90">
               <path
                 d="M14.6851 13.6011C14.3544 13.2811 13.8268 13.2898 13.5068 13.6206C13.1868 13.9514 13.1955 14.4789 13.5263 14.7989L14.6851 13.6011ZM16.4206 17.5989C16.7514 17.9189 17.2789 17.9102 17.5989 17.5794C17.9189 17.2486 17.9102 16.7211 17.5794 16.4011L16.4206 17.5989ZM15.2333 9.53333C15.2333 12.6814 12.6814 15.2333 9.53333 15.2333V16.9C13.6018 16.9 16.9 13.6018 16.9 9.53333H15.2333ZM9.53333 15.2333C6.38531 15.2333 3.83333 12.6814 3.83333 9.53333H2.16667C2.16667 13.6018 5.46484 16.9 9.53333 16.9V15.2333ZM3.83333 9.53333C3.83333 6.38531 6.38531 3.83333 9.53333 3.83333V2.16667C5.46484 2.16667 2.16667 5.46484 2.16667 9.53333H3.83333ZM9.53333 3.83333C12.6814 3.83333 15.2333 6.38531 15.2333 9.53333H16.9C16.9 5.46484 13.6018 2.16667 9.53333 2.16667V3.83333ZM13.5263 14.7989L16.4206 17.5989L17.5794 16.4011L14.6851 13.6011L13.5263 14.7989Z"
-                fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-fillPink" />
+                fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-[#E91E63]" />
             </svg>
           </span>
 
@@ -269,12 +268,11 @@
         </div>
       </div>
 
-      {{-- Logo --}}
       <div class="w-9/12 flex items-center justify-center">
         <a href="/">
-          <img id="logo-boostperu" class="min-w-56 w-60"
-            src="{{ asset($isIndex ? 'images/svg/logoab.svg' : 'images/svg/logoab.svg') }}" alt="GLAMFIT" />
-          {{-- <h2 class="text-2xl font-bold text-white tracking-widest font-Urbanist_Semibold text-center">AMERICAN BRANDS</h2> --}}
+          <h1 class="text-3xl font-bold tracking-widest font-Urbanist_Bold"
+            style="background: linear-gradient(135deg, #E91E63, #9B51E0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            GLAMFIT</h1>
         </a>
       </div>
 
@@ -295,8 +293,9 @@
                     class="hidden lg:flex truncate lg:ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-white ">
                     {{ explode(' ', Auth::user()->name)[0] }}
                   </span>
-                   <img src="{{ asset('images/svg/user.svg') }}" class="block lg:hidden min-w-6 min-h-6 text-white" />
-                    <svg class="min-h-2 min-w-2 lg:w-3 lg:h-3 lg:shrink-0 lg:ml-1 fill-current text-white" viewBox="0 0 12 12">
+                  <img src="{{ asset('images/svg/user.svg') }}" class="block lg:hidden min-w-6 min-h-6 text-white" />
+                  <svg class="min-h-2 min-w-2 lg:w-3 lg:h-3 lg:shrink-0 lg:ml-1 fill-current text-white"
+                    viewBox="0 0 12 12">
                     <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                   </svg>
                 </div>
@@ -307,8 +306,8 @@
                 <ul>
                   <li class="hover:bg-gray-100">
                     <a class="font-medium text-sm text-black flex items-center py-1 px-3"
-                      href="{{ route('micuenta') }}" @click="open = false" @focus="open = true"
-                      @focusout="open = false">Mi Cuenta</a>
+                      href="{{ auth()->user()->hasRole('admin') || auth()->user()->hasRole('root') ? route('dashboard') : route('micuenta') }}"
+                      @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
                   </li>
 
                   <li class="hover:bg-gray-100">
@@ -333,16 +332,16 @@
           </div>
 
           {{-- <div class="hidden lg:flex justify-center items-center">
-                        <i class="fa-solid fa-heart  fa-xl text-white !leading-none -mt-1"></i>
-                    </div> --}}
+            <i class="fa-solid fa-heart  fa-xl text-white !leading-none -mt-1"></i>
+          </div> --}}
 
           @if (!request()->routeIs('pago'))
             <div class="flex justify-center items-center min-w-[38px]">
               <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
                 <span id="itemsCount"
-                  class="bg-[#c1272d] text-xs font-medium font-Urbanist_Regular text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
+                  class="bg-[#E91E63] text-xs font-medium font-Urbanist_Regular text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
                 {{-- <img src="{{ asset('images/svg/bag_boost.svg') }}"
-                              class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" /> --}}
+                  class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" /> --}}
                 {{-- <i class="fa-solid fa-suitcase-rolling fa-xl text-white !leading-none -mt-1"></i> --}}
                 <img src="{{ asset('images/svg/carrito.svg') }}" class="text-white w-7" /></a>
               </div>
@@ -363,20 +362,20 @@
 
 
           {{-- <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-                <span class="underline-this">HOMBRE</span>
-                <div id="productos-link-h" class="w-0"></div>
-              </a>
+            <span class="underline-this">HOMBRE</span>
+            <div id="productos-link-h" class="w-0"></div>
+          </a>
 
 
-              <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-                <span class="underline-this">MUJER</span>
-                <div id="productos-link-h" class="w-0"></div>
-              </a>
+          <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
+            <span class="underline-this">MUJER</span>
+            <div id="productos-link-h" class="w-0"></div>
+          </a>
 
-              <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-                <span class="underline-this">ACCESORIOS</span>
-                <div id="productos-link-h" class="w-0"></div>
-              </a> --}}
+          <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
+            <span class="underline-this">ACCESORIOS</span>
+            <div id="productos-link-h" class="w-0"></div>
+          </a> --}}
 
           @foreach ($categorias as $categoria)
             <a id="categoria-{{ $categoria->id }}" href="/catalogo?category={{ $categoria->id }}"
@@ -393,8 +392,7 @@
 
           @if ($tags->count() > 0)
             @foreach ($tags as $item)
-              <a href="/catalogo?tag={{ $item->id }}"
-                class="font-medium text-white px-4 other-class other-class2"
+              <a href="/catalogo?tag={{ $item->id }}" class="font-medium text-white px-4 other-class other-class2"
                 style="background-color: {{ $item->color }}">
                 <span class="">
                   {{ $item->name }} </span>
@@ -407,17 +405,17 @@
     </div>
   </div>
 
-  <div class="relative flex lg:hidden w-full h-[40px]  items-center justify-center bg-black">
+  <div class="relative flex lg:hidden w-full h-[40px] items-center justify-center" style="background: #1a1a1a;">
     <div class="w-full text-center px-5">
       <input id="buscarproductosecond" type="text" placeholder="Buscar productos"
-        class="font-Urbanist_Light w-full text-sm pl-8 bg-black pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-white focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
+        class="font-Urbanist_Light w-full text-sm pl-8 bg-transparent pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-[#E91E63] focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
 
       <span class="absolute inset-y-0 left-5 flex items-start lg:items-center px-2 pb-2 pt-[9px] lg:p-2">
         <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
           class="rotate-90">
           <path
             d="M14.6851 13.6011C14.3544 13.2811 13.8268 13.2898 13.5068 13.6206C13.1868 13.9514 13.1955 14.4789 13.5263 14.7989L14.6851 13.6011ZM16.4206 17.5989C16.7514 17.9189 17.2789 17.9102 17.5989 17.5794C17.9189 17.2486 17.9102 16.7211 17.5794 16.4011L16.4206 17.5989ZM15.2333 9.53333C15.2333 12.6814 12.6814 15.2333 9.53333 15.2333V16.9C13.6018 16.9 16.9 13.6018 16.9 9.53333H15.2333ZM9.53333 15.2333C6.38531 15.2333 3.83333 12.6814 3.83333 9.53333H2.16667C2.16667 13.6018 5.46484 16.9 9.53333 16.9V15.2333ZM3.83333 9.53333C3.83333 6.38531 6.38531 3.83333 9.53333 3.83333V2.16667C5.46484 2.16667 2.16667 5.46484 2.16667 9.53333H3.83333ZM9.53333 3.83333C12.6814 3.83333 15.2333 6.38531 15.2333 9.53333H16.9C16.9 5.46484 13.6018 2.16667 9.53333 2.16667V3.83333ZM13.5263 14.7989L16.4206 17.5989L17.5794 16.4011L14.6851 13.6011L13.5263 14.7989Z"
-            fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-fillPink" />
+            fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-[#E91E63]" />
         </svg>
       </span>
 
@@ -454,8 +452,9 @@
   <div class="p-4 flex flex-col h-[calc(100vh-2px)] justify-between gap-2">
     <div class="flex flex-col">
       <div class="flex justify-between ">
-        <h2 class="font-semibold font-Urbanist_Bold text-[28px] text-[#151515] tracking-tight pb-5">Carrito de
-          compras</h2>
+        <h2
+          class="font-semibold font-Urbanist_Bold text-[28px] text-[#151515] tracking-tight pb-2 border-b-2 border-[#E91E63] inline-block uppercase">
+          Carrito</h2>
         <div id="close-cart" class="cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="w-6 h-6">
@@ -477,7 +476,7 @@
       </div>
       <div>
         <a href="/carrito"
-          class="font-normal font-Urbanist_Bold text-lg bg-black  py-3 px-5 rounded-none text-white cursor-pointer w-full inline-block text-center">Ir
+          class="font-normal font-Urbanist_Bold text-lg bg-[#E91E63] hover:bg-[#C2185B] transition-colors py-3 px-5 rounded-none text-white cursor-pointer w-full inline-block text-center">Ir
           al
           carrito</a>
       </div>
@@ -487,23 +486,12 @@
 
 
 <script>
-  @auth
-  $(document).ready(function() {
-    let name = "{{ Auth::user()->name }}" ?? ''
-    let lastname = "{{ Auth::user()->lastname }}" ?? ''
-    lastname = lastname.toLowerCase()
-    let [firstName, SecondName] = name.split(' ')
-    let [firstLName, SecondLName] = lastname.split(' ')
+  @auth$(document).ready(function () {
+      let name = "{{ Auth::user()->name }}" ?? ''     let lastname = "{{ Auth::user()->lastname }}" ?? ''     lastname = lastname.toLowerCase()     let [firstName, SecondName] = name.split(' ')     let [firstLName, SecondLName] = lastname.split(' ')
 
-
-    firstLName = firstLName ? firstLName.charAt(0).toUpperCase() + firstLName.slice(1) : ''
-    SecondLName = SecondLName ? SecondLName.charAt(0).toUpperCase() + SecondLName.slice(1) : ''
-
-    $('#usernamelogin').text(
-      `${firstName ? firstName : ''} ${SecondName ? SecondName : ''} ${firstLName ? firstLName : ''} ${SecondLName ? SecondLName : ''}`
-    )
-
-  })
+      firstLName = firstLName ? firstLName.charAt(0).toUpperCase() + firstLName.slice(1) : ''     SecondLName = SecondLName ? SecondLName.charAt(0).toUpperCase() + SecondLName.slice(1) : ''
+      $('#usernamelogin').text(`${firstName ? firstName : ''} ${SecondName ? SecondName : ''} ${firstLName ? firstLName : ''} ${SecondLName ? SecondLName : ''}`)
+    })
   @endauth
 </script>
 
@@ -524,7 +512,7 @@
     image.src = '/images/img/noimagen.jpg'; // Establece la imagen de error
   }
 
-  $('#buscarproducto').keyup(function() {
+  $('#buscarproducto').keyup(function () {
 
     clearTimeout(clockSearch);
     var query = $(this).val().trim();
@@ -537,10 +525,10 @@
           data: {
             query: query
           },
-          success: function(data) {
+          success: function (data) {
             var resultsHtml = '';
             var url = '{{ asset('') }}';
-            data.forEach(function(result) {
+            data.forEach(function (result) {
               const price = Number(result.precio) || 0
               const discount = Number(result.descuento) || 0
               resultsHtml += `<a href="/producto/${result.slug}">
@@ -571,7 +559,7 @@
   });
 
 
-  $('#buscarproductosecond').keyup(function() {
+  $('#buscarproductosecond').keyup(function () {
 
     clearTimeout(clockSearch);
     var query = $(this).val().trim();
@@ -584,10 +572,10 @@
           data: {
             query: query
           },
-          success: function(data) {
+          success: function (data) {
             var resultsHtml = '';
             var url = '{{ asset('') }}';
-            data.forEach(function(result) {
+            data.forEach(function (result) {
               const price = Number(result.precio) || 0
               const discount = Number(result.descuento) || 0
               resultsHtml += `<a class="" href="/producto/${result.slug}">
@@ -693,7 +681,7 @@
           'Content-Type': 'application/json',
           'X-Xsrf-Token': decodeURIComponent(Cookies.get('XSRF-TOKEN'))
         },
-        body: JSON.stringify(articulosCarrito.map(x => x.id))
+        body: JSON.stringify(articulosCarrito.map(x => ({ id: x.id, isCombo: x.isCombo })))
       })
 
       const {
@@ -703,7 +691,10 @@
       let changed = false;
 
       const newCart = articulosCarrito.map(item => {
-        item.stock = data.find(x => x.id == item.id)?.stock ?? 0
+        // Find stock for this specific item (product or combo)
+        const stockInfo = data.find(x => x.id == item.id && (x.isCombo == item.isCombo || (!x.isCombo && !item.isCombo)));
+        item.stock = stockInfo?.stock ?? 0
+
         if (item.cantidad > item.stock) {
           item.cantidad = item.stock
           changed = true;
@@ -806,11 +797,11 @@
 
   var appUrl = "{{ env('APP_URL') }}";
 
-  $(document).ready(function() {
+  $(document).ready(function () {
 
     PintarCarrito()
 
-    $('#buscarblog').keyup(function() {
+    $('#buscarblog').keyup(function () {
 
       var query = $(this).val().trim();
 
@@ -821,10 +812,10 @@
           data: {
             query: query
           },
-          success: function(data) {
+          success: function (data) {
             var resultsHtml = '';
             var url = '{{ asset('') }}';
-            data.forEach(function(result) {
+            data.forEach(function (result) {
               resultsHtml +=
                 '<a class="z-50" href="/post/' + result.id +
                 '"> <div class=" z-50 w-full flex flex-row py-2 px-3 hover:bg-slate-200"> ' +
@@ -833,7 +824,7 @@
                 '" /></div>' +
                 ' <div class="flex flex-col justify-center w-[80%] pl-3"> ' +
                 ' <h2 class="text-left line-clamp-1">' + result
-                .title +
+                  .title +
                 '</h2> ' +
                 '</div> ' +
                 '</div></a>';
@@ -847,7 +838,7 @@
       }
     });
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       var input = document.getElementById('buscarproducto');
       var resultados = document.getElementById('resultados');
       var isClickInsideInput = input.contains(event.target);
@@ -859,7 +850,7 @@
       }
     });
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       var input = document.getElementById('buscarproductosecond');
       var resultados = document.getElementById('resultadossecond');
       var isClickInsideInput = input.contains(event.target);
@@ -874,7 +865,7 @@
 </script>
 
 <script>
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function (event) {
     var input = document.getElementById('buscarblog');
     var resultados = document.getElementById('resultadosblog');
 
@@ -891,75 +882,76 @@
   });
 </script>
 
-{{-- <script>
-    $(document).ready(function() {
-        $(document).on('mouseenter', '.other-class', function() {
-            cerrar()
-        });
-    })
-
-    const categorias = @json($categorias);
-    var activeHover = false
-    
-    document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
-        if (event.target === this) {
-            // mostrar submenú de productos 
-            let padre = document.getElementById('productos-link-h');
-            let divcontainer = document.createElement('div');
-            divcontainer.id = 'productos-link-container';
-            divcontainer.className =
-                'absolute top-[219px] border-b-2 border-b-black z-[10] left-1/2 transform -translate-x-1/2 m-0 flex flex-row bg-white gap-4 p-4 w-full overflow-x-auto';
-
-            divcontainer.addEventListener('mouseenter', function() {
-                this.addEventListener('mouseleave', cerrar);
-            });
-
-            categorias.forEach(element => {
-                if (element.subcategories.length == 0) return;
-                let ul = document.createElement('ul');
-                ul.className =
-                    'text-[#006BF6]  font-bold font-poppins text-md py-2 px-3 max-w-lg mx-auto  duration-300 w-full whitespace-nowrap gap-4';
-
-                ul.innerHTML = element.name;
-                
-                element.subcategories.forEach(subcategoria => {
-                    let li = document.createElement('li');
-                    li.style.setProperty('padding-left', '4px', 'important');
-                    li.style.setProperty('padding-right', '2px', 'important');
-
-                    li.className =
-                        'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
-                    // Crear el elemento 'a'
-                    let a = document.createElement('a');
-                    a.href = `/catalogo?subcategoria=${subcategoria.id}`;
-                    a.innerHTML = subcategoria.name;
-                    a.className = ' w-full h-full'; // Para que el enlace ocupe todo el 'li'
-
-                    // Añadir el elemento 'a' al 'li'
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                });
-                
-                divcontainer.appendChild(ul);
-            });
-
-
-
-            // limpia sus hijos antes de agregar los nuevos
-            if (!activeHover) {
-                padre.appendChild(divcontainer);
-                activeHover = true;
-            }
-        }
+{{--
+<script>
+  $(document).ready(function () {
+    $(document).on('mouseenter', '.other-class', function () {
+      cerrar()
     });
+  })
+
+  const categorias = @json($categorias);
+  var activeHover = false
+
+  document.getElementById('productos-link').addEventListener('mouseenter', function (event) {
+    if (event.target === this) {
+      // mostrar submenú de productos 
+      let padre = document.getElementById('productos-link-h');
+      let divcontainer = document.createElement('div');
+      divcontainer.id = 'productos-link-container';
+      divcontainer.className =
+        'absolute top-[219px] border-b-2 border-b-black z-[10] left-1/2 transform -translate-x-1/2 m-0 flex flex-row bg-white gap-4 p-4 w-full overflow-x-auto';
+
+      divcontainer.addEventListener('mouseenter', function () {
+        this.addEventListener('mouseleave', cerrar);
+      });
+
+      categorias.forEach(element => {
+        if (element.subcategories.length == 0) return;
+        let ul = document.createElement('ul');
+        ul.className =
+          'text-[#006BF6]  font-bold font-poppins text-md py-2 px-3 max-w-lg mx-auto  duration-300 w-full whitespace-nowrap gap-4';
+
+        ul.innerHTML = element.name;
+
+        element.subcategories.forEach(subcategoria => {
+          let li = document.createElement('li');
+          li.style.setProperty('padding-left', '4px', 'important');
+          li.style.setProperty('padding-right', '2px', 'important');
+
+          li.className =
+            'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
+          // Crear el elemento 'a'
+          let a = document.createElement('a');
+          a.href = `/catalogo?subcategoria=${subcategoria.id}`;
+          a.innerHTML = subcategoria.name;
+          a.className = ' w-full h-full'; // Para que el enlace ocupe todo el 'li'
+
+          // Añadir el elemento 'a' al 'li'
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+
+        divcontainer.appendChild(ul);
+      });
 
 
 
-    function cerrar() {
-        let padre = document.getElementById('productos-link-h');
-        activeHover = false
-        padre.innerHTML = '';
+      // limpia sus hijos antes de agregar los nuevos
+      if (!activeHover) {
+        padre.appendChild(divcontainer);
+        activeHover = true;
+      }
     }
+  });
+
+
+
+  function cerrar() {
+    let padre = document.getElementById('productos-link-h');
+    activeHover = false
+    padre.innerHTML = '';
+  }
 
 </script> --}}
 
@@ -994,8 +986,8 @@
     padre.innerHTML = ''; // Limpia el contenido del menú
   }
 
-  $(document).ready(function() {
-    $(document).on('mouseenter', '.other-class2', function() {
+  $(document).ready(function () {
+    $(document).on('mouseenter', '.other-class2', function () {
       cerrarmarca();
     });
   });
@@ -1006,7 +998,7 @@
 
   categorias.forEach(categoria => {
     const categoriaElement = document.getElementById(`categoria-${categoria.id}`);
-    categoriaElement.addEventListener('mouseenter', function(event) {
+    categoriaElement.addEventListener('mouseenter', function (event) {
       if (event.target === this && !activeHover) {
         // Obtener el contenedor específico de la categoría
         let padre = document.getElementById(`productos-link-${categoria.id}`);
@@ -1079,7 +1071,7 @@
   });
 
 
-  document.getElementById('productos-link2').addEventListener('mouseenter', function(event) {
+  document.getElementById('productos-link2').addEventListener('mouseenter', function (event) {
     if (event.target === this) {
       // Muestra submenú de marcas
       let padre = document.getElementById('productos-link-m');
@@ -1098,7 +1090,7 @@
       gridContainer.style.justifyContent = 'center';
       gridContainer.style.alignItems = 'center';
 
-      divcontainer.addEventListener('mouseenter', function() {
+      divcontainer.addEventListener('mouseenter', function () {
         this.addEventListener('mouseleave', cerrarmarca);
       });
 
@@ -1250,7 +1242,7 @@
         cantidad
 
       },
-      success: function(success) {
+      success: function (success) {
         let {
           producto,
           id,
@@ -1287,12 +1279,7 @@
           type_id = null;
           status = null;
         }
-
-        /*let have_discount = success.discount_id
-        if (!have_discount) {
-            take_product = null;
-            payment_product = 
-        }*/
+        /*let have_discount = success.discount_id         if (!have_discount) {             take_product = null;             payment_product =          }*/
 
         let already = getAlreadyInCart(item)
 
@@ -1322,7 +1309,7 @@
         let articulosCarrito = Local.get('carrito') || [];
         let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id && item
           .isCombo ==
-          false, )
+          false,)
 
         if (existeArticulo) {
           //sumar al articulo actual 
@@ -1361,14 +1348,14 @@
         $('#cantidadSpan span').text(stock - already)
 
       },
-      error: function(error) {
+      error: function (error) {
         console.error(error)
       }
 
     })
   }
 
-  $(document).on('click', '#btnAgregarCarritoPr', function() {
+  $(document).on('click', '#btnAgregarCarritoPr', function () {
     //let url = window.location.href;
     //let partesURL = url.split('/');
     //let productoEncontrado = partesURL.find(parte => parte === 'producto');
@@ -1390,7 +1377,7 @@
     }
   })
 
-  $(document).on('click', '#btnAgregarCarrito', function() {
+  $(document).on('click', '#btnAgregarCarrito', function () {
 
     let item = $(this).data('id')
 
@@ -1406,7 +1393,7 @@
 </script>
 
 <script>
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function (event) {
     var input = document.getElementById('buscarproducto');
     var resultados = document.getElementById('resultados');
     var isClickInsideInput = input.contains(event.target);
@@ -1418,7 +1405,7 @@
     }
   });
 
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', function (event) {
     var input = document.getElementById('buscarproductosecond');
     var resultados = document.getElementById('resultadossecond');
     var isClickInsideInput = input.contains(event.target);
@@ -1431,67 +1418,68 @@
   });
 </script>
 
-{{-- <script>
-    document.getElementById('productos-link2').addEventListener('mouseenter', function(event) { 
-        if (event.target === this && !activeHovermarca) {
-            let padre = document.getElementById('productos-link-m');
-            
-            // Crear el contenedor del menú de marcas
-            let divcontainer = document.createElement('div');
-            divcontainer.id = 'productos-link-m-container';
-            divcontainer.className =
-                'absolute top-[219px] border-b-2 border-b-black z-20 left-1/2 transform -translate-x-1/2 m-0 flex justify-center w-full bg-white overflow-x-auto';
+{{--
+<script>
+  document.getElementById('productos-link2').addEventListener('mouseenter', function (event) {
+    if (event.target === this && !activeHovermarca) {
+      let padre = document.getElementById('productos-link-m');
 
-            let gridContainer = document.createElement('div');
-            gridContainer.className = 'grid gap-2 px-4 py-7 list-none';
-            gridContainer.style.gridTemplateColumns = 'repeat(auto-fill, 150px)';
-            gridContainer.style.gridAutoRows = 'auto';
-            gridContainer.style.maxWidth = '60%';
-            gridContainer.style.justifyItems = 'center';
-            gridContainer.style.justifyContent = 'center';
-            gridContainer.style.alignItems = 'center';
+      // Crear el contenedor del menú de marcas
+      let divcontainer = document.createElement('div');
+      divcontainer.id = 'productos-link-m-container';
+      divcontainer.className =
+        'absolute top-[219px] border-b-2 border-b-black z-20 left-1/2 transform -translate-x-1/2 m-0 flex justify-center w-full bg-white overflow-x-auto';
 
-            // Agregar cada marca al grid
-            marcas.forEach(marca => {
-                let li = document.createElement('li');
-                li.className =
-                    'text-[#272727] cursor-pointer font-normal font-Urbanist_Regular text-[15px] py-1 w-full line-clamp-1';
-                li.style.maxWidth = '150px';
+      let gridContainer = document.createElement('div');
+      gridContainer.className = 'grid gap-2 px-4 py-7 list-none';
+      gridContainer.style.gridTemplateColumns = 'repeat(auto-fill, 150px)';
+      gridContainer.style.gridAutoRows = 'auto';
+      gridContainer.style.maxWidth = '60%';
+      gridContainer.style.justifyItems = 'center';
+      gridContainer.style.justifyContent = 'center';
+      gridContainer.style.alignItems = 'center';
 
-                let a = document.createElement('a');
-                a.href = `/catalogo?marcas=${marca.id}`;
-                a.innerHTML = marca.title;
-                a.className = 'w-full h-full text-center';
+      // Agregar cada marca al grid
+      marcas.forEach(marca => {
+        let li = document.createElement('li');
+        li.className =
+          'text-[#272727] cursor-pointer font-normal font-Urbanist_Regular text-[15px] py-1 w-full line-clamp-1';
+        li.style.maxWidth = '150px';
 
-                li.appendChild(a);
-                gridContainer.appendChild(li);
-            });
+        let a = document.createElement('a');
+        a.href = `/catalogo?marcas=${marca.id}`;
+        a.innerHTML = marca.title;
+        a.className = 'w-full h-full text-center';
 
-            divcontainer.appendChild(gridContainer);
+        li.appendChild(a);
+        gridContainer.appendChild(li);
+      });
 
-            // Limpiar hijos y agregar el contenedor del menú
-            padre.innerHTML = '';
-            padre.appendChild(divcontainer);
-            activeHovermarca = true;
+      divcontainer.appendChild(gridContainer);
 
-            // Agregar eventos de `mouseleave` para cerrar el menú
-            document.getElementById('productos-link2').addEventListener('mouseleave', scheduleCloseMarca);
-            divcontainer.addEventListener('mouseenter', () => clearTimeout(closeTimeoutMarca));
-            divcontainer.addEventListener('mouseleave', scheduleCloseMarca);
-        }
-    });
+      // Limpiar hijos y agregar el contenedor del menú
+      padre.innerHTML = '';
+      padre.appendChild(divcontainer);
+      activeHovermarca = true;
 
-    let closeTimeoutMarca; // Temporizador para cerrar el menú
-
-    function scheduleCloseMarca() {
-        closeTimeoutMarca = setTimeout(() => {
-            cerrarmarca();
-        }, 100); // Retardo para evitar cierres bruscos
+      // Agregar eventos de `mouseleave` para cerrar el menú
+      document.getElementById('productos-link2').addEventListener('mouseleave', scheduleCloseMarca);
+      divcontainer.addEventListener('mouseenter', () => clearTimeout(closeTimeoutMarca));
+      divcontainer.addEventListener('mouseleave', scheduleCloseMarca);
     }
+  });
 
-    function cerrarmarca() {
-        let padre = document.getElementById('productos-link-m');
-        activeHovermarca = false;
-        padre.innerHTML = ''; // Limpia el contenido del menú
-    }
+  let closeTimeoutMarca; // Temporizador para cerrar el menú
+
+  function scheduleCloseMarca() {
+    closeTimeoutMarca = setTimeout(() => {
+      cerrarmarca();
+    }, 100); // Retardo para evitar cierres bruscos
+  }
+
+  function cerrarmarca() {
+    let padre = document.getElementById('productos-link-m');
+    activeHovermarca = false;
+    padre.innerHTML = ''; // Limpia el contenido del menú
+  }
 </script> --}}

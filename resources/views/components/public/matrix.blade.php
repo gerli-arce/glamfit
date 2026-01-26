@@ -11,9 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{{ env('APP_NAME') }}</title>
     <title>American Brands | Ofertas en americanbrands.pe</title>
-    <meta HTTP-EQUIV="bulletin-text" content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
-    <meta NAME="description" content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
-    <meta NAME="keywords" content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
+    <meta HTTP-EQUIV="bulletin-text"
+        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
+    <meta NAME="description"
+        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
+    <meta NAME="keywords"
+        content="Arma tu outfit con 50% de descuento en las mejores marcas Bronco Jeans, Lois Perú, Machine, 1921 International, Tayssir y más.">
     <meta NAME="classification" content="moda">
     <meta NAME="contactcity" content="Peru">
     <meta NAME="contactname" content="American Brands">
@@ -28,7 +31,7 @@
     <meta name="robots" content="index,follow" />
     <meta name="robots" content="all" />
     <meta NAME="subjects" content="moda">
-   
+
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.ico') }}">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -37,8 +40,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    {{-- <script src="https://cdn.sode.me/extends/notify.extend.min.js"></script> --}}
-    {{-- public\js\notify.extend.min.js  --}}
+    {{--
+    <script src="https://cdn.sode.me/extends/notify.extend.min.js"></script> --}}
+    {{-- public\js\notify.extend.min.js --}}
 
 
     <script src="{{ asset('js/notify.extend.min.js') }}"></script>
@@ -66,6 +70,9 @@
     <script src="/js/cookies.extend.js"></script>
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        const appUrl = "{{ asset('/') }}";
+    </script>
     <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script>
     <style>
         .select2-container .select2-selection--single {
@@ -104,10 +111,10 @@
         }
 
         .select2-container--default .select2-selection--single:focus {
-            border-color: #3B82F6;
-            /* focus:border-blue-500 */
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-            /* focus:ring-blue-500 */
+            border-color: #9B51E0;
+            /* focus:border-glamfit-purple */
+            box-shadow: 0 0 0 3px rgba(155, 81, 224, 0.5);
+            /* focus:ring-glamfit-purple */
         }
 
         /* Dark mode styles */
@@ -126,10 +133,10 @@
         }
 
         .dark .select2-container--default .select2-selection--single:focus {
-            border-color: #3B82F6;
-            /* dark:focus:border-blue-500 */
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-            /* dark:focus:ring-blue-500 */
+            border-color: #9B51E0;
+            /* dark:focus:border-glamfit-purple */
+            box-shadow: 0 0 0 3px rgba(155, 81, 224, 0.5);
+            /* dark:focus:ring-glamfit-purple */
         }
 
         /* Adjust the width to match Tailwind CSS block w-full */
@@ -143,7 +150,7 @@
 </head>
 
 <body class="body overflow-x-hidden">
-    
+
     @include('components.shortcode.contain_body')
 
     <div class="overlay"></div>
@@ -165,11 +172,12 @@
     {{-- @vite(['resources/js/functions.js']) --}}
 
 
-    {{--   <script>
-    tippy('[tippy]', {
-      arrow: true
-    })
-  </script> --}}
+    {{--
+    <script>
+        tippy('[tippy]', {
+            arrow: true
+        })
+    </script> --}}
 </body>
 
 </html>
