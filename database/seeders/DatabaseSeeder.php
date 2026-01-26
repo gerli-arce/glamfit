@@ -18,24 +18,24 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            /*
-            DashboardTableSeeder::class,
-            AnalyticsTableSeeder::class,
-            FintechTableSeeder::class,
-            CustomerSeeder::class,
-            OrderSeeder::class,
-            InvoiceSeeder::class,
-            MemberSeeder::class,
-            TransactionSeeder::class,
-            JobSeeder::class,
-            CampaignSeeder::class,
-            MarketerSeeder::class,
-            CampaignMarketerSeeder::class,
-            */
+                /*
+                DashboardTableSeeder::class,
+                AnalyticsTableSeeder::class,
+                FintechTableSeeder::class,
+                CustomerSeeder::class,
+                OrderSeeder::class,
+                InvoiceSeeder::class,
+                MemberSeeder::class,
+                TransactionSeeder::class,
+                JobSeeder::class,
+                CampaignSeeder::class,
+                MarketerSeeder::class,
+                CampaignMarketerSeeder::class,
+                */
             CategorySeeder::class,
             SubCategorySeeder::class,
             BrandSeeder::class,
-            // AttributesSeeder::class,
+                // AttributesSeeder::class,
             DiscountTypeSeeder::class,
             DiscountSeeder::class,
             ProductSeeder::class,
@@ -43,13 +43,14 @@ class DatabaseSeeder extends Seeder
             OfferDetailSeeder::class,
             RoleSeeder::class,
             UsersSeeder::class,
-            //MessageSeeder::class,
+            AdminUserSeeder::class,
+                //MessageSeeder::class,
             GeneralSeeder::class,
-            //FaqsSeeder::class,
-            //BeneficiosSeeder::class,
+                //FaqsSeeder::class,
+                //BeneficiosSeeder::class,
             SliderSeeder::class,
             BannersSeeder::class,
-            
+
             StatusSeeder::class,
             PricesTableSeeder::class,
             PoliticasDatos::class,
@@ -57,6 +58,6 @@ class DatabaseSeeder extends Seeder
             ShortcodeSeeder::class,
             //ServiceSeeder::class,
         ]);
-        
+
     }
 }
