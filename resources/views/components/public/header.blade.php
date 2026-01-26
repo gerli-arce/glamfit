@@ -280,7 +280,7 @@
           @if (Auth::user() == null)
             <a class="w-6 h-6 lg:w-auto lg:h-autoflex" href="{{ route('login') }}">
               {{-- <i class="fa-solid fa-user-large fa-xl text-white !leading-none"></i> --}}
-              <img src="{{ asset('images/svg/user.svg') }}" class="text-white w-7" /></a>
+              <img src="{{ asset('images/svg/USER.svg') }}" class="text-white w-7" /></a>
             </a>
           @else
             <div class="relative  inline-flex font-Urbanist_Bold" x-data="{ open: false }">
@@ -291,7 +291,7 @@
                     class="hidden lg:flex truncate lg:ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-white ">
                     {{ explode(' ', Auth::user()->name)[0] }}
                   </span>
-                  <img src="{{ asset('images/svg/user.svg') }}" class="block lg:hidden min-w-6 min-h-6 text-white" />
+                  <img src="{{ asset('images/svg/USER.svg') }}" class="block lg:hidden min-w-6 min-h-6 text-white" />
                   <svg class="min-h-2 min-w-2 lg:w-3 lg:h-3 lg:shrink-0 lg:ml-1 fill-current text-white"
                     viewBox="0 0 12 12">
                     <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
@@ -341,7 +341,7 @@
                 {{-- <img src="{{ asset('images/svg/bag_boost.svg') }}"
                   class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" /> --}}
                 {{-- <i class="fa-solid fa-suitcase-rolling fa-xl text-white !leading-none -mt-1"></i> --}}
-                <img src="{{ asset('images/svg/carrito.svg') }}" class="text-white w-7" /></a>
+                <img src="{{ asset('images/svg/CARRITO.svg') }}" class="text-white w-7" /></a>
               </div>
             </div>
           @endif
