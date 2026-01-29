@@ -1714,7 +1714,7 @@
       url: `{{ route('carrito.buscarProducto') }}`,
       method: 'POST',
       data: {
-        _token: $('input[name="_token"]').val(),
+        _token: $('input[name="_token"]').val() || '{{ csrf_token() }}',
         id: item,
         cantidad
 

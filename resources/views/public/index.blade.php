@@ -37,6 +37,13 @@
         opacity: 1;
     }
 
+    .swiper-pagination-slider {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px;
+    }
+
     .swiper-pagination-cat .swiper-pagination-bullet {
         width: 15px;
         height: 15px;
@@ -245,8 +252,8 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
         border-radius: 9999px;
         background: #7D6AB8;
         color: #fff;
@@ -257,8 +264,10 @@
         font-weight: 600;
         box-shadow: 0 10px 20px rgba(125, 106, 184, 0.4);
         transition: transform 0.2s ease, background 0.2s ease;
-        z-index: 2;
+        z-index: 10;
         pointer-events: auto;
+        touch-action: manipulation;
+        cursor: pointer;
     }
 
     .glamfit-featured-plus:hover {
@@ -927,15 +936,20 @@
     $(document).on('click', '.glamfit-featured-plus', function (event) {
         event.preventDefault();
         event.stopPropagation();
-        event.stopImmediatePropagation();
 
-        const productId = $(this).data('id');
+        const productId = $(this).attr('data-id');
         if (!productId) return;
+
+        $(this).addClass('opacity-50 pointer-events-none');
 
         try {
             agregarAlCarrito(productId, 1);
+            setTimeout(() => {
+                $(this).removeClass('opacity-50 pointer-events-none');
+            }, 1000);
         } catch (error) {
             console.error(error);
+            $(this).removeClass('opacity-50 pointer-events-none');
         }
     });
 </script>
@@ -999,6 +1013,7 @@
         initialSlide: 0,
         autoplay: {
             delay: 3000,
+            disableOnInteraction: false,
         },
 
         pagination: {
@@ -1151,6 +1166,8 @@
             clickable: true,
             dynamicBullets: true,
         },
+        preventClicks: false,
+        preventClicksPropagation: false,
         breakpoints: {
             0: {
                 slidesPerView: 2,

@@ -51,59 +51,116 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-2" style="display:none;">
-                            <label for="inside">Interior</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                          @if(Auth::user()->hasRole('root'))
+                            <div class="md:col-span-2">
+                              <label for="inside">Interior</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="inside" name="inside" value="{{ $general->inside }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Interior Oficina 204 - Piso 4">
                               </div>
-                              <input type="text" id="inside" name="inside" value="{{ $general->inside }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Interior Oficina 204 - Piso 4">
                             </div>
-                          </div>
 
-                          <div class="md:col-span-2" style="display:none;">
-                            <label for="district">Distrito</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                            <div class="md:col-span-2">
+                              <label for="district">Distrito</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="district" name="district" value="{{ $general->district }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Interior Oficina 204 - Piso 4">
                               </div>
-                              <input type="text" id="district" name="district" value="{{ $general->district }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Interior Oficina 204 - Piso 4">
                             </div>
-                          </div>
 
-                          <div class="md:col-span-1" style="display:none;">
-                            <label for="country">País</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                            <div class="md:col-span-1">
+                              <label for="country">País</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="country" name="country" value="{{ $general->country }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Interior Oficina 204 - Piso 4">
                               </div>
-                              <input type="text" id="country" name="country" value="{{ $general->country }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Interior Oficina 204 - Piso 4">
                             </div>
-                          </div>
+
+                            <div class="md:col-span-5">
+                              <label for="aboutus">Acerca de nosotros</label>
+                              <div class="relative mb-2">
+                                <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <textarea type="text" id="aboutus" name="aboutus"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Nosotros...">{{ $general->aboutus }}</textarea>
+                              </div>
+                            </div>
+
+                            <div class="md:col-span-5">
+                              <label for="htop">Descripción de encabezado</label>
+                              <div class="relative mb-2">
+                                <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="htop" name="htop" value="{{ $general->htop }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Headertop...">
+                              </div>
+                            </div>
+
+
+                            <div class="md:col-span-5">
+                              <label for="ig_token">Token Instagram </label>
+                              <div class="relative mb-2 ">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="ig_token" name="ig_token" value="{{ $general->ig_token }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Token Instagram">
+                              </div>
+                            </div>
+                          @endif
 
                           <div class="md:col-span-2">
                             <label for="email">Correo electrónico</label>
@@ -141,24 +198,26 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-1" style="display:none;">
-                            <label for="office_phone">Número de Teléfono</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                          @if(Auth::user()->hasRole('root'))
+                            <div class="md:col-span-1">
+                              <label for="office_phone">Número de Teléfono</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="office_phone" name="office_phone"
+                                  value="{{ $general->office_phone }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="+51 1234567">
                               </div>
-                              <input type="text" id="office_phone" name="office_phone"
-                                value="{{ $general->office_phone }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="+51 1234567">
                             </div>
-                          </div>
+                          @endif
 
                           <div class="md:col-span-1">
                             <label for="whatsapp">Número Para Whatsapp</label>
@@ -177,44 +236,45 @@
                                 placeholder="+51 1234567">
                             </div>
                           </div>
-                          <div class="md:col-span-5" style="display:none;">
-                            <label for="mensaje_whatsapp">Mensaje predeterminado para
-                              Whastapp</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                          @if(Auth::user()->hasRole('root'))
+                            <div class="md:col-span-5">
+                              <label for="mensaje_whatsapp">Mensaje predeterminado para
+                                Whastapp</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="mensaje_whatsapp" name="mensaje_whatsapp"
+                                  value="{{ $general->mensaje_whatsapp }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="+51 1234567">
                               </div>
-                              <input type="text" id="mensaje_whatsapp" name="mensaje_whatsapp"
-                                value="{{ $general->mensaje_whatsapp }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="+51 1234567">
                             </div>
-                          </div>
 
-
-                          <div class="md:col-span-5" style="display:none;">
-                            <label for="schedule">Horario de Oficina</label>
-                            <div class="relative mb-2">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                  </path>
-                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                  </path>
-                                </svg>
+                            <div class="md:col-span-5">
+                              <label for="schedule">Horario de Oficina</label>
+                              <div class="relative mb-2">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                    </path>
+                                  </svg>
+                                </div>
+                                <input type="text" id="schedule" name="schedule" value="{{ $general->schedule }}"
+                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Horario de Oficina">
                               </div>
-                              <input type="text" id="schedule" name="schedule" value="{{ $general->schedule }}"
-                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Horario de Oficina">
                             </div>
-                          </div>
+                          @endif
 
 
                           <h2 class="md:col-span-5 text-lg font-semibold text-slate-800 mt-2 dark:text-white">
@@ -260,24 +320,26 @@
                                 </div>
                               </div>
 
-                              <div style="display:none;">
-                                <label for="youtube">Youtube</label>
+                              @if(Auth::user()->hasRole('root'))
+                                <div>
+                                  <label for="youtube">Youtube</label>
 
-                                <div class="relative ">
-                                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                      </path>
-                                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                      </path>
-                                    </svg>
+                                  <div class="relative ">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                        </path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                        </path>
+                                      </svg>
+                                    </div>
+                                    <input type="text" id="rs_youtube" name="youtube" value="{{ $general->youtube }}"
+                                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                      placeholder="Youtube">
                                   </div>
-                                  <input type="text" id="rs_youtube" name="youtube" value="{{ $general->youtube }}"
-                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Youtube">
                                 </div>
-                              </div>
+                              @endif
 
                               <div>
                                 <label for="twitter">Twitter</label>
@@ -297,24 +359,26 @@
                                     placeholder="Twitter">
                                 </div>
                               </div>
-                              <div style="display:none;">
-                                <label for="linkedin">Linkedin</label>
+                              @if(Auth::user()->hasRole('root'))
+                                <div>
+                                  <label for="linkedin">Linkedin</label>
 
-                                <div class="relative">
-                                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                      </path>
-                                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                      </path>
-                                    </svg>
+                                  <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                        </path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
+                                        </path>
+                                      </svg>
+                                    </div>
+                                    <input type="text" id="linkedin" name="linkedin" value="{{ $general->linkedin }}"
+                                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                      placeholder="Linkedin">
                                   </div>
-                                  <input type="text" id="linkedin" name="linkedin" value="{{ $general->linkedin }}"
-                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Linkedin">
                                 </div>
-                              </div>
+                              @endif
                               <div>
                                 <label for="tiktok">Tiktok</label>
 
@@ -341,7 +405,7 @@
                           <h2 class="md:col-span-5 text-lg font-semibold text-slate-800 mt-2 dark:text-white">
                             Descripción de la empresa</h2>
 
-                          <div class="md:col-span-5" style="display:none;">
+                          <div class="md:col-span-5">
                             <label for="aboutus">Acerca de nosotros</label>
                             <div class="relative mb-2">
                               <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
@@ -359,7 +423,7 @@
                             </div>
                           </div>
 
-                          <div class="md:col-span-5" style="display:none;">
+                          <div class="md:col-span-5">
                             <label for="htop">Descripción de encabezado</label>
                             <div class="relative mb-2">
                               <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
