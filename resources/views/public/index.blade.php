@@ -198,7 +198,7 @@
         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
     }
 
-    .glamfit-featured-media > a {
+    .glamfit-featured-media>a {
         position: relative;
         z-index: 1;
         display: block;
@@ -607,6 +607,7 @@
                 height: 300px !important;
             }
         }
+
         .novedades {
             height: auto !important;
         }
@@ -772,8 +773,7 @@
                                     {{-- Image Container --}}
                                     <div class="glamfit-featured-media">
                                         <a href="{{ route('producto', $item->slug) }}" class="block w-full h-full">
-                                            <img class="glamfit-featured-image"
-                                                src="{{ asset($item->imagen) }}"
+                                            <img class="glamfit-featured-image" src="{{ asset($item->imagen) }}"
                                                 onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
                                                 alt="{{$item->producto}}">
                                         </a>
@@ -786,9 +786,7 @@
                                         @endif
 
                                         {{-- Add Button --}}
-                                        <button type="button"
-                                            data-id="{{ $item->id }}"
-                                            class="glamfit-featured-plus"
+                                        <button type="button" data-id="{{ $item->id }}" class="glamfit-featured-plus"
                                             aria-label="Agregar al carrito">
                                             +
                                         </button>
@@ -798,7 +796,8 @@
                                             @if($tallasCount > 1)
                                                 {{ $tallasCount }} Tallas
                                             @elseif($colorsCount > 0)
-                                                {{ $colorsCount }} {{ $colorsCount === 1 ? 'Color disponible' : 'Colores disponibles' }}
+                                                {{ $colorsCount }}
+                                                {{ $colorsCount === 1 ? 'Color disponible' : 'Colores disponibles' }}
                                             @else
                                                 Detalles
                                             @endif
@@ -812,7 +811,8 @@
                                         </h3>
                                         <div class="glamfit-featured-prices">
                                             <span class="glamfit-featured-price">
-                                                S/ {{ number_format($item->descuento > 0 ? $item->descuento : $item->precio, 2) }}
+                                                S/
+                                                {{ number_format($item->descuento > 0 ? $item->descuento : $item->precio, 2) }}
                                             </span>
                                             @if ($item->descuento > 0)
                                                 <span class="glamfit-featured-price-old">
@@ -1153,8 +1153,8 @@
         },
         breakpoints: {
             0: {
-                slidesPerView: 1.1,
-                spaceBetween: 16,
+                slidesPerView: 2,
+                spaceBetween: 10,
             },
             600: {
                 slidesPerView: 2.1,
