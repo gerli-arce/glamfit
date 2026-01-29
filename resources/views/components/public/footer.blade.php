@@ -1,7 +1,4 @@
-<footer class="bg-[#111111] text-white overflow-hidden relative">
-
-    {{-- Decorative gradient blob --}}
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E91E63] via-[#9B51E0] to-[#E91E63]"></div>
+<footer class="bg-[#7D6AB8] text-white relative">
 
     <style>
         #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos #modallinkTiempoEnvios #modallinkPlazoReembolso #modallinkTratamientoDatos #modallinkPoliticasCookies #modallinkCampanasPublicitarias #modallinkBeneficios #modallinkSeguimientoPedido #modallinkNuestrasTiendas {
@@ -22,131 +19,189 @@
         #modallinkNuestrasTiendas .prose {
             max-width: 100%;
             text-align: justify;
-
         }
 
         .prose * {
             margin-bottom: 0% !important;
             margin-top: 0% !important;
         }
+
+        .footer-wrap {
+            padding: 50px 8% 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 40px;
+        }
+
+        .footer-heading {
+            font-family: 'Urbanist_Bold', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        .footer-text {
+            color: #ffffff;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            font-family: 'Urbanist_Regular', sans-serif;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            font-family: 'Urbanist_Regular', sans-serif;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-scroll {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #888888 #ffffff;
+        }
+
+        .footer-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .footer-scroll::-webkit-scrollbar-track {
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .footer-scroll::-webkit-scrollbar-thumb {
+            background: #888888;
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 5%;
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2.2fr 1fr 1fr 1fr 1.2fr;
+                gap: 60px;
+            }
+        }
     </style>
 
-    <div class="w-full px-[5%] pt-16 pb-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-
-            {{-- Column 1: Brand Info --}}
-            <div class="flex flex-col gap-5">
-                <a href="/">
-                    <img src="{{ asset('images/glamfit/logo.png') }}" alt="GLAMFIT" class="h-12 object-contain" />
-                </a>
-                <p class="text-gray-400 font-Urbanist_Light text-sm leading-relaxed max-w-sm">
-                    Ropa deportiva con estilo y glamour para el gimnasio y más. Encuentra las mejores prendas para
-                    entrenar con actitud y comodidad.
-                </p>
-                <div class="flex flex-row gap-4 mt-2">
-                    @if ($datosgenerales->instagram)
-                        <a href="{{ $datosgenerales->instagram }}" target="_blank"
-                            class="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#E91E63] hover:text-white text-gray-400 transition-all duration-300 group">
-                            <i class="fa-brands fa-instagram text-xl group-hover:text-white"></i>
-                        </a>
-                    @endif
-
-                    @if ($datosgenerales->tiktok)
-                        <a href="{{ $datosgenerales->tiktok }}" target="_blank"
-                            class="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#E91E63] hover:text-white text-gray-400 transition-all duration-300 group">
-                            <i class="fa-brands fa-tiktok text-xl group-hover:text-white"></i>
-                        </a>
-                    @endif
-
-                    @if ($datosgenerales->facebook)
-                        <a href="{{ $datosgenerales->facebook }}" target="_blank"
-                            class="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#E91E63] hover:text-white text-gray-400 transition-all duration-300 group">
-                            <i class="fa-brands fa-facebook-f text-xl group-hover:text-white"></i>
-                        </a>
-                    @endif
-
-                    @if ($datosgenerales->whatsapp)
-                        <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text=Hola%20GLAMFIT%2C%20vengo%20de%20la%20web%20estoy%20interesado%20en%20adquirir%20algunos%20productos."
-                            target="_blank"
-                            class="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#E91E63] hover:text-white text-gray-400 transition-all duration-300 group">
-                            <i class="fa-brands fa-whatsapp text-xl group-hover:text-white"></i>
-                        </a>
-                    @endif
+    <div class="footer-wrap">
+        <div class="footer-grid">
+            {{-- Column 1: Acerca de Glamfit --}}
+            <div>
+                <h3 class="footer-heading">Acerca de Glamfit</h3>
+                <div class="footer-scroll">
+                    <p class="footer-text">
+                        {{ $datosgenerales->aboutus ?? 'Glamfit es tu tienda online de ropa deportiva y accesorios fitness diseñada para mujeres que buscan verse y sentirse bien mientras entrenan. Combinamos estilo, comodidad y funcionalidad en cada prenda, ofreciendo productos de alta calidad que se adaptan a tu ritmo de vida activo. ¡Entrena con confianza, entrena con Glamfit!' }}
+                    </p>
                 </div>
             </div>
 
-            {{-- Column 2: Links --}}
-            <div class="flex flex-col gap-6">
-                <h3
-                    class="font-Urbanist_Bold text-lg text-white tracking-wider uppercase border-l-4 border-[#E91E63] pl-3">
-                    Atención al Cliente</h3>
-                <div class="flex flex-col gap-3 font-Urbanist_Light text-gray-400 text-sm">
-                    <a href="{{route('contacto')}}"
-                        class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Contáctanos</a>
-                    <a target="_blank"
-                        href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ5OTQ5MDYyODM2OTM2?story_media_id=3433199994630037399&igsh=MXZoaDBlM2gxcW1wdg=="
-                        class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Nuestras Tiendas</a>
-                    <a href="#" class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Preguntas
-                        Frecuentes</a>
-                    <a href="#" class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Términos y
-                        Condiciones</a>
+            {{-- Column 2: Categorías --}}
+            <div>
+                <h3 class="footer-heading">Categorías</h3>
+                <div class="flex flex-col gap-3">
+                    <a href="/catalogo" class="footer-link">Accesorios</a>
+                    <a href="/catalogo" class="footer-link">Enterizo short</a>
+                    <a href="/catalogo" class="footer-link">Enterizos pantalón</a>
+                    <a href="/catalogo" class="footer-link">Short push-up</a>
+                    <a href="/catalogo" class="footer-link">Leggings push-up</a>
+                    <a href="/catalogo" class="footer-link">Conjuntos</a>
+                    <a href="/catalogo" class="footer-link">Kits accesorios</a>
                 </div>
             </div>
 
-            {{-- Column 3: Links --}}
-            <div class="flex flex-col gap-6">
-                <h3
-                    class="font-Urbanist_Bold text-lg text-white tracking-wider uppercase border-l-4 border-[#E91E63] pl-3">
-                    Categorías</h3>
-                <div class="flex flex-col gap-3 font-Urbanist_Light text-gray-400 text-sm">
-                    <a href="/catalogo" class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Ver Todo</a>
-                    <a href="/catalogo?categoria=1"
-                        class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Ropa Deportiva</a>
-                    <a href="/catalogo?categoria=2"
-                        class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Accesorios</a>
-                    <a href="/catalogo?ofertas=1"
-                        class="hover:text-[#E91E63] hover:pl-2 transition-all duration-300">Ofertas</a>
+            {{-- Column 3: Información --}}
+            <div>
+                <h3 class="footer-heading">Información</h3>
+                <div class="flex flex-col gap-3">
+                    <a href="#" id="linkTiempoEnvios" class="footer-link">Envíos y Pagos</a>
+                    <a href="#" id="linkPoliticas" class="footer-link">Devoluciones</a>
+                    <a href="/nosotros" class="footer-link">Acerca de nosotros</a>
+                    <a href="#" class="footer-link">Preguntas frecuentes</a>
                 </div>
             </div>
 
-            {{-- Column 4: Newsletter --}}
-            <div class="flex flex-col gap-6">
-                <h3
-                    class="font-Urbanist_Bold text-lg text-white tracking-wider uppercase border-l-4 border-[#E91E63] pl-3">
-                    SUSCRÍBETE</h3>
-                <p class="text-gray-400 font-Urbanist_Light text-sm leading-relaxed">
-                    Suscríbete para recibir las últimas novedades y ofertas exclusivas.
-                </p>
-                <form action="#" class="flex flex-col gap-3">
-                    <input type="email" placeholder="Tu correo electrónico"
-                        class="bg-[#1F1F1F] border border-[#333] text-white px-4 py-3 rounded-md focus:outline-none focus:border-[#E91E63] font-Urbanist_Light text-sm placeholder-gray-500">
-                    <button type="button"
-                        class="bg-[#E91E63] text-white px-4 py-3 rounded-md font-Urbanist_Bold text-sm uppercase tracking-wide hover:bg-[#D81B60] transition-colors">
-                        Suscribirme
-                    </button>
-                </form>
+            {{-- Column 4: Legal --}}
+            <div>
+                <h3 class="footer-heading">Legal</h3>
+                <div class="flex flex-col gap-1">
+                    <a href="#" id="linkTerminos" class="footer-link">Términos y condiciones</a>
+                    <a href="#" id="linkPoliticasDatos" class="footer-link">Políticas y Privacidad</a>
+                </div>
             </div>
 
-        </div>
-    </div>
-
-    <div class="text-gray-500 pt-8 pb-10 border-t border-[#1F1F1F]">
-        <div class="w-full px-[5%] flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left">
-                <p class="font-Urbanist_Light text-sm">
-                    Copyright &copy; {{ date('Y') }} <span class="font-Urbanist_Bold text-white">GLAMFIT</span>. Todos
-                    los derechos reservados.
-                </p>
-            </div>
-            <div class="flex gap-4">
-                {{-- Payment icons could go here --}}
+            {{-- Column 5: Contáctanos --}}
+            <div>
+                <h3 class="footer-heading">Contáctanos</h3>
+                <div class="flex flex-col gap-1">
+                    @if($datosgenerales->cellphone)
+                        <a href="tel:{{ $datosgenerales->cellphone }}" class="footer-link">{{ $datosgenerales->cellphone }}</a>
+                    @endif
+                    @if($datosgenerales->email)
+                        <a href="mailto:{{ $datosgenerales->email }}" class="footer-link">{{ $datosgenerales->email }}</a>
+                    @endif
+                </div>
+                
+                <div class="flex gap-4 mt-6 items-center">
+                    @if($datosgenerales->facebook)
+                        <a href="{{ $datosgenerales->facebook }}" target="_blank" class="hover:scale-110 transition-transform">
+                            <img src="{{ asset('images/svg/facebook.svg') }}" class="h-6 w-auto brightness-0 invert" alt="Facebook">
+                        </a>
+                    @endif
+                    @if($datosgenerales->instagram)
+                        <a href="{{ $datosgenerales->instagram }}" target="_blank" class="hover:scale-110 transition-transform">
+                            <img src="{{ asset('images/svg/INSTAGRAMWHITE.svg') }}" class="h-6 w-auto" alt="Instagram">
+                        </a>
+                    @endif
+                    @if($datosgenerales->tiktok)
+                        <a href="{{ $datosgenerales->tiktok }}" target="_blank" class="hover:scale-110 transition-transform">
+                            <img src="{{ asset('images/svg/TIKTOK.svg') }}" class="h-6 w-auto brightness-0 invert" alt="TikTok">
+                        </a>
+                    @endif
+                    @if($datosgenerales->whatsapp)
+                        <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ urlencode($datosgenerales->mensaje_whatsapp ?? '') }}" target="_blank" class="hover:scale-110 transition-transform">
+                            <img src="{{ asset('images/svg/WHATSAPP.svg') }}" class="h-6 w-auto brightness-0 invert" alt="WhatsApp">
+                        </a>
+                    @endif
+                    @if($datosgenerales->youtube)
+                        <a href="{{ $datosgenerales->youtube }}" target="_blank" class="hover:scale-110 transition-transform">
+                            <img src="{{ asset('images/svg/youtube.svg') }}" class="h-6 w-auto brightness-0 invert" alt="YouTube">
+                        </a>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-
-
 
     </div>
+
+    <div class="footer-bottom" style="justify-content: center;">
+        <p>© {{ date('Y') }} <span class="font-bold">GLAMFIT by CONORLD</span></p>
     </div>
 
     <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">

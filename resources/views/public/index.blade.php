@@ -138,727 +138,725 @@
     .animated-item:nth-child(5) {
         animation-delay: 0.5s;
     }
+
+    :root {
+        --glamfit-accent: #7D6AB8;
+        --glamfit-accent-dark: #6B5AA8;
+        --glamfit-soft: #F4EEF9;
+        --glamfit-soft-border: #E6DFF1;
+    }
+
+    .glamfit-pill {
+        background: var(--glamfit-soft);
+        border: 1px solid var(--glamfit-soft-border);
+        border-radius: 9999px;
+        padding: 0.65rem 2.5rem;
+        font-weight: 700;
+        color: #2E2E2E;
+        box-shadow: 0 12px 30px rgba(33, 14, 82, 0.08);
+    }
+
+    .glamfit-plus-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 9999px;
+        background: var(--glamfit-accent);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 20px rgba(125, 106, 184, 0.35);
+    }
+
+    .glamfit-chip {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid #E8E1F3;
+        color: #4B3E77;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-weight: 600;
+    }
+
+    .glamfit-featured-card {
+        background: #fff;
+        border: 1px solid #EFE7F7;
+        border-radius: 22px;
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(40, 20, 82, 0.08);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .glamfit-featured-media {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #F4F4F7;
+        aspect-ratio: 1 / 1;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+    }
+
+    .glamfit-featured-media > a {
+        position: relative;
+        z-index: 1;
+        display: block;
+    }
+
+    .glamfit-featured-media::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        height: 1px;
+        background: rgba(125, 106, 184, 0.18);
+        pointer-events: none;
+    }
+
+    .glamfit-featured-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .glamfit-featured-card:hover .glamfit-featured-image {
+        transform: scale(1.05);
+    }
+
+    .glamfit-featured-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #7D6AB8;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        letter-spacing: 0.02em;
+        box-shadow: 0 8px 16px rgba(125, 106, 184, 0.35);
+        z-index: 2;
+    }
+
+    .glamfit-featured-plus {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 38px;
+        height: 38px;
+        border-radius: 9999px;
+        background: #7D6AB8;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 600;
+        box-shadow: 0 10px 20px rgba(125, 106, 184, 0.4);
+        transition: transform 0.2s ease, background 0.2s ease;
+        z-index: 2;
+        pointer-events: auto;
+    }
+
+    .glamfit-featured-plus:hover {
+        background: #6B5AA8;
+        transform: scale(1.06);
+    }
+
+    .glamfit-featured-sizes {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background: #F2ECFB;
+        color: #4B3E77;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 10px;
+        border: 1px solid #E6DCF5;
+        box-shadow: 0 6px 14px rgba(40, 20, 82, 0.08);
+        z-index: 2;
+    }
+
+    .glamfit-featured-body {
+        padding: 10px 6px 6px;
+    }
+
+    .glamfit-featured-title {
+        font-size: 14px;
+        color: #1F1F1F;
+        line-height: 1.35;
+        min-height: 2.4em;
+        font-weight: 500;
+    }
+
+    .glamfit-featured-prices {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-top: 6px;
+    }
+
+    .glamfit-featured-price {
+        color: #8C1D2C;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .glamfit-featured-price-old {
+        color: #9B9B9B;
+        font-size: 12px;
+        text-decoration: line-through;
+    }
+
+    @media (min-width: 768px) {
+        .glamfit-featured-card {
+            padding: 12px;
+        }
+
+        .glamfit-featured-plus {
+            width: 42px;
+            height: 42px;
+            font-size: 24px;
+        }
+
+        .glamfit-featured-title {
+            font-size: 15px;
+        }
+
+        .glamfit-featured-price {
+            font-size: 18px;
+        }
+    }
+
+    .swiper-pagination-novedades .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background-color: var(--glamfit-accent) !important;
+        border: 2px solid var(--glamfit-accent);
+        opacity: 1;
+    }
+
+    .swiper-pagination-novedades .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        background-color: white !important;
+        border: 2px solid var(--glamfit-accent);
+        opacity: 1;
+    }
+
+    .combo-card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .combo-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .combo-btn {
+        border-radius: 10px;
+        width: 100%;
+    }
+
+    @media (min-width: 640px) {
+        .combo-actions {
+            flex-direction: row;
+            gap: 14px;
+        }
+
+        .combo-btn {
+            width: auto;
+            flex: 1;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .combo-btn {
+            padding: 1rem 2rem !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    .modal .modal-content {
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 10px !important;
+    }
+
+    #modalofertas {
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        max-width: 500px;
+        border-radius: 10px;
+        overflow: visible;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        margin: 12px auto !important;
+    }
+
+    .jquery-modal.blocker.current {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sliderab,
+    .sliderab .swiper-slide,
+    .sliderab .swiper-slide img {
+        border-radius: 10px !important;
+    }
+
+    .sliderab {
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        #modalofertas {
+            width: calc(100% - 32px) !important;
+            max-width: 420px !important;
+            margin: 8px auto 0 !important;
+        }
+    }
+
+    /* Style for jquery-modal close button */
+    #modalofertas.modal a.close-modal {
+        top: -15px !important;
+        right: -15px !important;
+        width: 34px !important;
+        height: 34px !important;
+        background-color: black !important;
+        border: 2px solid white !important;
+        border-radius: 50% !important;
+        opacity: 1 !important;
+        text-indent: -9999px;
+        z-index: 10001 !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: 18px !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #modalofertas .swiper-slide img {
+        border-radius: 0px !important;
+    }
 </style>
-
-
 
 @section('content')
 
 <main class="z-[15] ">
 
-    {{-- @if (count($slider) > 0)
-    <section class="">
-        <x-swipper-card :items="$slider" />
-    </section>
-    @endif --}}
-
     @if (count($slider) > 0)
-        <section class="w-full relative mx-auto">
-            <div class="swiper sliderab h-max">
-                <div class="swiper-wrapper">
+        <section class="max-w-7xl mx-auto px-5 sm:px-[6%] lg:px-[6%] pt-2 lg:pt-4">
+            <div class="swiper sliderab shadow-lg" style="height: 620px; border-radius: 10px; overflow: hidden;">
+                <div class="swiper-wrapper h-full">
                     @foreach ($slider as $slide)
-                        <div class="swiper-slide">
-                            <div class="w-full">
-                                <a href="{{$slide->link2}}">
-                                    <div
-                                        class="hidden md:flex h-[450px] w-full md:h-auto relative z-10 md:flex-col items-end justify-end">
-                                        <img class="block h-full w-full object-contain object-bottom"
-                                            src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                            onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
-                                            alt="">
-                                    </div>
-                                    <div
-                                        class="flex flex-col md:hidden h-auto w-full md:h-auto relative z-10  items-end justify-end">
-                                        <img class="block h-full w-full object-contain object-bottom"
-                                            src="{{ asset($slide->link1) }}"
-                                            onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
-                                            alt="">
-                                    </div>
-                                </a>
-                            </div>
+                        @php
+                            $desktopSrc = asset($slide->url_image . $slide->name_image);
+                            $mobileSrc = !empty($slide->link1) ? asset($slide->link1) : $desktopSrc;
+                        @endphp
+                        <div class="swiper-slide h-full" style="border-radius: 10px; overflow: hidden;">
+                            <a href="{{$slide->link2}}" class="block w-full h-full">
+                                {{-- Desktop Slider --}}
+                                <div class="hidden md:block w-full h-full overflow-hidden" style="border-radius: 10px;">
+                                    <img class="w-full h-full object-cover" src="{{ $desktopSrc }}"
+                                        onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" alt="">
+                                </div>
+                                {{-- Mobile Slider --}}
+                                <div class="block md:hidden w-full h-full overflow-hidden" style="border-radius: 10px;">
+                                    <img class="w-full h-full object-cover" src="{{ $mobileSrc }}"
+                                        onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" alt="">
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
-                {{-- <div class="flex flex-row justify-center items-center relative">
-                    <div class="swiper-pagination-slider absolute top-full bottom-0 z-10 right-full !left-1/2"></div>
-                </div> --}}
+                <div class="swiper-pagination-slider absolute bottom-4 w-full flex justify-center z-20"></div>
             </div>
         </section>
     @endif
+
+    <style>
+        .sliderab {
+            height: 620px !important;
+        }
+
+        @media (max-width: 768px) {
+            .sliderab {
+                height: 500px !important;
+            }
+        }
+
+        .sliderab .swiper-slide img {
+            border-radius: 10px !important;
+        }
+
+        .category-circle-container {
+            width: 130px !important;
+            height: 130px !important;
+            border-radius: 50% !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border: 1px solid #E6E1F2 !important;
+            background-color: white !important;
+            flex-shrink: 0 !important;
+            aspect-ratio: 1/1 !important;
+            margin: 0 auto !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        @media (min-width: 1024px) {
+            .category-circle-container {
+                width: 180px !important;
+                height: 180px !important;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .category-circle-container {
+                width: 220px !important;
+                height: 220px !important;
+            }
+        }
+
+        .category-circle-container:hover {
+            transform: scale(1.05) !important;
+            border-color: #7D6AB8 !important;
+        }
+
+        .carruseltop {
+            height: auto !important;
+            padding-bottom: 0 !important;
+            min-height: 0 !important;
+        }
+
+        .carruseltop .swiper-wrapper {
+            align-items: flex-start;
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+        .carruseltop .swiper-slide {
+            height: auto !important;
+            display: flex;
+            justify-content: center;
+            align-self: flex-start;
+            min-height: 0 !important;
+        }
+
+        .swiper-pagination-cat {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            position: relative !important;
+            margin: 0 auto !important;
+            left: 0 !important;
+            transform: none !important;
+        }
+
+        .combos {
+            height: auto !important;
+        }
+
+        .combos .swiper-wrapper {
+            height: auto !important;
+            align-items: flex-start;
+        }
+
+        .swiper-pagination-logos-destacados {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            position: relative !important;
+            margin: 0 auto !important;
+            left: 0 !important;
+            transform: none !important;
+        }
+
+        .logos-destacados {
+            height: auto !important;
+        }
+
+        .logos-destacados .swiper-wrapper {
+            height: auto !important;
+            align-items: flex-start;
+        }
+
+        .logos-destacados .swiper-slide {
+            height: auto !important;
+        }
+
+        .brand-card-height {
+            height: 250px !important;
+        }
+
+        @media (min-width: 1024px) {
+            .brand-card-height {
+                height: 300px !important;
+            }
+        }
+        .novedades {
+            height: auto !important;
+        }
+
+        .novedades .swiper-wrapper {
+            height: auto !important;
+            align-items: flex-start;
+        }
+
+        .novedades .swiper-slide {
+            height: auto !important;
+        }
+    </style>
 
     @if (count($subcategorias) > 0)
-        <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-            <div class="w-full">
-                <div class="swiper carruseltop h-max">
-                    <div class="swiper-wrapper">
-                        @foreach ($subcategorias as $subcategoria)
-                            <div class="swiper-slide">
-                                <div class="flex flex-col max-w-[450px] mx-auto relative">
-                                    <a href="/catalogo?subcategoria={{$subcategoria->id}}">
-                                        <img class="w-full h-auto object-cover aspect-square"
-                                            src="{{ asset($subcategoria->url_image . $subcategoria->name_image) }}" />
-                                    </a>
-                                    <div
-                                        class="absolute inset-x-0 bottom-0 h-[150px] bg-gradient-to-t from-black/95 to-transparent">
-                                    </div>
-                                    <div class="flex flex-row w-full absolute bottom-5">
-                                        <div class="flex flex-row justify-center items-center w-full">
-                                            <h2
-                                                class="text-white text-2xl tracking-widest font-Urbanist_Semibold font-bold text-center uppercase">
-                                                {{$subcategoria->name}}
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="flex flex-row justify-center items-center relative mt-10">
-                        <div class="swiper-pagination-cat absolute top-full bottom-0 z-10 right-full !left-1/2 "></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    {{-- <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-        <div class="swiper carruseltop h-max">
-            <div class="swiper-wrapper">
-                @foreach ($subcategorias as $subcategoria)
-                <div class="swiper-slide">
-                    <a href="/catalogo?subcategoria={{$subcategoria->id}}">
-                        <div class="bg-no-repeat object-top bg-center bg-cover min-h-[350px] aspect-square flex flex-row  items-center p-5 "
-                            style=" background-image: url('{{ asset($subcategoria->url_image . $subcategoria->name_image) }}')">
-                            <div class="flex flex-row justify-end items-end w-full ">
-                                <div class="flex flex-row md:w-2/3">
-                                    <h2
-                                        class="text-white text-2xl tracking-widest font-Urbanist_Semibold font-bold text-right uppercase">
-                                        {{$subcategoria->name}}
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            </div>
-            <div class="flex flex-row justify-center items-center relative mt-10">
-                <div class="swiper-pagination-cat absolute top-full bottom-0 z-10 right-full !left-1/2 "></div>
-            </div>
-        </div>
-    </section> --}}
-
-    {{-- @if (count($bannerMid) > 0)
-    <section class="w-full">
-        <x-banner-section-cover :banner="$bannerMid" />
-    </section>
-    @endif --}}
-
-
-    {{-- @if (count($benefit) > 0)
-    <section class="flex flex-col w-full gap-12 relative pt-12 lg:pt-16 px-[5%]">
-
-        <div class="swiper promo h-max flex flex-row w-full">
-            <div class="swiper-wrapper">
-                @foreach ($benefit as $benefi)
-                <div class="swiper-slide">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-
-                        <div
-                            class="flex flex-col gap-5 lg:gap-10 justify-center items-start w-[95%] lg:w-[85%] text-left">
-                            <h2 class="font-Urbanist_Black text-2xl lg:text-3xl text-black">
-                                {{$benefi->descripcionshort}}
-                            </h2>
-
-                            <h1 class="font-Urbanist_Black text-5xl lg:text-8xl text-glamfit-purple/30">
-                                {{$benefi->titulo}}
-                            </h1>
-
-                            <div class="font-Urbanist_Light text-2xl lg:text-3xl text-black">
-                                {{$benefi->descripcion}}
-                            </div>
-
-                            <a href="{{$benefi->link1}}"
-                                class="font-Urbanist_Semibold text-lg lg:text-xl text-white px-10 py-3 bg-glamfit-gradient hover:opacity-90 transition-opacity duration-300 rounded-md">
-                                COMPRA AQUÍ
-                            </a>
-                        </div>
-
-                        <div class="flex flex-col justify-center items-center">
-                            <div
-                                class="w-full h-[500px] lg:[400px] xl:h-[700px] overflow-hidden relative bg-cover bg-center">
-                                <img src="{{ asset($benefi->imagen) }}"
-                                    onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"
-                                    class="mx-auto w-auto lg:w-full h-full object-cover lg:object-contain" />
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="flex flex-row justify-center items-center relative  mt-10">
-                <div class="swiper-pagination-promo absolute top-full bottom-0 z-10 right-full !left-1/2"></div>
-            </div>
-        </div>
-    </section>
-    @endif
-
-
-
-
-    {{-- Spacer to fix carousel rendering timing --}}
-    <div style="height: 1px; visibility: hidden;"></div>
-
-    @if (count($logosdestacados) > 0)
-        <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-            <div class="swiper logos-destacados h-max">
+        <section class="w-full px-[5%] lg:px-[8%] pt-10 lg:pt-14">
+            {{-- <div class="flex items-center justify-between mb-6">
+                <h2 class="font-Urbanist_Bold text-2xl lg:text-3xl text-[#111]">Categorias</h2>
+            </div> --}}
+            <div class="swiper carruseltop">
                 <div class="swiper-wrapper">
-                    @foreach ($logosdestacados as $logosd)
+                    @foreach ($subcategorias as $subcategoria)
                         <div class="swiper-slide">
-                            <a href="/catalogo?marcas={{$logosd->id}}">
-                                <div class="bg-no-repeat object-top bg-center bg-cover h-[350px] flex justify-center items-center p-4 relative group"
-                                    style="background-image: url('{{ asset($logosd->url_image2) }}')">
-                                    <div
-                                        class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+                            <a href="/catalogo?subcategoria={{$subcategoria->id}}" class="block">
+                                <div class="flex flex-col items-center gap-3">
+                                    <div class="category-circle-container">
+                                        <img class="w-full h-full object-cover"
+                                            src="{{ asset($subcategoria->url_image . $subcategoria->name_image) }}"
+                                            onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
+                                            alt="{{$subcategoria->name}}">
                                     </div>
-                                    <img class="w-2/3 h-auto max-h-[200px] object-contain relative z-10 hover:scale-110 transition-transform duration-500"
-                                        src="{{ asset($logosd->url_image) }}" alt="{{$logosd->title ?? 'Marca'}}" />
+                                    <p class="text-center text-sm md:text-base font-Urbanist_Semibold text-[#2E2E2E]">
+                                        {{$subcategoria->name}}
+                                    </p>
                                 </div>
                             </a>
                         </div>
                     @endforeach
                 </div>
-                <div class="flex flex-row justify-center items-center relative mt-10">
-                    <div class="swiper-pagination-logos-destacados absolute top-full bottom-0 z-10 right-full !left-1/2">
-                    </div>
-                </div>
+            </div>
+            <div class="flex flex-row justify-center items-center mt-3">
+                <div class="swiper-pagination-cat"></div>
             </div>
         </section>
     @endif
 
-
-    {{-- @if (count($logosdestacados) > 0)
-    <section
-        class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 md:gap-8 relative mx-auto pt-12 lg:pt-16">
-        @foreach ($logosdestacados as $logosd)
-        <a href="/catalogo?marcas={{$logosd->id}}">
-            <div class="flex flex-col justify-end bg-white h-[300px] lg:h-[350px] w-full bg-no-repeat object-top bg-center bg-contain"
-                style=" background-image: url('{{ asset($logosd->url_image2) }}')">
-                <div class="flex flex-col justify-end items-center w-full pb-[7%]">
-
-                    <img src="{{ asset($logosd->url_image) }}" class="h-16 object-contain" />
-                </div>
-            </div>
-        </a>
-        @endforeach
-    </section>
-    @endif --}}
-
-
     @if (count($combos) > 0)
-        <section class="w-full mx-auto py-10 lg:py-16 px-[5%]">
-            <div class="flex flex-col gap-10">
-                <div class="flex flex-col gap-2 text-center">
-                    <h2 class="font-Urbanist_Bold text-3xl tracking-widest text-[#2E2E2E]">COMBOS</h2>
-                </div>
-                <div class="swiper combos w-full">
-                    <div class="swiper-wrapper">
-                        @foreach ($combos as $combo)
-                            <div class="swiper-slide">
-                                <div class="flex flex-col gap-5 group items-center justify-center relative">
-                                    <div class="overflow-hidden relative w-full rounded-lg shadow-lg">
-                                        <img src="{{ asset($combo->imagen) }}" alt="{{ $combo->titulo }}"
-                                            class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                                            <h3 class="text-white text-xl font-bold mb-1">{{ $combo->titulo }}</h3>
-                                            <div class="flex items-center gap-3">
-                                                <span class="text-white text-lg font-bold">S/. {{ $combo->precio }}</span>
-                                                @if($combo->precio_tachado)
-                                                    <span class="text-gray-300 line-through text-sm">S/.
-                                                        {{ $combo->precio_tachado }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
+        <section class="w-full px-[5%] lg:px-[8%] py-8 lg:py-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-Urbanist_Bold text-2xl lg:text-3xl text-[#111]">Combos destacados</h2>
+            </div>
+            <div class="swiper combos w-full">
+                <div class="swiper-wrapper">
+                    @foreach ($combos as $combo)
+                        <div class="swiper-slide">
+                            <div class="group bg-white combo-card border border-[#F0EAF7] shadow-sm overflow-hidden">
+                                <div class="relative overflow-hidden">
+                                    <img src="{{ asset($combo->imagen) }}" alt="{{ $combo->titulo }}"
+                                        class="w-full h-[200px] md:h-[320px] object-cover transition-transform duration-500 group-hover:scale-105">
+                                </div>
+
+                                <div class="p-3">
+                                    <h3 class="text-[#7D6AB8] text-[11px] md:text-xl font-bold mb-1 leading-tight">
+                                        {{ $combo->titulo }}
+                                    </h3>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="text-[#333] text-[10px] md:text-lg font-extrabold uppercase italic">S/.
+                                            {{ $combo->precio }}</span>
+                                        @if($combo->precio_tachado)
+                                            <span class="text-gray-500 line-through text-[9px] md:text-sm">S/.
+                                                {{ $combo->precio_tachado }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="flex flex-row gap-3 w-full px-2">
+                                    <div class="combo-actions flex flex-col gap-2">
                                         <button
-                                            class="flex-1 bg-white border border-black text-black px-4 py-3 rounded-full hover:bg-gray-100 transition-colors font-bold text-sm uppercase tracking-wide"
+                                            class="combo-btn bg-white border border-black text-black px-4 py-2 md:py-3 hover:bg-gray-100 transition-colors font-bold text-xs md:text-sm uppercase tracking-wide w-full"
                                             onclick="verCombo({{ $combo->id }})">
                                             Ver Productos
                                         </button>
                                         <button
-                                            class="flex-1 bg-black text-white px-4 py-3 rounded-full hover:bg-[#333] transition-colors font-bold text-sm uppercase tracking-wide shadow-xl"
+                                            class="combo-btn bg-black text-white px-4 py-2 md:py-3 hover:bg-[#333] transition-colors font-bold text-xs md:text-sm uppercase tracking-wide shadow-xl w-full"
                                             onclick="agregarCombo({{ $combo->id }})">
                                             Agregar
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination-combos mt-10 flex justify-center"></div>
+                        </div>
+                    @endforeach
                 </div>
+                <div class="swiper-pagination-combos mt-4 flex justify-center"></div>
             </div>
         </section>
     @endif
 
-    @if (count($logos) > 0)
-        <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-            <h2 class="text-center font-Urbanist_Black text-2xl lg:text-3xl text-black">TAMBIÉN PUEDES ENCONTRAR</h2>
-        </section>
-
-        <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-            <div class="swiper otrasmarcas h-max">
+    @if (count($logosdestacados) > 0)
+        <section class="w-full px-[5%] lg:px-[8%] py-8 lg:py-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-Urbanist_Bold text-2xl lg:text-3xl text-[#111]">Marcas destacadas</h2>
+            </div>
+            <div class="swiper logos-destacados">
                 <div class="swiper-wrapper">
-                    @foreach ($logos as $logosn)
+                    @foreach ($logosdestacados as $logosd)
                         <div class="swiper-slide">
-                            <a href="/catalogo?marcas={{$logosn->id}}">
-                                <div class="bg-no-repeat object-top bg-center bg-cover h-[350px] flex justify-center items-center p-4 relative group"
-                                    style="background-image: url('{{ asset($logosn->url_image2) }}')">
+                            <a href="/catalogo?marcas={{$logosd->id}}" class="block">
+                                <div
+                                    class="group relative overflow-hidden rounded-xl shadow-md border border-[#F0EAF7] brand-card-height">
+                                    {{-- Background Image --}}
+                                    <img src="{{ asset($logosd->url_image2) }}"
+                                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        alt="{{ $logosd->title }}">
+
+                                    {{-- Dark Overlay --}}
                                     <div
-                                        class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+                                        class="absolute inset-0 bg-black/45 transition-opacity duration-300 group-hover:bg-black/50">
                                     </div>
-                                    <img class="w-2/3 h-auto max-h-[200px] object-contain relative z-10 hover:scale-110 transition-transform duration-500"
-                                        src="{{ asset($logosn->url_image) }}" alt="{{$logosn->title ?? 'Marca'}}" />
+
+                                    {{-- Centered Content --}}
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                                        @if($logosd->url_image)
+                                            <img src="{{ asset($logosd->url_image) }}"
+                                                class="h-20 w-auto object-contain brightness-0 invert opacity-90 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
+                                                onerror="this.style.display='none'" alt="{{ $logosd->title }}">
+                                        @endif
+                                    </div>
                                 </div>
                             </a>
                         </div>
                     @endforeach
                 </div>
-                <div class="flex flex-row justify-center items-center relative mt-10">
-                    <div class="swiper-pagination-otrasmarcas absolute top-full bottom-0 z-10 right-full !left-1/2 "></div>
-                </div>
+            </div>
+            <div class="flex flex-row justify-center items-center mt-4">
+                <div class="swiper-pagination-logos-destacados"></div>
             </div>
         </section>
     @endif
 
-
-
-    {{-- @if (count($logos) > 0)
-    <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-        <h2 class="text-center font-Urbanist_Black text-2xl lg:text-3xl text-black">TAMBIÉN PUEDES ENCONTRAR</h2>
-    </section>
-
-    <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-        <div class="swiper otrasmarcas h-max">
-            <div class="swiper-wrapper">
-                @foreach ($logos as $logosn)
-                <div class="swiper-slide">
-                    <a href="/catalogo?marcas={{$logosn->id}}">
-                        <div class="bg-no-repeat object-top bg-center bg-cover h-[350px] md:h-[350px] xl:h-[350px]  flex flex-row  items-center p-5 "
-                            style=" background-image: url('{{ asset($logosn->url_image2) }}')">
-                            <div
-                                class="flex flex-col justify-center  h-[300px] lg:h-[350px] w-full bg-no-repeat object-top bg-center bg-cover">
-                                <div class="flex flex-col justify-end items-center w-full">
-                                    <img src="{{ asset($logosn->url_image) }}" class="h-16 object-contain" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
+    @php
+        $novedades = $destacados->count() > 0 ? $destacados : $ultimosProductos;
+    @endphp
+    @if ($novedades->count() > 0)
+        <section class="w-full px-[5%] lg:px-[8%] py-12 lg:py-16 bg-gradient-to-br from-[#F7F2FB] via-white to-[#FFF2F6]">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-Urbanist_Bold text-2xl lg:text-3xl text-[#111]">Novedades</h2>
+                <a href="/catalogo" class="text-sm font-Urbanist_Semibold text-[#6B5AA8] hover:text-[#4B3E77]">
+                    Ver mas
+                </a>
             </div>
-            <div class="flex flex-row justify-center items-center relative mt-10">
-                <div class="swiper-pagination-cat absolute top-full bottom-0 z-10 right-full !left-1/2 "></div>
-            </div>
-        </div>
-    </section>
-    @endif --}}
-
-
-    @if (count($destacados) > 0)
-        <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-            <h2 class="text-center font-Urbanist_Black text-2xl lg:text-3xl text-black">COMPLEMENTA TU ESTILO</h2>
-        </section>
-
-        <section class="w-full px-[5%] relative mx-auto py-12 lg:py-16">
-            <div class="swiper complementos h-max">
+            <div class="swiper novedades">
                 <div class="swiper-wrapper">
-                    @foreach ($destacados as $productosd)
-                        <div class="swiper-slide">
-                            <a href="{{route('producto', $productosd->slug)}}">
-                                <div class="flex flex-row justify-center items-center w-full">
-                                    <div
-                                        class="w-full max-w-[300px] aspect-square rounded-full overflow-hidden border border-gray-100 bg-white shadow-sm flex items-center justify-center">
-                                        <img class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                                            src="{{ asset($productosd->imagen) }}" alt="{{$productosd->producto}}" />
+                    @foreach ($novedades as $item)
+                        <div class="swiper-slide px-2 mb-6">
+                            @php
+                                $tallasCount = (int) ($item->tallas_count ?? 0);
+                                $colorsCount = (int) ($item->colors_count ?? 0);
+                                $discountPercent = ($item->descuento > 0 && $item->precio > 0)
+                                    ? round(100 - (($item->descuento * 100) / $item->precio))
+                                    : 0;
+                            @endphp
+                            <div class="group flex flex-col h-full">
+                                <div class="glamfit-featured-card">
+                                    {{-- Image Container --}}
+                                    <div class="glamfit-featured-media">
+                                        <a href="{{ route('producto', $item->slug) }}" class="block w-full h-full">
+                                            <img class="glamfit-featured-image"
+                                                src="{{ asset($item->imagen) }}"
+                                                onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
+                                                alt="{{$item->producto}}">
+                                        </a>
+
+                                        {{-- Discount Badge --}}
+                                        @if ($discountPercent > 0)
+                                            <span class="glamfit-featured-badge">
+                                                -{{ $discountPercent }} %
+                                            </span>
+                                        @endif
+
+                                        {{-- Add Button --}}
+                                        <button type="button"
+                                            data-id="{{ $item->id }}"
+                                            class="glamfit-featured-plus"
+                                            aria-label="Agregar al carrito">
+                                            +
+                                        </button>
+
+                                        {{-- Bottom Badge (Sizes) --}}
+                                        <span class="glamfit-featured-sizes">
+                                            @if($tallasCount > 1)
+                                                {{ $tallasCount }} Tallas
+                                            @elseif($colorsCount > 0)
+                                                {{ $colorsCount }} {{ $colorsCount === 1 ? 'Color disponible' : 'Colores disponibles' }}
+                                            @else
+                                                Detalles
+                                            @endif
+                                        </span>
+                                    </div>
+
+                                    {{-- Product Info --}}
+                                    <div class="glamfit-featured-body text-left">
+                                        <h3 class="glamfit-featured-title line-clamp-2">
+                                            {{$item->producto}}
+                                        </h3>
+                                        <div class="glamfit-featured-prices">
+                                            <span class="glamfit-featured-price">
+                                                S/ {{ number_format($item->descuento > 0 ? $item->descuento : $item->precio, 2) }}
+                                            </span>
+                                            @if ($item->descuento > 0)
+                                                <span class="glamfit-featured-price-old">
+                                                    S/ {{ number_format($item->precio, 2) }}
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="flex flex-col justify-center items-center gap-1 mt-3">
-                                <p class="font-Urbanist_Semibold text-base text-black line-clamp-1">
-                                    {{ optional($productosd->category)->name }}
-                                </p>
-                                <a href="{{route('producto', $productosd->slug)}}">
-                                    <h2 class="font-Urbanist_Semibold text-base text-[#8f8f8f] line-clamp-1">
-                                        {{$productosd->producto}}
-                                    </h2>
-                                </a>
-                                @if($productosd->descuento > 0)
-                                    <p class="font-Urbanist_Semibold text-lg text-black">S/ {{$productosd->descuento}} <span
-                                            class="text-sm line-through text-[#8f8f8f]"> S/ {{$productosd->precio}}</span></p>
-                                @else
-                                    <p class="font-Urbanist_Semibold text-lg text-black">S/ {{$productosd->precio}}</p>
-                                @endif
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div class="flex flex-row justify-center items-center relative mt-10">
-                    <div class="swiper-pagination-complementos absolute top-full bottom-0 z-10 right-full !left-1/2 "></div>
+                <div class="w-full flex justify-center mt-8">
+                    <div class="swiper-pagination-novedades"></div>
                 </div>
+            </div>
         </section>
     @endif
 
 
 
-    {{-- <section class="w-full px-[5%] relative mx-auto pt-12 lg:pt-16">
-        <h2 class="text-center font-Urbanist_Black text-2xl lg:text-3xl text-black">FOLLOW US <span
-                class="font-Urbanist_Regular"> ON </span>
-            <span class="font-Urbanist_Regular italic"> @americanbrandspe </span>
-        </h2>
-    </section> --}}
-
-    {{-- <section class="w-full relative mx-auto pt-12 lg:pt-16">
-        <div class="swiper instagram h-max">
-            <div class="swiper-wrapper"> --}}
-                {{-- @php
-                $filteredMedia = array_filter($media, function ($item) {
-                return $item['media_type'] === 'IMAGE' || $item['media_type'] === 'CAROUSEL_ALBUM';
-                });
-                @endphp
-                @foreach (array_slice($filteredMedia, 0, 12) as $item)
-                <div class="swiper-slide">
-                    <div class="relative group aspect-square h-full">
-                        <img src="{{ $item['media_url'] }}" alt="Image" class="object-cover h-full w-full">
-                        <a href="{{ $item['permalink'] }}" target="_blank"
-                            class="opacity-0 hover:cursor-pointer group-hover:opacity-60 duration-300 absolute inset-0 flex justify-center items-center bg-black bg-opacity-70">
-                        </a>
-                    </div>
-                </div>
-                @endforeach --}}
-                {{-- @foreach (array_slice($media, 0, 12) as $item)
-                <div class="swiper-slide">
-                    <div class="relative group aspect-square h-full">
-                        @if ($item['media_type'] === 'IMAGE' || $item['media_type'] === 'CAROUSEL_ALBUM')
-                        <img src="{{ $item['media_url'] }}" alt="Image" class="object-cover h-full w-full">
-                        <a href="{{ $item['permalink'] }}" target="_blank"
-                            class="opacity-0 hover:cursor-pointer group-hover:opacity-60 duration-300 absolute inset-0 flex justify-center items-center bg-black bg-opacity-70">
-                        </a>
-                        <img class="opacity-0 group-hover:opacity-100 duration-300 absolute inset-x-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                            src="{{ asset('img_donas/instagram.svg') }}">
-                        @elseif ($item['media_type'] === 'VIDEO')
-                        <div class="h-full overflow-hidden">
-                            <video class="min-h-full min-w-full">
-                                <source src="{{ $item['media_url'] }}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <a href="{{ $item['permalink'] }}" target="_blank"
-                                class="opacity-0 hover:cursor-pointer group-hover:opacity-60 duration-300 absolute inset-0 flex justify-center items-center bg-black bg-opacity-70">
-                            </a>
-                            <img class="opacity-0 group-hover:opacity-100 duration-300 absolute inset-x-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                                src="{{ asset('img_donas/instagram.svg') }}">
-                        </div>
-                        @endif
-                    </div>
-                </div>
-                @endforeach --}}
-                {{--
+    <section class="w-full px-[5%] lg:px-[8%] pb-16 lg:pb-20">
+        <div class="bg-[#EAE4F5] rounded-3xl p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center shadow-sm">
+            <div class="text-[#3B334F]">
+                <h3 class="text-2xl lg:text-3xl font-Urbanist_Bold text-[#2E2E2E] mb-4">Conocenos</h3>
+                <p class="text-sm lg:text-base leading-relaxed mb-4">
+                    En Glamfit creamos prendas y accesorios pensados para mujeres que quieren entrenar con estilo,
+                    comodidad y confianza. Cada pieza esta seleccionada para acompanarte en tu rutina diaria,
+                    combinando diseno funcional con un toque de glamour.
+                </p>
+                <p class="text-sm lg:text-base leading-relaxed">
+                    Somos una marca peruana que cree en el poder de la comunidad fitness. Queremos inspirarte a dar
+                    siempre lo mejor de ti, con productos que te hagan sentir segura y motivada.
+                </p>
             </div>
-        </div>
-    </section> --}}
-
-
-    {{-- <section class="w-full relative mx-auto pt-12 lg:pt-16">
-        <div class="swiper instagram h-max">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-no-repeat object-top bg-center bg-cover aspect-square flex flex-row  items-center"
-                        style=" background-image: url('{{ asset('images/img/banner_AB.png') }}')">
-                    </div>
+            <div class="flex justify-center">
+                <div class="bg-white p-3 rounded-3xl shadow-lg">
+                    <img src="{{ asset('images/glamfit/Mesa de trabajo 10.jpg') }}" alt="Glamfit"
+                        class="w-full h-[320px] object-cover rounded-2xl" />
                 </div>
             </div>
-        </div>
-    </section> --}}
-
-
-    {{-- @if (count($logos) > 0)
-    <section class="w-full px-[5%] lg:px-[8%] py-12 lg:py-20 flex flex-col gap-10">
-        <div class="text-center">
-            <h2 class="font-Helvetica_Bold text-[#010101] text-4xl">Autoradios IOS</h2>
-        </div>
-
-        <div class="flex flex-wrap justify-between gap-8 ">
-            @foreach ($logos as $logo)
-            <img class="w-32 object-contain mx-auto" src="{{ asset($logo->url_image) }}" />
-            @endforeach
         </div>
     </section>
-    @endif --}}
-
-    {{-- seccion Gran Descuento --}}
-
-
-
-
-    {{-- seccion Productos populares --}}
-
-    {{-- @if ($productosPupulares->count() > 0)
-    <section>
-        <div class="w-full px-[5%] py-14 lg:py-20">
-            <div class="flex flex-col md:flex-row justify-between w-full gap-3">
-                <div class="flex flex-col">
-                    <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Descuentos especiales</h3>
-                    <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">Los
-                        más vendidos</h1>
-                </div>
-                <div class="flex flex-col items-center justify-center">
-                    <a href="/catalogo"
-                        class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
-                        Vamos a comprar</a>
-                </div>
-            </div>
-            @foreach ($productosPupulares->chunk(4) as $taken)
-
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-4 mt-14 w-full">
-
-                @foreach ($taken as $item)
-                <x-product.container width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" />
-
-                @endforeach
-            </div>
-            @endforeach
-        </div>
-    </section>
-    @endif --}}
-
-
-    {{-- @php
-    $categories = $categoriasindex;
-    $chunks = $categories->chunk(3);
-    $processedCategories = collect();
-    @endphp
-
-    @foreach ($chunks as $chunk)
-    @if ($chunk->count() == 3)
-    <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-        @foreach ($chunk as $category)
-        @if ($loop->first)
-        <div class="w-full md:row-span-2 md:col-span-2">
-            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                <div class="h-full w-full relative flex flex-col group">
-                    <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                        class="h-96 md:h-full w-full flex flex-col justify-end items-start object-cover"
-                        onerror="this.src='/images/img/noimagen.jpg';">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300">
-                    </div>
-                    <div
-                        class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        @else
-        <div class="w-full md:col-span-2">
-            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                <div class="h-full w-full relative flex flex-col group">
-                    <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                        class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
-                        onerror="this.src='/images/img/noimagen.jpg';">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300">
-                    </div>
-                    <div
-                        class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        @endif
-        @endforeach
-    </div>
-    @endif
-
-    @php
-    $processedCategories = $processedCategories->merge($chunk); // Guardamos las categorías procesadas.
-    @endphp
-    @endforeach
-
-    @php
-    $remainder = $categories->count() % 3;
-    $remainderCategories = $categories->diff($processedCategories);
-    @endphp
-
-    @php
-    $remainderCategories = $categories->slice(-$remainder);
-    @endphp
-
-    @if ($remainder > 0)
-    @if ($remainder == 1)
-    <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-        @foreach ($remainderCategories as $category)
-        <div class="col-span-4">
-            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                <div class="h-full w-full relative flex flex-col group">
-                    <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                        class="h-60 md:h-64 lg:h-60 xl:h-96 w-full flex flex-col justify-end items-start object-cover"
-                        onerror="this.src='/images/img/noimagen.jpg';">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300">
-                    </div>
-                    <div
-                        class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    @endforeach
-    </div>
-
-    @elseif ($remainder == 2)
-    <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-        @foreach ($remainderCategories as $category)
-        <div class="w-full md:col-span-2">
-            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                <div class="h-full w-full relative flex flex-col group">
-                    <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                        class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
-                        onerror="this.src='/images/img/noimagen.jpg';">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300">
-                    </div>
-                    <div
-                        class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        @endforeach
-    </div>
-    @endif
-    @endif --}}
-
-
-    {{-- seccion Ultimos Productos --}}
-    {{-- @if ($ultimosProductos->count() > 0)
-    <section>
-        <div class="w-full px-[5%] py-14 lg:py-20">
-            <div class="flex flex-col md:flex-row justify-between w-full gap-3">
-                <div class="flex flex-col">
-                    <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Apúrate que se acaban</h3>
-                    <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">
-                        Equipos nuevos</h1>
-                </div>
-                <div class="flex flex-col items-center justify-center">
-                    <a href="/catalogo"
-                        class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
-                        Autoradios</a>
-                </div>
-            </div>
-            @foreach ($ultimosProductos->chunk(4) as $taken)
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-6 mt-14 w-full">
-                @foreach ($taken as $item)
-                <x-product.container width="w-full" bgcolor="bg-[#FFFFFF]" :item="$item" />
-
-                @endforeach
-            </div>
-            @endforeach
-        </div>
-    </section>
-    @endif --}}
-
-
-
-
-
-
-    {{-- Seccion Blog --}}
-    {{-- @if ($blogs->count() > 0)
-    <section class="w-full px-[5%] py-7 lg:py-14" data-aos="fade-up">
-        <div class="flex flex-col md:flex-row justify-between w-full gap-3">
-            <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Blog & Eventos</h1>
-            <a href="/blog/0" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6]">Ver
-                todos
-                las Publicaciones <img src="{{ asset('images/img/arrowBlue.png') }}" alt="Icono" class="ml-2 "></a>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-14 gap-10 sm:gap-5">
-            @foreach ($blogs as $post)
-            <x-blog.container-post :post="$post" />
-            @endforeach
-        </div>
-
-    </section>
-    @endif --}}
-
-
-    {{-- gran descuento --}}
-    {{-- @if (count($bannersBottom) > 0)
-    <section class="w-full px-[5%] mt-7 lg:mt-10 " data-aos="zoom-out-right">
-        <div class="bg-gradient-to-b from-gray-50 to-white flex flex-col md:flex-row justify-between bg-[#EEEEEE]">
-            <x-banner-section :banner="$bannersBottom" />
-        </div>
-    </section>
-    @endif --}}
-
-
-    {{-- @if ($benefit->count() > 0)
-    <section class="py-10 lg:py-13 bg-[#F8F8F8] w-full px[5%]" data-aos="zoom-out-right">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ">
-            @foreach ($benefit as $item)
-            <div class="flex flex-col items-center w-full gap-1 justify-center text-center px-[10%] xl:px-[18%]">
-                <img src="{{ asset($item->icono) }}" alt="">
-                <h4 class="text-xl font-bold font-Inter_Medium"> {{ $item->titulo }} </h4>
-                <div class="text-lg leading-8 text-[#444444] font-Inter_Medium">{!! $item->descripcionshort !!}</div>
-            </div>
-            @endforeach
-        </div>
-    </section>
-    @endif --}}
-
-
 
 </main>
 
@@ -867,7 +865,7 @@
 <!-- Main modal -->
 <div id="modalofertas" class="modal modalbanner">
     <!-- Modal body -->
-    <div class="p-1 ">
+    <div class="">
         <x-swipper-card-ofertas :items="$popups" id="modalOfertas" />
     </div>
 </div>
@@ -925,6 +923,22 @@
         }
     });
 </script>
+<script>
+    $(document).on('click', '.glamfit-featured-plus', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        const productId = $(this).data('id');
+        if (!productId) return;
+
+        try {
+            agregarAlCarrito(productId, 1);
+        } catch (error) {
+            console.error(error);
+        }
+    });
+</script>
 
 <script>
     let pops = @json($popups);
@@ -948,13 +962,15 @@
 
     }
     $(document).ready(function () {
-        console.log(pops.length)
         if (pops.length > 0) {
-            $('#modalofertas').modal({
-                show: true,
-                fadeDuration: 100
-            })
-
+            setTimeout(() => {
+                $('#modalofertas').modal({
+                    show: true,
+                    fadeDuration: 300,
+                    clickClose: true,
+                    showClose: true
+                });
+            }, 500); // 500ms delay to help with image loading
         }
 
 
@@ -968,7 +984,13 @@
 </script>
 
 <script>
-    var swiper = new Swiper(".sliderab", {
+    const initSwiper = (selector, options) => {
+        const element = document.querySelector(selector);
+        if (!element) return null;
+        return new Swiper(selector, options);
+    };
+
+    initSwiper(".sliderab", {
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
@@ -988,13 +1010,18 @@
     });
 
 
-    var swiper = new Swiper(".carruseltop", {
-        slidesPerView: 4,
-        spaceBetween: 25,
+    initSwiper(".carruseltop", {
+        slidesPerView: 6,
+        spaceBetween: 20,
         loop: true,
         grabCursor: true,
         centeredSlides: false,
         initialSlide: 0,
+        autoHeight: true,
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -1007,25 +1034,33 @@
 
         breakpoints: {
             0: {
-                slidesPerView: 1,
-                spaceBetween: 25,
+                slidesPerView: 2.2,
+                spaceBetween: 16,
+            },
+            480: {
+                slidesPerView: 3.2,
+                spaceBetween: 16,
             },
             768: {
-                slidesPerView: 2,
-                spaceBetween: 25,
+                slidesPerView: 4.2,
+                spaceBetween: 18,
             },
             1024: {
-                slidesPerView: 3,
-                spaceBetween: 25,
+                slidesPerView: 4.2,
+                spaceBetween: 10,
             },
-            1350: {
-                slidesPerView: 4,
-                spaceBetween: 25,
+            1280: {
+                slidesPerView: 4.2,
+                spaceBetween: 15,
+            },
+            1440: {
+                slidesPerView: 5.2,
+                spaceBetween: 20,
             },
         },
     });
 
-    var swiper = new Swiper(".otrasmarcas", {
+    initSwiper(".otrasmarcas", {
         slidesPerView: 4,
         spaceBetween: 25,
         loop: true,
@@ -1063,7 +1098,7 @@
     });
 
 
-    var swiper = new Swiper(".complementos", {
+    initSwiper(".complementos", {
         slidesPerView: 5,
         spaceBetween: 25,
         loop: true,
@@ -1104,8 +1139,40 @@
         },
     });
 
+    initSwiper(".novedades", {
+        slidesPerView: 4,
+        spaceBetween: 24,
+        loop: false,
+        grabCursor: true,
+        centeredSlides: false,
+        initialSlide: 0,
+        pagination: {
+            el: ".swiper-pagination-novedades",
+            clickable: true,
+            dynamicBullets: true,
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1.1,
+                spaceBetween: 16,
+            },
+            600: {
+                slidesPerView: 2.1,
+                spaceBetween: 18,
+            },
+            900: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 24,
+            },
+        },
+    });
 
-    var swiper = new Swiper(".instagram", {
+
+    initSwiper(".instagram", {
         slidesPerView: 6,
         loop: true,
         grabCursor: true,
@@ -1136,7 +1203,7 @@
     });
 
 
-    var swiper = new Swiper(".promo", {
+    initSwiper(".promo", {
         slidesPerView: 1,
         spaceBetween: 50,
         loop: true,
@@ -1164,10 +1231,14 @@
         },
     });
 
-    var swiper = new Swiper(".logos-destacados", {
+    initSwiper(".logos-destacados", {
         slidesPerView: 3,
-        spaceBetween: 25,
-        loop: false, // Changed to false to fix display with 5 slides
+        spaceBetween: 15,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         grabCursor: true,
         centeredSlides: false,
         initialSlide: 0,
@@ -1178,36 +1249,39 @@
         },
         breakpoints: {
             0: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
                 slidesPerView: 2,
-                spaceBetween: 25,
+                spaceBetween: 10,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 15,
             },
             1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
+                slidesPerView: 5,
+                spaceBetween: 20,
             },
         },
     });
 
-    var swiper = new Swiper(".combos", {
+    initSwiper(".combos", {
         slidesPerView: 4,
         spaceBetween: 25,
         loop: true,
         grabCursor: true,
         centeredSlides: false,
         initialSlide: 0,
+        autoHeight: true,
         pagination: {
             el: ".swiper-pagination-combos",
             clickable: true,
             dynamicBullets: true,
         },
         breakpoints: {
-            0: { slidesPerView: 1, spaceBetween: 20 },
-            768: { slidesPerView: 2, spaceBetween: 25 },
+            0: { slidesPerView: 2, spaceBetween: 10 },
+            480: { slidesPerView: 2, spaceBetween: 12 },
+            768: { slidesPerView: 2.25, spaceBetween: 22 },
             1024: { slidesPerView: 3, spaceBetween: 30 },
+            1280: { slidesPerView: 4, spaceBetween: 25 },
         },
     });
 

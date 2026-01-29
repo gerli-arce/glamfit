@@ -78,7 +78,25 @@ class IndexController extends Controller
     // $productos = Products::all();
     $url_env = env('APP_URL');
     $productos = Products::with('tags')->get();
-    $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(4)->get();
+    $sizeCountSub = DB::table('products as p2')
+      ->selectRaw('COUNT(DISTINCT p2.peso)')
+      ->whereColumn('p2.producto', 'products.producto')
+      ->whereRaw('((products.color is null and p2.color is null) or p2.color = products.color)')
+      ->whereNotNull('p2.peso');
+    $colorCountSub = DB::table('products as p2')
+      ->selectRaw('COUNT(DISTINCT p2.color)')
+      ->whereColumn('p2.producto', 'products.producto')
+      ->whereNotNull('p2.color');
+
+    $ultimosProductos = Products::select('products.*')
+      ->addSelect(['tallas_count' => $sizeCountSub, 'colors_count' => $colorCountSub])
+      ->join('categories', 'products.categoria_id', '=', 'categories.id')
+      ->where('categories.visible', 1)
+      ->where('products.status', '=', 1)
+      ->where('products.visible', '=', 1)
+      ->orderBy('products.id', 'desc')
+      ->take(4)
+      ->get();
     $productosPupulares = Products::select('products.*')
       ->join('categories', 'products.categoria_id', '=', 'categories.id')
       ->where('categories.visible', 1)
@@ -94,8 +112,15 @@ class IndexController extends Controller
     $categorias = Category::where('destacar', '=', 1)->where('visible', '=', 1)->get();
     $subcategorias = SubCategory::where('destacar', '=', 1)->where('visible', '=', 1)->orderBy('order', 'asc')->get();
     $categoriasAll = Category::where('visible', '=', 1)->get();
-    $destacados = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->with('category')->activeDestacado()->get();
+    $destacados = Products::select('products.*')
+      ->addSelect(['tallas_count' => $sizeCountSub, 'colors_count' => $colorCountSub])
+      ->where('products.destacar', '=', 1)
+      ->where('products.status', '=', 1)
+      ->where('visible', '=', 1)
+      ->with('tags')
+      ->with('category')
+      ->activeDestacado()
+      ->get();
     $descuentos = Products::where('products.descuento', '>', 0)->where('products.status', '=', 1)
       ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 

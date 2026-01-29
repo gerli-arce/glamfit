@@ -52,15 +52,15 @@ class ComboController extends Controller
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
 
-            $basePath = 'images/combos/';
-            $path = storage_path('app/public/' . $basePath);
+            $basePath = 'storage/images/combos/';
+            $path = public_path($basePath);
 
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($path . $nombreImagen);
-            $body['imagen'] = 'storage/' . $basePath . $nombreImagen;
+            $img->save(rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $nombreImagen);
+            $body['imagen'] = $basePath . $nombreImagen;
         }
 
         $body['status'] = true;
@@ -105,8 +105,8 @@ class ComboController extends Controller
                 }
             }
 
-            $basePath = 'images/combos/';
-            $path = storage_path('app/public/' . $basePath);
+            $basePath = 'storage/images/combos/';
+            $path = public_path($basePath);
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img = $manager->read($request->file('imagen'));
 
@@ -114,8 +114,8 @@ class ComboController extends Controller
                 File::makeDirectory($path, 0777, true, true);
             }
 
-            $img->save($path . $nombreImagen);
-            $body['imagen'] = 'storage/' . $basePath . $nombreImagen;
+            $img->save(rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $nombreImagen);
+            $body['imagen'] = $basePath . $nombreImagen;
         }
 
         $combo->update($body);

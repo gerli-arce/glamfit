@@ -55,24 +55,445 @@
   .jquery-modal.blocker.current {
     z-index: 30;
   }
+
+  #header-menu {
+    height: 90px;
+    background-color: white !important;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+  }
+
+  .header-nav-link {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #272727;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 10px 0;
+    letter-spacing: 0.02em;
+  }
+
+  .header-nav-link:hover {
+    color: #7D6AB8;
+  }
+
+  .header-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #7D6AB8;
+    transition: width 0.3s ease;
+  }
+
+  .header-nav-link:hover::after {
+    width: 100%;
+  }
+
+  .cart-btn-new {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #f7f7f7;
+    color: #272727;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cart-btn-new:hover {
+    background-color: #7D6AB8;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(125, 106, 184, 0.25);
+  }
+
+  #itemsCount {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #7D6AB8;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+  }
+
+  .cart-btn-new:hover #itemsCount {
+    background-color: #272727;
+  }
+
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #f8f8f8;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .logo-circle:hover {
+    transform: scale(1.05);
+  }
+
+  .search-button-new,
+  .user-button-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    color: #272727;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #buscarproducto::placeholder {
+    color: #a0a0a0;
+    font-weight: 500;
+  }
+
+  /* Custom Scrollbar for Search Results */
+  #resultados-new::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #resultados-new::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #resultados-new::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+  }
+
+  #resultados-new::-webkit-scrollbar-thumb:hover {
+    background-color: #7D6AB8;
+  }
+
+  .user-button-new:hover {
+    background-color: #f7f7f7;
+    color: #7D6AB8;
+    transform: translateY(-2px);
+  }
+
+  /* Mega Menu Styles */
+  .mega-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+    z-index: 50;
+    display: none;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  .nav-center-container:hover .mega-menu {
+    display: block;
+    opacity: 1;
+  }
+
+  .mega-menu-list {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 12px 14px;
+  }
+
+  .mega-menu-category {
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f3f3;
+  }
+
+  .mega-menu-category:last-child {
+    border-bottom: none;
+  }
+
+  .mega-menu-cat-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #272727;
+  }
+
+  .mega-menu-cat-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mega-menu-sublist {
+    margin: 10px 0 4px 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mega-menu-subitem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4a4a4a;
+  }
+
+  .mega-menu-subitem:hover {
+    color: #7D6AB8;
+  }
+
+  .mega-menu-subavatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    border: 1px solid #E6DFF1;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mega-menu-subavatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 </style>
 
 <style>
-  .bg-image {
-    background-image: url('');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
+  .search-overlay {
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 900;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 10000;
+    padding: 6% 6%;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
   }
 
-  .productos-link-container {
-    z-index: 999;
+  .search-box-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+  }
+
+  .search-panel {
+    background: #ffffff;
+    border: 1px solid #f0eef5;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 18px 40px rgba(20, 16, 40, 0.12);
+  }
+
+  .search-title {
+    color: #7D6AB8;
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .search-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 2px solid #E91E63;
+    border-radius: 9999px;
+    padding: 8px 14px;
+  }
+
+  .search-input-new {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    padding: 6px 0;
+    outline: none;
+    color: #2e2e2e;
+  }
+
+  .search-input-new::placeholder {
+    color: #bcb6cc;
+  }
+
+  .close-search {
+    position: absolute;
+    top: 24px;
+    right: 6%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #f0eef5;
+    border-radius: 14px;
+    color: #2e2e2e;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .close-search:hover {
+    background-color: #7D6AB8;
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  #resultados-new {
+    margin-top: 30px;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  #resultados {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .search-result-item {
+    padding: 15px;
+    border-radius: 16px;
+    transition: background 0.3s ease;
+  }
+
+  .search-result-item:hover {
+    background: #f8f6fb;
+  }
+
+  @media (max-width: 768px) {
+    .search-overlay {
+      padding: 18px;
+    }
+
+    .search-box-container {
+      margin-top: 20px;
+    }
+
+    .search-panel {
+      padding: 18px;
+      border-radius: 16px;
+    }
+
+    .search-input-new {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Desktop inline search */
+  .desktop-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .desktop-search-field {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.25s ease, opacity 0.2s ease;
+  }
+
+  .desktop-search-field.is-open {
+    width: 280px;
+    opacity: 1;
+    pointer-events: auto;
+    border: 1px solid #E91E63;
+    border-radius: 9999px;
+    padding: 0 15px;
+  }
+
+  .desktop-search-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    border-radius: 9999px;
+    padding: 6px 0;
+    font-size: 14px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    color: #2e2e2e;
+    outline: none;
+  }
+
+  .desktop-search {
+    border: none;
+  }
+
+  .desktop-search-input::placeholder {
+    color: #bcb6cc;
+  }
+
+  .desktop-search-input:focus {
+    box-shadow: none;
+  }
+
+  .desktop-search-results {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 360px;
+    background: #ffffff;
+    border: 1px solid #f0eef5;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(20, 16, 40, 0.12);
+    max-height: 55vh;
+    overflow-y: auto;
+    display: none;
+    padding: 10px;
+    z-index: 60;
+  }
+
+  .desktop-search-results.is-visible {
+    display: block;
   }
 </style>
 
@@ -230,194 +651,198 @@
 
 
 <header>
-  @foreach ($datosgenerales as $item)
-    <div class="bg-[#E91E63] h-[30px] flex justify-center w-full px-[5%] xl:px-[8%] py-3 tracking-wider items-center ">
-      <h3 class="text-white font-Urbanist_Semibold text-sm sm:text-base tracking-wider text-center flex ">
-        <marquee class="w-[400px] sm:w-[800px]">{{ $item->htop ?? 'Ingrese un texto' }}</marquee>
-      </h3>
-    </div>
-  @endforeach
+  {{-- Red top bar removed as requested --}}
+
 
   <div>
-    <div id="header-menu" class="flex w-full px-[5%] py-2 flex-row text-[17px] relative h-[60px]"
-      style="background: #1a1a1a;">
+    <div id="header-menu" class="w-full px-[5%] relative flex items-center justify-between">
 
-      {{-- Menu hamburguesa --}}
-      <div id="menu-burguer" class="flex w-3/12 lg:hidden z-10 justify-start items-center">
-        <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/svg/menubar.svg') }}" alt="menu hamburguesa"
-          onclick="show()" />
+      {{-- Mobile Menu --}}
+      <div class="lg:hidden flex items-center">
+        <button onclick="show()" class="text-gray-800 p-2 hover:text-[#7D6AB8] transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
       </div>
 
-      {{-- Input Search --}}
-      <div class="relative hidden lg:flex w-3/12 lg:py-0  items-center justify-center">
-        <div class="w-full">
-          <input id="buscarproducto" type="text" placeholder="Buscar productos"
-            class="font-Urbanist_Light w-full text-sm pl-8 bg-transparent pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-[#E91E63] focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
-
-          <span class="absolute inset-y-0 left-0 flex items-start lg:items-center px-2 pb-2 pt-[9px] lg:p-2">
-            <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-              class="rotate-90">
-              <path
-                d="M14.6851 13.6011C14.3544 13.2811 13.8268 13.2898 13.5068 13.6206C13.1868 13.9514 13.1955 14.4789 13.5263 14.7989L14.6851 13.6011ZM16.4206 17.5989C16.7514 17.9189 17.2789 17.9102 17.5989 17.5794C17.9189 17.2486 17.9102 16.7211 17.5794 16.4011L16.4206 17.5989ZM15.2333 9.53333C15.2333 12.6814 12.6814 15.2333 9.53333 15.2333V16.9C13.6018 16.9 16.9 13.6018 16.9 9.53333H15.2333ZM9.53333 15.2333C6.38531 15.2333 3.83333 12.6814 3.83333 9.53333H2.16667C2.16667 13.6018 5.46484 16.9 9.53333 16.9V15.2333ZM3.83333 9.53333C3.83333 6.38531 6.38531 3.83333 9.53333 3.83333V2.16667C5.46484 2.16667 2.16667 5.46484 2.16667 9.53333H3.83333ZM9.53333 3.83333C12.6814 3.83333 15.2333 6.38531 15.2333 9.53333H16.9C16.9 5.46484 13.6018 2.16667 9.53333 2.16667V3.83333ZM13.5263 14.7989L16.4206 17.5989L17.5794 16.4011L14.6851 13.6011L13.5263 14.7989Z"
-                fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-[#E91E63]" />
-            </svg>
-          </span>
-
-          <div class="bg-white z-50 shadow-2xl top-12 w-full absolute overflow-y-auto max-h-[200px]" id="resultados">
-          </div>
-        </div>
-      </div>
-
-      <div class="w-9/12 flex items-center justify-center">
-        <a href="/">
-          <img src="{{ asset('images/glamfit/logo.png') }}" alt="GLAMFIT" class="h-10 object-contain" />
+      {{-- Logo --}}
+      <div class="flex items-center">
+        <a href="/" class="logo-circle">
+          <img src="{{ asset('images/glamfit/Mesa de trabajo 17.jpg') }}" alt="GLAMFIT"
+            class="w-[85%] h-[85%] object-cover" />
         </a>
       </div>
 
-      {{-- Iconos --}}
-      <div class="flex w-3/12 justify-end md:justify-end items-center gap-2 max-w-96 my-auto">
-        <div class="flex flex-row justify-between items-center ml-2 lg:ml-0 gap-2 lg:gap-4 mt-1">
-          @if (Auth::user() == null)
-            <a class="w-6 h-6 lg:w-auto lg:h-autoflex" href="{{ route('login') }}">
-              {{-- <i class="fa-solid fa-user-large fa-xl text-white !leading-none"></i> --}}
-              <img src="{{ asset('images/svg/USER.svg') }}" class="text-white w-7" /></a>
-            </a>
-          @else
-            <div class="relative  inline-flex font-Urbanist_Bold" x-data="{ open: false }">
-              <button class="lg:px-3 py-0 inline-flex justify-center items-center group" aria-haspopup="true"
-                @click.prevent="open = !open" :aria-expanded="open">
-                <div class="flex items-center truncate">
-                  <span id="username"
-                    class="hidden lg:flex truncate lg:ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-white ">
-                    {{ explode(' ', Auth::user()->name)[0] }}
-                  </span>
-                  <img src="{{ asset('images/svg/USER.svg') }}" class="block lg:hidden min-w-6 min-h-6 text-white" />
-                  <svg class="min-h-2 min-w-2 lg:w-3 lg:h-3 lg:shrink-0 lg:ml-1 fill-current text-white"
-                    viewBox="0 0 12 12">
-                    <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                  </svg>
+      {{-- Nav Center --}}
+      <nav class="hidden lg:flex items-center gap-10 h-full" x-data="{ openMega: false, lockMega: false, openCat: {} }">
+        <a href="/" class="header-nav-link">Inicio</a>
+
+        <div class="h-full flex items-center nav-center-container" @mouseenter="if (!lockMega) { openMega = true }"
+          @mouseleave="if (!lockMega) { openMega = false }">
+          <button type="button" class="header-nav-link"
+            @click="openMega = !openMega; lockMega = openMega">Categorías</button>
+
+          {{-- Mega Menu Dropdown --}}
+          <div class="mega-menu" x-show="openMega" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            @click.outside="openMega = false; lockMega = false" style="display: none;">
+            <div class="mega-menu-list">
+              @foreach ($categorias as $cat)
+                <div class="mega-menu-category">
+                  <button class="mega-menu-cat-btn" type="button"
+                    @click="openCat[{{ $cat->id }}] = !openCat[{{ $cat->id }}]; openMega = true; lockMega = true">
+                    <span class="mega-menu-cat-info">
+                      <span>{{ $cat->name }}</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                      :class="{ 'rotate-180': openCat[{{ $cat->id }}] }"></i>
+                  </button>
+
+                  @if ($cat->subcategories->count() > 0)
+                    <div class="mega-menu-sublist" x-show="openCat[{{ $cat->id }}]" x-transition style="display: none;">
+                      @foreach ($cat->subcategories as $sub)
+                        <a href="/catalogo?subcategoria={{ $sub->id }}" class="mega-menu-subitem">
+                          <span class="mega-menu-subavatar">
+                            <img src="{{ asset($sub->url_image . $sub->name_image) }}"
+                              onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
+                              alt="{{ $sub->name }}">
+                          </span>
+                          <span>{{ $sub->name }}</span>
+                        </a>
+                      @endforeach
+                    </div>
+                  @else
+                    <div class="mega-menu-sublist" x-show="openCat[{{ $cat->id }}]" x-transition style="display: none;">
+                      <a href="/catalogo?category={{ $cat->id }}" class="mega-menu-subitem">
+                        <span class="mega-menu-subavatar">
+                          <img src="{{ asset('images/img/noimagen.jpg') }}" alt="Ver todo">
+                        </span>
+                        <span>Ver todo</span>
+                      </a>
+                    </div>
+                  @endif
                 </div>
-              </button>
-              <div
-                class="bg-white right-0 lg:origin-top-right z-10 absolute top-full min-w-max lg:min-w-44 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
-                @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
-                <ul>
-                  <li class="hover:bg-gray-100">
-                    <a class="font-medium text-sm text-black flex items-center py-1 px-3"
-                      href="{{ auth()->user()->hasRole('admin') || auth()->user()->hasRole('root') ? route('dashboard') : route('micuenta') }}"
-                      @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
-                  </li>
-
-                  <li class="hover:bg-gray-100">
-                    <form class="mb-0" method="POST" action="{{ route('logout') }}" x-data>
-                      @csrf
-                      <button type="submit" class="font-medium text-sm text-black flex items-center py-1 px-3"
-                        @click.prevent="$root.submit(); open = false">
-                        {{ __('Cerrar sesión') }}
-                      </button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
+              @endforeach
             </div>
-          @endif
-
-          <div class="hidden lg:flex justify-center items-center">
-            <a target="_blank"
-              href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQ5OTQ5MDYyODM2OTM2?story_media_id=3433199994630037399&igsh=MXZoaDBlM2gxcW1wdg==">
-              <img src="{{ asset('images/svg/tienda.svg') }}" class="text-white w-7" />
-            </a>
           </div>
+        </div>
 
-          {{-- <div class="hidden lg:flex justify-center items-center">
-            <i class="fa-solid fa-heart  fa-xl text-white !leading-none -mt-1"></i>
-          </div> --}}
+        <a href="/nosotros" class="header-nav-link">Información</a>
+        <a href="/comentario" class="header-nav-link">Reseñas</a>
+      </nav>
 
-          @if (!request()->routeIs('pago'))
-            <div class="flex justify-center items-center min-w-[38px]">
-              <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
-                <span id="itemsCount"
-                  class="bg-[#E91E63] text-xs font-medium font-Urbanist_Regular text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
-                {{-- <img src="{{ asset('images/svg/bag_boost.svg') }}"
-                  class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" /> --}}
-                {{-- <i class="fa-solid fa-suitcase-rolling fa-xl text-white !leading-none -mt-1"></i> --}}
-                <img src="{{ asset('images/svg/CARRITO.svg') }}" class="text-white w-7" /></a>
-              </div>
+      <div class="flex items-center gap-4 lg:gap-8">
+        <div class="desktop-search flex" x-data="{ open: false }">
+          <div class="desktop-search-field" :class="{ 'is-open': open }">
+            <input id="buscarproductoDesktop" type="text" placeholder="Buscar productos..."
+              class="desktop-search-input">
+            <div id="resultadosDesktop" class="desktop-search-results"></div>
+          </div>
+          <button type="button" class="search-button-new"
+            @click="if (window.innerWidth < 1024) { openSearch(); return; } open = !open; if(open){$nextTick(() => document.getElementById('buscarproductoDesktop').focus())}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-search">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+        </div>
+
+        @if (Auth::user() == null)
+          <a href="{{ route('login') }}" class="user-button-new">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-user">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </a>
+        @else
+          <div class="relative inline-flex font-Urbanist_Bold" x-data="{ open: false }">
+            <button class="user-button-new gap-2 group w-auto px-3" @click.prevent="open = !open" :aria-expanded="open">
+              <span class="hidden sm:inline-block text-sm font-bold text-gray-700">
+                {{ explode(' ', Auth::user()->name)[0] }}
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-user text-gray-600">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+            <div
+              class="bg-white right-0 z-[100] absolute top-full min-w-44 border border-gray-100 py-2 rounded-xl shadow-xl mt-2"
+              @click.outside="open = false" x-show="open" style="display: none">
+              <ul>
+                <li>
+                  <a class="font-medium text-sm text-gray-700 flex items-center py-2 px-4 hover:bg-gray-50"
+                    href="{{ auth()->user()->hasRole('admin') || auth()->user()->hasRole('root') ? route('dashboard') : route('micuenta') }}">Mi
+                    Cuenta</a>
+                </li>
+                <li>
+                  <form class="mb-0" method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+                    <button type="submit"
+                      class="w-full text-left font-medium text-sm text-gray-700 flex items-center py-2 px-4 hover:bg-gray-50"
+                      @click.prevent="$root.submit(); open = false">
+                      Cerrar sesión
+                    </button>
+                  </form>
+                </li>
+              </ul>
             </div>
-          @endif
+          </div>
+        @endif
+
+        <div id="open-cart" class="cart-btn-new cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-shopping-bag">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span id="itemsCount">0</span>
         </div>
       </div>
 
     </div>
   </div>
 
-
-  <div>
-    <div class="hidden lg:flex items-center justify-center h-[40px]">
-      <div>
-        <nav id="menu-items"
-          class=" text-[#333] text-base font-Urbanist_Semibold tracking-wider flex gap-5 xl:gap-16 items-center justify-center py-2">
-
-
-          {{-- <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-            <span class="underline-this">HOMBRE</span>
-            <div id="productos-link-h" class="w-0"></div>
-          </a>
-
-
-          <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-            <span class="underline-this">MUJER</span>
-            <div id="productos-link-h" class="w-0"></div>
-          </a>
-
-          <a id="#" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class other-class2">
-            <span class="underline-this">ACCESORIOS</span>
-            <div id="productos-link-h" class="w-0"></div>
-          </a> --}}
-
-          @foreach ($categorias as $categoria)
-            <a id="categoria-{{ $categoria->id }}" href="/catalogo?category={{ $categoria->id }}"
-              class="font-medium  other-class2">
-              <span class="underline-this">{{ strtoupper($categoria->name) }}</span>
-              <div id="productos-link-{{ $categoria->id }}" class="w-0"></div>
-            </a>
-          @endforeach
-
-          <a id="productos-link2" class="font-medium">
-            <span class="underline-this other-class">MARCAS</span>
-            <div id="productos-link-m" class="w-0"></div>
-          </a>
-
-          @if ($tags->count() > 0)
-            @foreach ($tags as $item)
-              <a href="/catalogo?tag={{ $item->id }}" class="font-medium text-white px-4 other-class other-class2"
-                style="background-color: {{ $item->color }}">
-                <span class="">
-                  {{ $item->name }} </span>
-              </a>
-            @endforeach
-          @endif
-
-        </nav>
-      </div>
-    </div>
+  {{-- Redundant Category bar removed or hidden as requested by user's new pattern --}}
+  <div class="hidden lg:flex items-center justify-center h-[5px] bg-white">
   </div>
 
-  <div class="relative flex lg:hidden w-full h-[40px] items-center justify-center" style="background: #1a1a1a;">
-    <div class="w-full text-center px-5">
-      <input id="buscarproductosecond" type="text" placeholder="Buscar productos"
-        class="font-Urbanist_Light w-full text-sm pl-8 bg-transparent pr-10 py-2 border border-t-0 border-x-0 border-b-[1px] border-b-white focus:border-b-[#E91E63] focus:outline-none focus:ring-0 text-white placeholder:text-white lg:placeholder:text-white">
-
-      <span class="absolute inset-y-0 left-5 flex items-start lg:items-center px-2 pb-2 pt-[9px] lg:p-2">
-        <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-          class="rotate-90">
-          <path
-            d="M14.6851 13.6011C14.3544 13.2811 13.8268 13.2898 13.5068 13.6206C13.1868 13.9514 13.1955 14.4789 13.5263 14.7989L14.6851 13.6011ZM16.4206 17.5989C16.7514 17.9189 17.2789 17.9102 17.5989 17.5794C17.9189 17.2486 17.9102 16.7211 17.5794 16.4011L16.4206 17.5989ZM15.2333 9.53333C15.2333 12.6814 12.6814 15.2333 9.53333 15.2333V16.9C13.6018 16.9 16.9 13.6018 16.9 9.53333H15.2333ZM9.53333 15.2333C6.38531 15.2333 3.83333 12.6814 3.83333 9.53333H2.16667C2.16667 13.6018 5.46484 16.9 9.53333 16.9V15.2333ZM3.83333 9.53333C3.83333 6.38531 6.38531 3.83333 9.53333 3.83333V2.16667C5.46484 2.16667 2.16667 5.46484 2.16667 9.53333H3.83333ZM9.53333 3.83333C12.6814 3.83333 15.2333 6.38531 15.2333 9.53333H16.9C16.9 5.46484 13.6018 2.16667 9.53333 2.16667V3.83333ZM13.5263 14.7989L16.4206 17.5989L17.5794 16.4011L14.6851 13.6011L13.5263 14.7989Z"
-            fill="#E6E4E5" class="fill-fillAzulPetroleo lg:fill-[#E91E63]" />
-        </svg>
-      </span>
-
-
+  <div id="myOverlay" class="search-overlay">
+    <span class="close-search" onclick="closeSearch()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </span>
+    <div class="search-box-container">
+      <div class="search-panel">
+        <h2 class="search-title">&iquest;QU&Eacute; EST&Aacute;S BUSCANDO?</h2>
+        <div class="search-input-wrap">
+          <input id="buscarproducto" type="text" placeholder="Escribe aqu&iacute;..." class="search-input-new">
+          <div class="text-[#7D6AB8]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-search">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+        </div>
+        <div id="resultados" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
     </div>
   </div>
 
@@ -497,7 +922,7 @@
   let clockSearch;
 
   function openSearch() {
-    document.getElementById("myOverlay").style.display = "block";
+    document.getElementById("myOverlay").style.display = "flex";
 
   }
 
@@ -529,20 +954,18 @@
             data.forEach(function (result) {
               const price = Number(result.precio) || 0
               const discount = Number(result.descuento) || 0
-              resultsHtml += `<a href="/producto/${result.slug}">
-                            <div class="w-full flex flex-row py-3 px-3 hover:bg-slate-200">
-                                <div class="w-[15%]">
-                                <img class="w-20 rounded-0 object-center" src="${url}${result.imagen}" onerror="imagenError(this)" />
+              resultsHtml += `<a href="/producto/${result.slug}" class="search-result-item flex items-center gap-4">
+                                <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="${url}${result.imagen}" onerror="imagenError(this)" />
                                 </div>
-                                <div class="flex flex-col justify-center w-[60%] px-2 line-clamp-2">
-                                <h2 class="text-left text-[12px] font-Urbanist_Regular line-clamp-2">${result.producto}</h2>
+                                <div class="flex-grow">
+                                  <h3 class="font-Urbanist_Semibold text-gray-800 text-sm line-clamp-2">${result.producto}</h3>
+                                  <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-purple-600 font-bold">S/ ${discount > 0 ? discount.toFixed(2) : price.toFixed(2)}</span>
+                                    ${discount > 0 ? `<span class="text-xs text-gray-400 line-through">S/ ${price.toFixed(2)}</span>` : ''}
+                                  </div>
                                 </div>
-                                <div class="flex flex-col justify-center w-[15%] font-Urbanist_Regular">
-                                <p class="text-right w-max text-[14px] ">S/ ${discount > 0 ? discount.toFixed(2) : price.toFixed(2)}</p>
-                                ${discount > 0 ? `<p class="text-[12px] text-right line-through text-slate-500 w-max">S/ ${price.toFixed(2)}</p>` : ''}
-                                </div>
-                            </div>
-                            </a>`;
+                              </a>`;
             });
 
             $('#resultados').html(resultsHtml);
@@ -553,6 +976,56 @@
 
     } else {
       $('#resultados').empty();
+    }
+  });
+
+  $('#buscarproductoDesktop').keyup(function () {
+
+    clearTimeout(clockSearch);
+    var query = $(this).val().trim();
+
+    if (query !== '') {
+      clockSearch = setTimeout(() => {
+        $.ajax({
+          url: '{{ route('buscar') }}',
+          method: 'GET',
+          data: {
+            query: query
+          },
+          success: function (data) {
+            var resultsHtml = '';
+            var url = '{{ asset('') }}';
+            data.forEach(function (result) {
+              const price = Number(result.precio) || 0
+              const discount = Number(result.descuento) || 0
+              resultsHtml += `<a href="/producto/${result.slug}" class="search-result-item flex items-center gap-4">
+                                <div class="w-16 h-16 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="${url}${result.imagen}" onerror="imagenError(this)" />
+                                </div>
+                                <div class="flex-grow">
+                                  <h3 class="font-Urbanist_Semibold text-gray-800 text-sm line-clamp-2">${result.producto}</h3>
+                                  <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-purple-600 font-bold">S/ ${discount > 0 ? discount.toFixed(2) : price.toFixed(2)}</span>
+                                    ${discount > 0 ? `<span class="text-xs text-gray-400 line-through">S/ ${price.toFixed(2)}</span>` : ''}
+                                  </div>
+                                </div>
+                              </a>`;
+            });
+
+            if (resultsHtml) {
+              $('#resultadosDesktop').addClass('is-visible');
+            } else {
+              $('#resultadosDesktop').removeClass('is-visible');
+            }
+            $('#resultadosDesktop').html(resultsHtml);
+          }
+        });
+
+      }, 300);
+
+    } else {
+      $('#resultadosDesktop').removeClass('is-visible');
+      $('#resultadosDesktop').empty();
     }
   });
 
@@ -1229,6 +1702,12 @@
     return articulosCarrito;
   }
 
+  if (typeof window.getAlreadyInCart !== 'function') {
+    window.getAlreadyInCart = function (id) {
+      return (Local.get('carrito') ?? []).find(x => x.id == id)?.cantidad ?? 0;
+    }
+  }
+
   function agregarAlCarrito(item, cantidad) {
     $.ajax({
 
@@ -1343,7 +1822,7 @@
         })
 
         already = getAlreadyInCart(item)
-        $('#cantidadSpan span').text(stock - already)
+        $('#cantidadSpan span').text(stockActual - already)
 
       },
       error: function (error) {

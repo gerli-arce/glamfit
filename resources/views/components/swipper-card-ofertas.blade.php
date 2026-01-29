@@ -3,7 +3,11 @@
 @endphp
 <style>
   .modal {
-    padding: 4px 4px 4px 4px;
+    padding: 0px !important;
+  }
+
+  .header-slider img {
+    border-radius: 0px !important;
   }
 
   @media (max-width: 400px) {
@@ -55,7 +59,10 @@
   }
 </style>
 {{-- <style>
-  #{{ $sliderId }} a {
+  #{{ $sliderId }
+  }
+
+  a {
     position: absolute;
     bottom: 10px;
     /* Ajusta este valor para mover el botón hacia abajo o arriba dentro del contenedor */
@@ -74,7 +81,7 @@
       <div class="swiper-slide relative">
 
         <img src="{{ asset($item->image) }}" alt="" class="w-full max-h-[70vh] 
-        ">
+          ">
         <div class="absolute bottom-10 right-0 left-0  flex content-center justify-center items-center z-10">
           <a href="{{ $item->button_link }}"
             class="font-semibold text-[16px] bg-[#006BF6] py-2 px-4 text-center text-white rounded-3xl  absolute ">

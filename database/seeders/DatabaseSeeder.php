@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
             PoliticasDatos::class,
             AboutUsSeeder::class,
             ShortcodeSeeder::class,
+            TestimonySeeder::class,
             //ServiceSeeder::class,
         ]);
 

@@ -7,275 +7,242 @@
 
 @section('content')
 
-  <div class="w-full">
-    <div style="background-image: url('{{ asset('images/img/header_comentar.png') }}')"
-      class="bg-cover bg-center bg-no-repeat min-h-[600px]  flex flex-col justify-center items-center">
+<main class="bg-white py-12 lg:py-20 px-[5%] md:px-[10%]">
+  <section class="max-w-7xl mx-auto">
+    <div class="flex flex-col gap-6 mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold font-Inter_Medium text-[#111111]">
+        Opiniones de clientes
+      </h1>
+      <div class="flex items-center gap-4">
+        <div class="flex gap-1">
+          @for ($i = 0; $i < 5; $i++)
+            <svg class="w-6 h-6 text-[#FFB800]" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+          @endfor
+        </div>
+        <span class="text-lg font-semibold text-[#111111]">5.0 de 5</span>
+      </div>
     </div>
-  </div>
 
-  <main class="my-16">
-
-
-
-    <section class="font-poppins flex flex-col gap-5">
-      <div class="w-11/12 mx-auto flex flex-col gap-3">
-        <h2 class="font-medium text-[28px]">Comentarios de los usuarios</h2>
-        {{-- <div class="flex items-center gap-2">
-                    <div class="flex gap-2 py-2">
-                        <img src="./images/svg/start.svg" alt="estrella" />
-                        <img src="./images/svg/start.svg" alt="estrella" />
-                        <img src="./images/svg/start.svg" alt="estrella" />
-                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                    </div>
-                    <p class="font-normal text-[12px] text-[#141718]">@if ($contarcomentarios = 1)
-                      {{$contarcomentarios}}  Comentario
-                    @else
-                      {{$contarcomentarios}}  Comentarios
-                    @endif</p>
-                </div> --}}
-      </div>
-
-      <div class="w-11/12 mx-auto">
-        <form action="{{ route('nuevocomentario') }}" method="POST">
-          @csrf
-          <div
-            class="flex flex-col gap-5 md:flex-row md:justify-between md:items-center md:border-2 md:border-[#E8ECEF] md:p-2 md:rounded-2xl">
-            <textarea placeholder="Comparte tus pensamientos" name="testimonie"
-              class="w-full border-[1px] md:border-none focus:outline-none focus:ring-0 border-gray-400 rounded-2xl py-4 px-2">{{ old('testimonie') }}</textarea>
-
-            <input type="submit" value="Comentar"
-              class="font-semibold text-base bg-[#006BF6] py-3 px-5 rounded-2xl text-white cursor-pointer" />
-          </div>
-        </form>
-
-        @error('testimonie')
-          <span class="text-red-500 text-base p-3">{{ $message }}</span>
-        @enderror
-
-        @if (session('mensaje'))
-          <div
-            class="w-auto h-10 @if (session('alerta') == 2) { bg-red-400 }@else{ bg-green-600 } @endif my-5 rounded-xl text-white flex flex-row items-center pl-5">
-            {{ session('mensaje') }}
-          </div>
+    <div class="flex flex-col md:flex-row justify-between items-center border-t border-gray-100 pt-8 mb-10 gap-4">
+      <p class="text-sm font-semibold text-[#666666]">
+        @if ($contarcomentarios == 1)
+          {{ $contarcomentarios }} calificación
+        @else
+          {{ $contarcomentarios }} calificaciones
         @endif
+      </p>
+
+      <div class="relative inline-block text-left">
+        <button type="button"
+          class="inline-flex justify-between items-center w-48 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-[#333333] hover:bg-gray-50 transition-colors">
+          Fecha: Más recientes
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <div class="w-11/12 mx-auto">
-        <div class="flex flex-col gap-10">
-          <div class="flex flex-col md:flex-row items-start md:justify-between md:items-center gap-5">
-            <p class="font-medium text-[28px]">
-              @if ($contarcomentarios == 1)
-                {{ $contarcomentarios }} Comentario
-              @else
-                {{ $contarcomentarios }} Comentarios
-              @endif
-            </p>
-            <div class="w-full md:w-auto">
-              <div>
-                <!-- cmombo -->
-                <div class="dropdown w-full">
-                  <div class="input-box focus:outline-none font-medium text-[16px] mr-20 shadow-md px-2">
-                    Selecciona el orden
-                  </div>
-                  <div class="list">
-                    <div class="w-full">
-                      <input type="radio" name="drop1" id="id11" class="radio" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      @foreach ($comentarios as $item)
+        <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col gap-5">
+          <div class="flex justify-between items-start">
+            <div class="flex flex-col gap-1">
+              <h3 class="text-lg font-bold text-[#333333]">{{ $item->name }}</h3>
+              <div class="flex gap-0.5">
+                @for ($i = 0; $i < ($item->rating ?? 5); $i++)
+                  <svg class="w-5 h-5 text-[#FFB800]" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                    </path>
+                  </svg>
+                @endfor
+              </div>
+            </div>
+            <span class="text-sm text-[#999999]">{{ \Carbon\Carbon::parse($item->created_at)->format('d M. Y') }}</span>
+          </div>
 
-                      <label for="id11"
-                        class="font-normal text-text18 hover:font-bold md:duration-100 hover:text-white comentar">
-                        <span class="name inline-block w-full">Lo más reciente</span>
-                      </label>
-                    </div>
+          <p class="text-base text-[#444444] leading-relaxed">
+            {{ $item->testimonie }}
+          </p>
 
-                    <div class="w-full">
-                      <input type="radio" name="drop1" id="id12" class="radio" />
-                      <label for="id12"
-                        class="font-normal text-text18 hover:font-bold md:duration-100 hover:text-white comentar">
-                        <span class="name inline-block w-full">Lo más antiguo</span>
-                      </label>
-                    </div>
-                  </div>
+          @if($item->img_product)
+            <div class="mt-2 flex flex-col gap-3">
+              <span class="text-xs font-semibold text-[#999999] uppercase tracking-wider">Productos</span>
+              <div class="flex gap-3">
+                <div class="w-20 h-20 rounded-2xl overflow-hidden border border-gray-100">
+                  <img src="{{ asset($item->img_product) }}" alt="Producto reseñado" class="w-full h-full object-cover">
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="flex flex-col gap-10">
-            @foreach ($comentarios as $item)
-              <div class="flex flex-col md:flex-row gap-5 border-b-[1px] border-[#DDDDDD] pb-5">
-                <div class="">
-                  <img src="./images/img/perfil_user_2.png" alt="perfil" class="md:w-32 lg:w-20" />
-                </div>
-                <div class="flex flex-col gap-5">
-                  <h2 class="font-semibold text-[20px] text-[#141718]">
-                    {{ $item->name }}
-                  </h2>
-                  <div class="flex flex-col gap-1">
-                    {{-- <div class="flex gap-2 py-2">
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                    </div> --}}
-                    <p class="font-normal text-[16px] text-[#353945]">
-                      {{ $item->testimonie }}
-                    </p>
-                  </div>
-                  <div class="flex flex-col md:flex-row gap-5 md:items-center">
-                    <span class="font-normal text-[12px] text-slate-400 inline-block">{{ $item->created_at }}
-                    </span>
-                    {{-- <div class="flex gap-5">
-                                        <a href="#" class="font-semibold text-[12px] text-[#23262F]">Me gusta</a>
-                                        <a href="#" class="font-semibold text-[12px] text-[#23262F]">Responder</a>
-                                    </div> --}}
-                  </div>
-                </div>
-              </div>
-            @endforeach
-          </div>
-
-          <div class="flex justify-center items-center">
-            {{-- <a href="#"
-                            class="font-semibold text-[16px] bg-white md:duration-500 py-4 px-5 rounded-3xl border-[1px] border-colorBorder flex-initial text-center w-full md:w-56">
-                            Cargar más
-                        </a> --}}
-            {{ $comentarios->links() }}
-          </div>
+          @endif
         </div>
-      </div>
-    </section>
-  </main>
+      @endforeach
+    </div>
+
+    <div class="mt-16 flex justify-center">
+      {{ $comentarios->links() }}
+    </div>
+
+    {{-- Optional: New comment form styled to match --}}
+    <div class="mt-24 border-t border-gray-100 pt-16 max-w-2xl">
+      <h2 class="text-2xl font-bold text-[#111111] mb-8">Cuéntanos tu experiencia</h2>
+      <form action="{{ route('nuevocomentario') }}" method="POST" class="flex flex-col gap-6">
+        @csrf
+        <textarea name="testimonie" placeholder="Comparte tus pensamientos..." rows="4"
+          class="w-full rounded-2xl border-gray-200 focus:border-[#7D6AB8] focus:ring-[#7D6AB8] text-base p-4 transition-all">{{ old('testimonie') }}</textarea>
+        @error('testimonie')
+          <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <div class="flex justify-end">
+          <button type="submit"
+            class="bg-[#7D6AB8] text-white px-10 py-3.5 rounded-full font-bold text-base hover:bg-[#6a59a3] transition-colors shadow-lg shadow-[#7D6AB8]/20">
+            Enviar reseña
+          </button>
+        </div>
+      </form>
+      @if (session('mensaje'))
+        <div
+          class="mt-6 p-4 rounded-2xl @if (session('alerta') == 2) bg-red-50 text-red-700 @else bg-green-50 text-green-700 @endif">
+          {{ session('mensaje') }}
+        </div>
+      @endif
+    </div>
+  </section>
+</main>
 
 @section('scripts_importados')
-  <script>
-    $(document).ready(function() {
+<script>
+  $(document).ready(function () {
 
 
-      function capitalizeFirstLetter(string) {
-        string = string.toLowerCase()
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
-    })
-    $('#disminuir').on('click', function() {
-      console.log('disminuyendo')
-      let cantidad = Number($('#cantidadSpan span').text())
-      if (cantidad > 0) {
-        cantidad--
-        $('#cantidadSpan span').text(cantidad)
-      }
-
-
-    })
-    // cantidadSpan
-    $('#aumentar').on('click', function() {
-      console.log('aumentando')
-      let cantidad = Number($('#cantidadSpan span').text())
-      cantidad++
+    function capitalizeFirstLetter(string) {
+      string = string.toLowerCase()
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  })
+  $('#disminuir').on('click', function () {
+    console.log('disminuyendo')
+    let cantidad = Number($('#cantidadSpan span').text())
+    if (cantidad > 0) {
+      cantidad--
       $('#cantidadSpan span').text(cantidad)
+    }
+
+
+  })
+  // cantidadSpan
+  $('#aumentar').on('click', function () {
+    console.log('aumentando')
+    let cantidad = Number($('#cantidadSpan span').text())
+    cantidad++
+    $('#cantidadSpan span').text(cantidad)
+
+  })
+</script>
+<script>
+  let articulosCarrito = [];
+
+
+  function deleteOnCarBtn(id, operacion) {
+    console.log('Elimino un elemento del carrito');
+    console.log(id, operacion)
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id && item.cantidad > 0) {
+        item.cantidad -= Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
+
+    });
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+
+
+  }
+
+  function calcularTotal() {
+    let articulos = Local.get('carrito')
+    console.log(articulos)
+    let total = articulos.map(item => {
+      let monto
+      if (Number(item.descuento) !== 0) {
+        monto = item.cantidad * Number(item.descuento)
+      } else {
+        monto = item.cantidad * Number(item.precio)
+
+      }
+      return monto
 
     })
-  </script>
-  <script>
-    let articulosCarrito = [];
+    const suma = total.reduce((total, elemento) => total + elemento, 0);
 
+    $('#itemsTotal').text(`S/. ${suma} `)
 
-    function deleteOnCarBtn(id, operacion) {
-      console.log('Elimino un elemento del carrito');
-      console.log(id, operacion)
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id && item.cantidad > 0) {
-          item.cantidad -= Number(1);
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
+  }
 
-      });
-      Local.set('carrito', articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
+  function addOnCarBtn(id, operacion) {
+    console.log('agrego un elemento del cvarrio');
+    console.log(id, operacion)
 
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id) {
+        item.cantidad += Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
 
-    }
-
-    function calcularTotal() {
-      let articulos = Local.get('carrito')
-      console.log(articulos)
-      let total = articulos.map(item => {
-        let monto
-        if (Number(item.descuento) !== 0) {
-          monto = item.cantidad * Number(item.descuento)
-        } else {
-          monto = item.cantidad * Number(item.precio)
-
-        }
-        return monto
-
-      })
-      const suma = total.reduce((total, elemento) => total + elemento, 0);
-
-      $('#itemsTotal').text(`S/. ${suma} `)
-
-    }
-
-    function addOnCarBtn(id, operacion) {
-      console.log('agrego un elemento del cvarrio');
-      console.log(id, operacion)
-
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id) {
-          item.cantidad += Number(1);
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
-
-      });
-      console.log(articulosCarrito)
-      Local.set('carrito', articulosCarrito)
-      // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-      limpiarHTML()
-      PintarCarrito()
-
-
-    }
-
-    function deleteItem(id) {
-      console.log('borrando elemento')
-      articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
-
-      Local.set('carrito', articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
-    }
-
-    var appUrl = <?php echo json_encode($url_env); ?>;
-    console.log(appUrl);
-    $(document).ready(function() {
-      articulosCarrito = Local.get('carrito') || [];
-
-      PintarCarrito();
     });
-
-    function limpiarHTML() {
-      //forma lenta 
-      /* contenedorCarrito.innerHTML=''; */
-      $('#itemsCarrito').html('')
-
-
-    }
+    console.log(articulosCarrito)
+    Local.set('carrito', articulosCarrito)
+    // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+    limpiarHTML()
+    PintarCarrito()
 
 
+  }
 
-    // function PintarCarrito() {
-    //   console.log('pintando carrito ')
+  function deleteItem(id) {
+    console.log('borrando elemento')
+    articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
 
-    //   let itemsCarrito = $('#itemsCarrito')
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+  }
 
-    //   articulosCarrito.forEach(element => {
-    //     let plantilla = `<div class="flex justify-between bg-white font-poppins border-b-[1px] border-[#E8ECEF] pb-5">
+  var appUrl = <?php echo json_encode($url_env); ?>;
+  console.log(appUrl);
+  $(document).ready(function () {
+    articulosCarrito = Local.get('carrito') || [];
+
+    PintarCarrito();
+  });
+
+  function limpiarHTML() {
+    //forma lenta 
+    /* contenedorCarrito.innerHTML=''; */
+    $('#itemsCarrito').html('')
+
+
+  }
+
+
+
+  // function PintarCarrito() {
+  //   console.log('pintando carrito ')
+
+  //   let itemsCarrito = $('#itemsCarrito')
+
+  //   articulosCarrito.forEach(element => {
+  //     let plantilla = `<div class="flex justify-between bg-white font-poppins border-b-[1px] border-[#E8ECEF] pb-5">
   //         <div class="flex justify-center items-center gap-5">
   //           <div class="bg-[#F3F5F7] rounded-md p-4">
   //             <img src="${appUrl}/${element.imagen}" alt="producto" class="w-24" />
@@ -315,112 +282,112 @@
   //         </div>
   //       </div>`
 
-    //     itemsCarrito.append(plantilla)
+  //     itemsCarrito.append(plantilla)
 
-    //   });
+  //   });
 
-    //   calcularTotal()
-    // }
-
-
+  //   calcularTotal()
+  // }
 
 
 
 
-    $('#btnAgregarCarrito').on('click', function() {
-      let url = window.location.href;
-      let partesURl = url.split('/')
-      let item = partesURl[partesURl.length - 1]
-      let cantidad = Number($('#cantidadSpan span').text())
-      item = item.replace('#', '')
+
+
+  $('#btnAgregarCarrito').on('click', function () {
+    let url = window.location.href;
+    let partesURl = url.split('/')
+    let item = partesURl[partesURl.length - 1]
+    let cantidad = Number($('#cantidadSpan span').text())
+    item = item.replace('#', '')
 
 
 
-      // id='nodescuento'
+    // id='nodescuento'
 
 
-      $.ajax({
+    $.ajax({
 
-        url: `{{ route('carrito.buscarProducto') }}`,
-        method: 'POST',
-        data: {
-          _token: $('input[name="_token"]').val(),
-          id: item,
-          cantidad
+      url: `{{ route('carrito.buscarProducto') }}`,
+      method: 'POST',
+      data: {
+        _token: $('input[name="_token"]').val(),
+        id: item,
+        cantidad
 
-        },
-        success: function(success) {
-          console.log(success)
-          let {
-            producto,
-            id,
-            descuento,
-            precio,
-            imagen,
-            color
-          } = success.data
-          let cantidad = Number(success.cantidad)
-          let detalleProducto = {
-            id,
-            producto,
-            descuento,
-            precio,
-            imagen,
-            cantidad,
-            color
+      },
+      success: function (success) {
+        console.log(success)
+        let {
+          producto,
+          id,
+          descuento,
+          precio,
+          imagen,
+          color
+        } = success.data
+        let cantidad = Number(success.cantidad)
+        let detalleProducto = {
+          id,
+          producto,
+          descuento,
+          precio,
+          imagen,
+          cantidad,
+          color
 
-          }
-          let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id)
-          if (existeArticulo) {
-            //sumar al articulo actual 
-            const prodRepetido = articulosCarrito.map(item => {
-              if (item.id === detalleProducto.id) {
-                item.cantidad += Number(detalleProducto.cantidad);
-                return item; // retorna el objeto actualizado 
-              } else {
-                return item; // retorna los objetos que no son duplicados 
-              }
+        }
+        let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id)
+        if (existeArticulo) {
+          //sumar al articulo actual 
+          const prodRepetido = articulosCarrito.map(item => {
+            if (item.id === detalleProducto.id) {
+              item.cantidad += Number(detalleProducto.cantidad);
+              return item; // retorna el objeto actualizado 
+            } else {
+              return item; // retorna los objetos que no son duplicados 
+            }
 
-            });
-          } else {
-            articulosCarrito = [...articulosCarrito, detalleProducto]
+          });
+        } else {
+          articulosCarrito = [...articulosCarrito, detalleProducto]
 
-          }
-
-          Local.set('carrito', articulosCarrito)
-          let itemsCarrito = $('#itemsCarrito')
-          let ItemssubTotal = $('#ItemssubTotal')
-          let itemsTotal = $('#itemsTotal')
-          limpiarHTML()
-          PintarCarrito()
-
-        },
-        error: function(error) {
-          console.log(error)
         }
 
-      })
+        Local.set('carrito', articulosCarrito)
+        let itemsCarrito = $('#itemsCarrito')
+        let ItemssubTotal = $('#ItemssubTotal')
+        let itemsTotal = $('#itemsTotal')
+        limpiarHTML()
+        PintarCarrito()
 
+      },
+      error: function (error) {
+        console.log(error)
+      }
 
-
-      // articulosCarrito = {...articulosCarrito , detalleProducto }
     })
-    // $('#openCarrito').on('click', function() {
-    //   console.log('abriendo carrito ');
-    //   $('.main').addClass('blur')
-    // })
-    // $('#closeCarrito').on('click', function() {
-    //   console.log('cerrando  carrito ');
-
-    //   $('.cartContainer').addClass('hidden')
-    //   $('#check').prop('checked', false);
-    //   $('.main').removeClass('blur')
 
 
-    // })
-  </script>
 
-  <script src="{{ asset('js/storage.extend.js') }}"></script>
+    // articulosCarrito = {...articulosCarrito , detalleProducto }
+  })
+  // $('#openCarrito').on('click', function() {
+  //   console.log('abriendo carrito ');
+  //   $('.main').addClass('blur')
+  // })
+  // $('#closeCarrito').on('click', function() {
+  //   console.log('cerrando  carrito ');
+
+  //   $('.cartContainer').addClass('hidden')
+  //   $('#check').prop('checked', false);
+  //   $('.main').removeClass('blur')
+
+
+  // })
+</script>
+
+<script src="{{ asset('js/storage.extend.js') }}"></script>
 @stop
 
 @stop
